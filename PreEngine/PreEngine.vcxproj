@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4E1972FE-2DE6-424E-BD75-4276818633E9}</ProjectGuid>
+    <RootNamespace>PreEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib32;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3160Win32\FreeImage\Dist;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN32\glfw-3.1.2.bin.WIN32\lib-vc2013;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\build\vs71\debug\lib_json;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\build\win32;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN32\glfw-3.1.2.bin.WIN32\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\freetype2\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\include;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <TargetExt>.lib</TargetExt>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\build\win64;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN64\glfw-3.1.2.bin.WIN64\lib-vc2013;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\makefiles\vs71\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\freetype2\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN64\glfw-3.1.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\include;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib32;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\build\win32;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3160Win32\FreeImage\Dist;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN32\glfw-3.1.2.bin.WIN32\lib-vc2013;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\build\vs71\release\lib_json;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\Release;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN32\glfw-3.1.2.bin.WIN32\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\freetype2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0;$(IncludePath)</IncludePath>
+    <TargetExt>.lib</TargetExt>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN64\glfw-3.1.2.bin.WIN64\lib-vc2013;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\makefiles\vs71\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\build\win64;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\x64\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.0;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype\freetype2\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.1.2.bin.WIN64\glfw-3.1.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-src-0.5.0\jsoncpp-src-0.5.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft-1.16.0\openal-soft-1.16.0\include;$(IncludePath)</IncludePath>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ThreeSpace_API.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;opengl32.lib;glfw3.lib;glfw3dll.lib;assimp.lib;FreeImage.lib;freetype.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>json_vc71_libmtd.lib;opengl32.lib;glfw3.lib;glfw3dll.lib;FreeImage.lib;assimp.lib;freetype.lib;OpenAL32.lib;lua-5.3.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ThreeSpace_API.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;opengl32.lib;glfw3.lib;glfw3dll.lib;assimp.lib;FreeImage.lib;freetype.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\lubos\Documents\opengl\glm-0.9.5.4\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ThreeSpace_API.lib;avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;opengl32.lib;glfw3.lib;glfw3dll.lib;assimp.lib;FreeImage.lib;freetype.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Audio\AudioContext.cpp" />
+    <ClCompile Include="Audio\Sound.cpp" />
+    <ClCompile Include="Audio\SoundFactory.cpp" />
+    <ClCompile Include="Core\Config\AbstractConfig.cpp" />
+    <ClCompile Include="Core\Engines\Config\EngineConfig.cpp" />
+    <ClCompile Include="Core\Engines\Config\OpenGLConfig.cpp" />
+    <ClCompile Include="Core\Engines\Config\SceneItemConfig.cpp" />
+    <ClCompile Include="Core\Engines\Config\ViewFrustumConfig.cpp" />
+    <ClCompile Include="Core\Threading\STLThread.cpp" />
+    <ClCompile Include="Core\Threading\Thread.cpp" />
+    <ClCompile Include="Core\IDGenerator.cpp" />
+    <ClCompile Include="Inputs\InputFacade.cpp" />
+    <ClCompile Include="Inputs\Keyboards\KeyboardInputComponent.cpp" />
+    <ClCompile Include="Inputs\Mouses\MouseInputComponent.cpp" />
+    <ClCompile Include="Network\Commands\NetworkCommandFactory.cpp" />
+    <ClCompile Include="Network\TCP\TCPClientSocket.cpp" />
+    <ClCompile Include="Network\TCP\TCPStreamClient.cpp" />
+    <ClCompile Include="Render\Cameras\FlyingCamera.cpp" />
+    <ClCompile Include="Render\Cameras\WalkingCamera.cpp" />
+    <ClCompile Include="Core\System.cpp" />
+    <ClCompile Include="Core\Engines\AbstractEngine.cpp" />
+    <ClCompile Include="Inputs\Core\Input.cpp" />
+    <ClCompile Include="Inputs\Core\Keyboards\KeyboardInput.cpp" />
+    <ClCompile Include="Inputs\Core\Mouses\MouseInput.cpp" />
+    <ClCompile Include="Render\Effects\Fog.cpp" />
+    <ClCompile Include="Render\Effects\Shadows.cpp" />
+    <ClCompile Include="Render\Fonts\AbstractFont.cpp" />
+    <ClCompile Include="Render\Fonts\SimpleFont\SimpleFont.cpp" />
+    <ClCompile Include="Render\Models\MD2\AnimationType.cpp" />
+    <ClCompile Include="Render\Models\MD5\MD5Model.cpp" />
+    <ClCompile Include="Render\Models\MD5\MD5ModelFactory.cpp" />
+    <ClCompile Include="Render\Models\Static\Line.cpp" />
+    <ClCompile Include="Render\Models\Static\Quad.cpp" />
+    <ClCompile Include="Render\Picking\Ray.cpp" />
+    <ClCompile Include="Render\Shaders\ShaderProgramBuilder.cpp" />
+    <ClCompile Include="Utils\IO\File.cpp" />
+    <ClCompile Include="Utils\Render\RenderUtil.cpp" />
+    <ClCompile Include="Render\HeightMaps\HeightMapFactory.cpp" />
+    <ClCompile Include="Render\Lightning\AbstractLight.cpp" />
+    <ClCompile Include="Render\Lightning\DirectionalLight.cpp" />
+    <ClCompile Include="Render\Lightning\Material.cpp" />
+    <ClCompile Include="Render\Lightning\PointLight.cpp" />
+    <ClCompile Include="Render\Lightning\SpotLight.cpp" />
+    <ClCompile Include="Render\Models\MD2\MD2Model.cpp" />
+    <ClCompile Include="Render\Models\Static\AbstractDrawableObject.cpp" />
+    <ClCompile Include="Render\Models\Static\Cube.cpp" />
+    <ClCompile Include="Render\Models\Static\CubeStaticData.cpp" />
+    <ClCompile Include="Render\Models\Static\Cylinder.cpp" />
+    <ClCompile Include="Render\Models\Static\Plane.cpp" />
+    <ClCompile Include="Render\Models\Static\Sphere.cpp" />
+    <ClCompile Include="Render\Models\Static\Teapot.cpp" />
+    <ClCompile Include="Render\Models\Static\Torus.cpp" />
+    <ClCompile Include="OpenGL\gl_core_4_4.c" />
+    <ClCompile Include="Render\Particles\ParticleSystemTransformFeedback.cpp" />
+    <ClCompile Include="Render\Picking\ColorPicking.cpp" />
+    <ClCompile Include="Render\Picking\RayCastingPicking.cpp" />
+    <ClCompile Include="Render\Shaders\Types\AbstractShader.cpp" />
+    <ClCompile Include="Render\Shaders\ShaderFactory.cpp" />
+    <ClCompile Include="Render\Shaders\ShaderProgram.cpp" />
+    <ClCompile Include="Render\Shaders\Types\ComputeShader.cpp" />
+    <ClCompile Include="Render\Shaders\Types\FragmentShader.cpp" />
+    <ClCompile Include="Render\Shaders\Types\GeometryShader.cpp" />
+    <ClCompile Include="Render\Shaders\Types\TesselationControlShader.cpp" />
+    <ClCompile Include="Render\Shaders\Types\TesselationEvaluationShader.cpp" />
+    <ClCompile Include="Render\Shaders\Types\VertexShader.cpp" />
+    <ClCompile Include="Render\Fonts\FontFactory.cpp" />
+    <ClCompile Include="Render\Fonts\FreeTypeFont\FreeTypeFont.cpp" />
+    <ClCompile Include="Render\FrameBuffers\FrameBuffer.cpp" />
+    <ClCompile Include="Render\FrameBuffers\FrameBufferFactory.cpp" />
+    <ClCompile Include="Render\HeightMaps\HeightMap.cpp" />
+    <ClCompile Include="Render\Models\Assimp\AssimpModel.cpp" />
+    <ClCompile Include="Render\Models\Assimp\AssimpModelFactory.cpp" />
+    <ClCompile Include="Render\Models\MD2\MD2ModelFactory.cpp" />
+    <ClCompile Include="Render\Models\ObjModels\ObjModel.cpp" />
+    <ClCompile Include="Render\Models\ObjModels\ObjModelFactory.cpp" />
+    <ClCompile Include="Render\SkyBoxes\SkyBox.cpp" />
+    <ClCompile Include="Render\SkyBoxes\SkyBoxFactory.cpp" />
+    <ClCompile Include="Render\Textures\Texture.cpp" />
+    <ClCompile Include="Render\Textures\TextureFactory.cpp" />
+    <ClCompile Include="Render\VertexBufferObjects\VertexBufferObject.cpp" />
+    <ClCompile Include="Scripting\LuaAPIHelper.cpp" />
+    <ClCompile Include="Scripting\Scriptor.cpp" />
+    <ClCompile Include="Utils\IO\FileReader.cpp" />
+    <ClCompile Include="Utils\IO\FileWriter.cpp" />
+    <ClCompile Include="Utils\GL\GLUtils.cpp" />
+    <ClCompile Include="Utils\Log\Logger.cpp" />
+    <ClCompile Include="Utils\Memory\MemoryAllocator.cpp" />
+    <ClCompile Include="Utils\Memory\MemoryPool.cpp" />
+    <ClCompile Include="Utils\Math\PrimeSearch.cpp" />
+    <ClCompile Include="Utils\Math\RandomGenerator.cpp" />
+    <ClCompile Include="Render\Frustums\ViewFrustum.cpp" />
+    <ClCompile Include="Utils\Memory\MemoryUtil.cpp" />
+    <ClCompile Include="Utils\Network\HostToIPUtil.cpp" />
+    <ClCompile Include="Utils\Serialization\Json\JsonSerializer.cpp" />
+    <ClCompile Include="Utils\StringUtils.cpp" />
+    <ClCompile Include="Utils\Time\Timers\Timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Audio\ISound.h" />
+    <ClInclude Include="Audio\ISoundFactory.h" />
+    <ClInclude Include="Audio\Sound.h" />
+    <ClInclude Include="Audio\AudioContext.h" />
+    <ClInclude Include="Audio\AudioException.h" />
+    <ClInclude Include="Audio\SoundFactory.h" />
+    <ClInclude Include="Core\Caching\Cache.h" />
+    <ClInclude Include="Core\Caching\GlobalCache.h" />
+    <ClInclude Include="Core\Config\AbstractConfig.h" />
+    <ClInclude Include="Core\Config\ConfigExeption.h" />
+    <ClInclude Include="Core\Engines\Config\EngineConfig.h" />
+    <ClInclude Include="Core\Engines\Config\OpenGLConfig.h" />
+    <ClInclude Include="Core\Engines\Config\SceneItemConfig.h" />
+    <ClInclude Include="Core\Engines\Config\ViewFrustumConfig.h" />
+    <ClInclude Include="Core\Engines\MultipleSceneEngine.h" />
+    <ClInclude Include="Core\Engines\Engine.h" />
+    <ClInclude Include="Core\Engines\EngineException.h" />
+    <ClInclude Include="Core\Events\BaseEvent.h" />
+    <ClInclude Include="Core\Nullable.h" />
+    <ClInclude Include="Core\Object.h" />
+    <ClInclude Include="Core\Observer.h" />
+    <ClInclude Include="Core\Threading\IThread.h" />
+    <ClInclude Include="Core\Threading\STLThread.h" />
+    <ClInclude Include="Core\Threading\Thread.h" />
+    <ClInclude Include="Core\IDGenerator.h" />
+    <ClInclude Include="Core\Visitor.h" />
+    <ClInclude Include="Inputs\IInputFacade.h" />
+    <ClInclude Include="Inputs\InputFacade.h" />
+    <ClInclude Include="Inputs\Keyboards\IKeyboardListener.h" />
+    <ClInclude Include="Inputs\Keyboards\KeyboardInputComponent.h" />
+    <ClInclude Include="Inputs\Mouses\IMouseButtonListener.h" />
+    <ClInclude Include="Inputs\Mouses\IMouseMoveListener.h" />
+    <ClInclude Include="Inputs\Mouses\IMouseScrollListener.h" />
+    <ClInclude Include="Inputs\Mouses\MouseInputComponent.h" />
+    <ClInclude Include="Network\Commands\INetworkCommand.h" />
+    <ClInclude Include="Network\Commands\INetworkCommandFactory.h" />
+    <ClInclude Include="Network\Commands\NetworkCommandFactory.h" />
+    <ClInclude Include="Network\INetworkClient.h" />
+    <ClInclude Include="Network\INetworkObservable.h" />
+    <ClInclude Include="Network\NetworkClient.h" />
+    <ClInclude Include="Network\TCP\ITCPClientSocket.h" />
+    <ClInclude Include="Network\TCP\TCPClientSocket.h" />
+    <ClInclude Include="Network\TCP\TCPStreamClient.h" />
+    <ClInclude Include="Render\AbstractScene.h" />
+    <ClInclude Include="Render\Cameras\FlyingCamera.h" />
+    <ClInclude Include="Render\Cameras\IFlyingCamera.h" />
+    <ClInclude Include="Render\Cameras\IWalkingCamera.h" />
+    <ClInclude Include="Render\Cameras\WalkingCamera.h" />
+    <ClInclude Include="Core\Events\EventChannel.h" />
+    <ClInclude Include="Core\Events\EventChannelQueue.h" />
+    <ClInclude Include="Core\Events\EventHandler.h" />
+    <ClInclude Include="Core\Events\CoreEvents.h" />
+    <ClInclude Include="Inputs\Core\Keyboards\KeyboardEvents.h" />
+    <ClInclude Include="Inputs\Core\Mouses\MouseEvents.h" />
+    <ClInclude Include="Render\Frustums\ViewFrustumEvents.h" />
+    <ClInclude Include="Windows\WindowEvents.h" />
+    <ClInclude Include="Core\System.h" />
+    <ClInclude Include="Render\DoubleScene.h" />
+    <ClInclude Include="Render\Effects\FogType.h" />
+    <ClInclude Include="Render\Effects\IEffect.h" />
+    <ClInclude Include="Render\Effects\Shadows.h" />
+    <ClInclude Include="Render\Fonts\AbstractFont.h" />
+    <ClInclude Include="Render\Fonts\SimpleFont\SimpleFont.h" />
+    <ClInclude Include="Render\Fonts\IFont.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="AppException.h" />
+    <ClInclude Include="Render\Lightning\ILight.h" />
+    <ClInclude Include="Render\Models\MD5\AIToGLMUtil.h" />
+    <ClInclude Include="Render\Models\MD5\BoneInfo.h" />
+    <ClInclude Include="Render\Models\MD5\IMD5ModelFactory.h" />
+    <ClInclude Include="Render\Models\MD5\MD5Model.h" />
+    <ClInclude Include="Render\Models\MD5\MD5ModelFactory.h" />
+    <ClInclude Include="Render\Models\MD5\MeshEntry.h" />
+    <ClInclude Include="Render\Models\MD5\VertexBoneData.h" />
+    <ClInclude Include="Render\Models\Static\Line.h" />
+    <ClInclude Include="Render\Models\Static\Quad.h" />
+    <ClInclude Include="Render\Particles\ParticlesException.h" />
+    <ClInclude Include="Render\Picking\Ray.h" />
+    <ClInclude Include="Render\Shaders\IShaderProgramBuilder.h" />
+    <ClInclude Include="Render\Shaders\ShaderProgramBuilder.h" />
+    <ClInclude Include="Render\Shaders\Types\ShaderType.h" />
+    <ClInclude Include="Utils\IO\File.h" />
+    <ClInclude Include="Utils\Log\LoggerException.h" />
+    <ClInclude Include="Utils\Math\Common.h" />
+    <ClInclude Include="Utils\Render\RenderUtil.h" />
+    <ClInclude Include="Render\Lightning\AbstractLight.h" />
+    <ClInclude Include="Render\Lightning\DirectionalLight.h" />
+    <ClInclude Include="Render\Effects\Fog.h" />
+    <ClInclude Include="Render\Lightning\Material.h" />
+    <ClInclude Include="Render\Lightning\PointLight.h" />
+    <ClInclude Include="Render\Lightning\SpotLight.h" />
+    <ClInclude Include="OpenGL\gl_core_4_4.h" />
+    <ClInclude Include="Render\Models\IAnimatedModel.h" />
+    <ClInclude Include="Render\Models\MD2\AnimationType.h" />
+    <ClInclude Include="Render\Models\Static\AbstractDrawableObject.h" />
+    <ClInclude Include="Render\Models\Static\Cube.h" />
+    <ClInclude Include="Render\Models\Static\CubeStaticData.h" />
+    <ClInclude Include="Render\Models\Static\Cylinder.h" />
+    <ClInclude Include="Render\Models\Static\Plane.h" />
+    <ClInclude Include="Render\Models\Static\Sphere.h" />
+    <ClInclude Include="Render\Models\Static\Teapot.h" />
+    <ClInclude Include="Render\Models\Static\TeapotData.h" />
+    <ClInclude Include="Render\Models\Static\Torus.h" />
+    <ClInclude Include="Render\SceneLayout.h" />
+    <ClInclude Include="Render\Frustums\IViewFrustum.h" />
+    <ClInclude Include="Render\Models\MD2\MD2ModelCommon.h" />
+    <ClInclude Include="Render\Models\MD2\IMD2ModelFactory.h" />
+    <ClInclude Include="Render\ScenePosition.h" />
+    <ClInclude Include="Render\Shaders\ShaderProgramStatus.h" />
+    <ClInclude Include="Render\Shaders\Types\ComputeShader.h" />
+    <ClInclude Include="Render\Shaders\Types\TesselationControlShader.h" />
+    <ClInclude Include="Render\Shaders\Types\TesselationEvaluationShader.h" />
+    <ClInclude Include="Render\Textures\MagnificationTextureFilterType.h" />
+    <ClInclude Include="Scripting\IScriptor.h" />
+    <ClInclude Include="Scripting\LuaAPIHelper.h" />
+    <ClInclude Include="Scripting\ScriptingException.h" />
+    <ClInclude Include="Scripting\Scriptor.h" />
+    <ClInclude Include="AI\FSM\IState.h" />
+    <ClInclude Include="AI\FSM\StateMachine.h" />
+    <ClInclude Include="Utils\Memory\MemoryUtil.h" />
+    <ClInclude Include="Utils\Network\HostToIPUtil.h" />
+    <ClInclude Include="Utils\Serialization\Json\IJsonSerializable.h" />
+    <ClInclude Include="Utils\Serialization\Json\JsonSerializer.h" />
+    <ClInclude Include="Utils\Time\Timers\ITimer.h" />
+    <ClInclude Include="Utils\Time\Timers\ITimerObservable.h" />
+    <ClInclude Include="Utils\Time\Timers\Timer.h" />
+    <ClInclude Include="Windows\GLWindow.h" />
+    <ClInclude Include="Inputs\Core\Input.h" />
+    <ClInclude Include="Inputs\Core\Keyboards\KeyboardInput.h" />
+    <ClInclude Include="Inputs\Core\Mouses\MouseInput.h" />
+    <ClInclude Include="Render\IScene.h" />
+    <ClInclude Include="Render\ISceneNode.h" />
+    <ClInclude Include="Windows\IWindow.h" />
+    <ClInclude Include="Core\Common.h" />
+    <ClInclude Include="Core\Engines\AbstractEngine.h" />
+    <ClInclude Include="Render\Scene.h" />
+    <ClInclude Include="Render\SceneNode.h" />
+    <ClInclude Include="Render\Shaders\Types\AbstractShader.h" />
+    <ClInclude Include="Render\Shaders\Types\FragmentShader.h" />
+    <ClInclude Include="Render\Shaders\Types\GeometryShader.h" />
+    <ClInclude Include="Render\Shaders\Types\IShader.h" />
+    <ClInclude Include="Render\Shaders\IShaderFactory.h" />
+    <ClInclude Include="Render\Shaders\IShaderProgram.h" />
+    <ClInclude Include="Render\Shaders\ShaderFactory.h" />
+    <ClInclude Include="Render\Shaders\ShaderProgram.h" />
+    <ClInclude Include="Render\Shaders\ShaderProgramException.h" />
+    <ClInclude Include="Render\Shaders\Types\VertexShader.h" />
+    <ClInclude Include="Render\Fonts\FontException.h" />
+    <ClInclude Include="Render\Fonts\FontFactory.h" />
+    <ClInclude Include="Render\Fonts\FreeTypeFont\FreeTypeFont.h" />
+    <ClInclude Include="Render\Fonts\IFontFactory.h" />
+    <ClInclude Include="Render\FrameBuffers\FrameBuffer.h" />
+    <ClInclude Include="Render\FrameBuffers\FrameBufferException.h" />
+    <ClInclude Include="Render\FrameBuffers\FrameBufferFactory.h" />
+    <ClInclude Include="Render\FrameBuffers\IFrameBuffer.h" />
+    <ClInclude Include="Render\FrameBuffers\IFrameBufferFactory.h" />
+    <ClInclude Include="Render\HeightMaps\HeightMap.h" />
+    <ClInclude Include="Render\HeightMaps\HeightMapException.h" />
+    <ClInclude Include="Render\HeightMaps\HeightMapFactory.h" />
+    <ClInclude Include="Render\HeightMaps\IHeightMap.h" />
+    <ClInclude Include="Render\HeightMaps\IHeightMapFactory.h" />
+    <ClInclude Include="Render\Models\Assimp\AssimpModel.h" />
+    <ClInclude Include="Render\Models\Assimp\AssimpModelFactory.h" />
+    <ClInclude Include="Render\Models\Assimp\IAssimpModelFactory.h" />
+    <ClInclude Include="Render\Models\MD2\MD2Model.h" />
+    <ClInclude Include="Render\Models\MD2\MD2ModelFactory.h" />
+    <ClInclude Include="Render\Models\ModelException.h" />
+    <ClInclude Include="Render\Models\ObjModels\ObjModel.h" />
+    <ClInclude Include="Render\Particles\Particle.h" />
+    <ClInclude Include="Render\Particles\ParticleSystemTransformFeedback.h" />
+    <ClInclude Include="Render\Particles\ParticleSystemTransformFeedbackSettings.h" />
+    <ClInclude Include="Render\Particles\ParticleType.h" />
+    <ClInclude Include="Render\Picking\ColorPicking.h" />
+    <ClInclude Include="Render\Picking\RayCastingPicking.h" />
+    <ClInclude Include="Render\SkyBoxes\ISkyBox.h" />
+    <ClInclude Include="Render\SkyBoxes\ISkyBoxFactory.h" />
+    <ClInclude Include="Render\SkyBoxes\SkyBox.h" />
+    <ClInclude Include="Render\SkyBoxes\SkyBoxFactory.h" />
+    <ClInclude Include="Render\Frustums\ViewFrustum.h" />
+    <ClInclude Include="Render\VertexBufferObjects\IVertexBufferObject.h" />
+    <ClInclude Include="Render\Models\AbstractModelFactory.h" />
+    <ClInclude Include="Render\Models\IModel.h" />
+    <ClInclude Include="Render\Models\ObjModels\ObjModelFactory.h" />
+    <ClInclude Include="Render\Models\ObjModels\IObjModelFactory.h" />
+    <ClInclude Include="Render\Textures\ITexture.h" />
+    <ClInclude Include="Render\Textures\ITextureFactory.h" />
+    <ClInclude Include="Render\Textures\Texture.h" />
+    <ClInclude Include="Render\Textures\TextureException.h" />
+    <ClInclude Include="Render\Textures\TextureFactory.h" />
+    <ClInclude Include="Render\Textures\MinificationTextureFilterType.h" />
+    <ClInclude Include="Render\VertexBufferObjects\VertexBufferObject.h" />
+    <ClInclude Include="Utils\Time\Clocks\IClock.h" />
+    <ClInclude Include="Utils\Log\Logger.h" />
+    <ClInclude Include="Utils\Time\Clocks\Clock.h" />
+    <ClInclude Include="Utils\IO\FileReader.h" />
+    <ClInclude Include="Utils\IO\FileWriter.h" />
+    <ClInclude Include="Utils\GL\GLUtils.h" />
+    <ClInclude Include="Utils\IO\IFileReader.h" />
+    <ClInclude Include="Utils\Memory\IMemoryPool.h" />
+    <ClInclude Include="Utils\IO\IFileWriter.h" />
+    <ClInclude Include="Utils\IO\IOException.h" />
+    <ClInclude Include="Utils\Memory\MemoryAllocator.h" />
+    <ClInclude Include="Utils\Memory\MemoryPool.h" />
+    <ClInclude Include="Utils\Math\PrimeSearch.h" />
+    <ClInclude Include="Utils\Math\RandomGenerator.h" />
+    <ClInclude Include="Utils\StringUtils.h" />
+    <ClInclude Include="Windows\GLWindowException.h" />
+    <ClInclude Include="Windows\MoveDirection.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vld.ini" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TestScene\Scene\Nodes\Text\TextData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene\Scene\Nodes\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TestScene\Scene\Nodes\Skybox\SkyboxSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Text\TextData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Text\TextSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Particles\ParticlesSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Terrain\TerrainSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Sun\SunSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Buildings\StoneGarageSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Buildings\RuinsSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Actors\ArmySceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Actors\MainActorSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\BaseSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\TestSceneApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Cameras\CameraSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Shadows\ShadowsSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Buildings\RuinsPartSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Actors\ArmyMenSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\LensFlareMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\LensFlareSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\MotionBlurSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\PostProcessSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\Actors\GuardSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\HDRSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\HDRSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Nodes\PostProcess\LensFlareSceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Events\RenderPassType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene\Scene\Events\RenderStateChangeEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Shaders\Ch21_terrain.frag.hlsl" />
+    <None Include="Data\Shaders\Ch21_terrain.vert.hlsl" />
+    <None Include="Data\Shaders\Ch22_directional_light.frag.hlsl" />
+    <None Include="Data\Shaders\Ch22_main.vert.hlsl" />
+    <None Include="Data\Shaders\Ch22_normals.frag.hlsl" />
+    <None Include="Data\Shaders\Ch22_normals.geom.hlsl" />
+    <None Include="Data\Shaders\Ch22_normals.vert.hlsl" />
+    <None Include="Data\Shaders\Ch23_update_particles.vert.hlsl" />
+    <None Include="Data\Shaders\Ch24_md2_animation.frag.hlsl" />
+    <None Include="Data\Shaders\Ch26_main.vert.hlsl" />
+    <None Include="vld.ini" />
+    <None Include="Data\Shaders\Random.hlsl" />
+    <None Include="Data\Shaders\Ch25_main_with_shadows.vert.hlsl" />
+    <None Include="Data\Shaders\Ch25_main_with_shadows.frag.hlsl" />
+    <None Include="Data\Shaders\Ch22_light.frag.hlsl" />
+    <None Include="Data\Shaders\Ch25\Ch25_main.vert.hlsl" />
+    <None Include="Data\Shaders\Ch25\Ch25_main.frag.hlsl" />
+    <None Include="Data\Shaders\Ch25\Ch25_directional_light.frag.hlsl" />
+    <None Include="Data\Shaders\Ch25\Ch25_terrain.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Font\2DFont.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Font\2DFont.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Light\DirectionalLight.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Light\LightCommon.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Light\Light.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Animation\AnimationMD2.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Animation\AnimationMD2.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Common\Matrices.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Common\Random.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Normals\Normals.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Normals\Normals.geom.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Normals\Normals.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Skybox\Skybox.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Skybox\Skybox.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Terrain\Terrain.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Terrain\Terrain.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Particles\ParticlesRender.geom.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Particles\ParticlesRender.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Particles\ParticlesRender.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Particles\ParticlesUpdate.geom.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Particles\ParticlesUpdate.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\Fog.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\Shadows.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\Main.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\Main.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\BoundingVolumes.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\BoundingVolumes.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\BoundingVolumes.geom.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\Compositor.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes\Common\Matrices.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\Main.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\Main.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\Compositor.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\BoundingVolumes.vert.hlsl" />
+    <None Include="Data\Shaders\BoundingVolumes2\BoundingVolumes.geom.hlsl" />
+    <None Include="TestScene\Assets\Shaders\BoundingBoxes\BoundingBoxes.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\BoundingBoxes\BoundingBoxes.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\Main.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\DownsampleScale.frag.hlsl" />
+    <None Include="Data\Shaders\Lens\DownsampleScale.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\GaussianBlur.frag.hlsl" />
+    <None Include="Data\Shaders\Lens\GaussianBlur.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\Final.frag.hlsl" />
+    <None Include="Data\Shaders\Lens\Final.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\GhostsBase.frag.hlsl" />
+    <None Include="Data\Shaders\Lens\GhostsBase.vert.hlsl" />
+    <None Include="Data\Shaders\Lens\Ghosts.frag.hlsl" />
+    <None Include="Data\Shaders\Lens\Ghosts.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Sun\Main.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Sun\Main.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\DownsampleScale.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\DownsampleScale.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\GaussianBlur.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\GaussianBlur.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\Ghosts.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\LensFlare\Ghosts.vert.hlsl" />
+    <None Include="TestScene\Assets\Configs\Config.json" />
+    <None Include="Data\Shaders\Light\LightCommon.frag.hlsl" />
+    <None Include="Data\Shaders\MD5\Common.vert.hlsl" />
+    <None Include="Data\Shaders\MD5\Common.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Common.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Common.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Main.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Main.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Common.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Common.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Main.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Main.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Compositor.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur\Compositor.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Common\Utils.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\MotionBlur.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\MotionBlur2.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Animation\AnimationMD5.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Animation\AnimationMD5.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Assimp.vert.hlsl" />
+    <None Include="Data\Shaders\MotionBlur2\Assimp.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Assimp\Main.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Assimp\Main.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\ShadowsDepthStore.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\Effects\ShadowsDepthStore.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\FinalCompositor.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\FinalCompositor.vert.hlsl" />
+    <None Include="Data\Shaders\HDR\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\HDR\Compositor.vert.hlsl" />
+    <None Include="Data\Shaders\HDR\HDRPreprocess.frag.hlsl" />
+    <None Include="Data\Shaders\HDR\HDRPreprocess.vert.hlsl" />
+    <None Include="Data\Shaders\HDR\HDR.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\HDR\HDRPostProcess.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\HDR\HDRPostProcess.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\HDR\temp.vert.hlsl" />
+    <None Include="TestScene\Assets\Shaders\HDR\HDRPreprocess.frag.hlsl" />
+    <None Include="TestScene\Assets\Shaders\HDR\HDRPreProcess.vert.hlsl" />
+    <None Include="Data\Shaders\Tesselation\Compositor.frag.hlsl" />
+    <None Include="Data\Shaders\Tesselation\Common.ctes.hlsl" />
+    <None Include="Data\Shaders\Tesselation\Common.etes.hlsl" />
+    <None Include="Data\Shaders\ParallaxMapping\Main.frag.hlsl" />
+    <None Include="Data\Shaders\ParallaxMapping\Main.vert.hlsl" />
+    <None Include="Data\Shaders\BlinnPhong\Assimp.vert.hlsl" />
+    <None Include="Data\Shaders\BlinnPhong\Common.frag.hlsl" />
+    <None Include="Data\Shaders\BlinnPhong\Common.vert.hlsl" />
+    <None Include="Data\Shaders\BlinnPhong\Light.frag.hlsl" />
+    <None Include="Data\Shaders\ParallaxMapping\Light.frag.hlsl" />
+  </ItemGroup>
+</Project>

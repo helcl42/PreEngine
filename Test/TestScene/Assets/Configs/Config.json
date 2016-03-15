@@ -1,0 +1,25 @@
+{
+    "WindowTitle": "PreEngine: Test",
+    "UnlimitedLoop": true,
+    "OpenGL": {
+        "MajorVersion": 4,
+        "MinorVersion": 3,
+        "AntialiazingLevel": 32
+    },
+    "Scenes": [
+        {
+            "SceneLayout": "SINGLE",
+            "FullScreen": false,
+            "Width": 1200,
+            "Height": 750,
+            "DisplayIndex": 0
+        },
+        {
+            "SceneLayout": "SINGLE",
+            "FullScreen": false,
+            "Width": 1200,
+            "Height": 750,
+            "DisplayIndex": 1
+        }
+    ]
+}
