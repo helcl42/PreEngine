@@ -2,7 +2,7 @@
 
 ### Description
 PreEngine is simple rendering engine that is now available as VS solution only(still not migrated to CMake). Solution provides example usage by containing Test project as part of solution.
-On Windows platform it is tested in VS2013(vc12), so do not hesitate to let me know about build or any other relevant problem. 
+On Windows platform it is tested in VS2013(vc12), so do not hesitate let me know about build or any other relevant problem. 
 
 ### Dependencies
 GLFW, Assimp, FreeImage, FreeType, GLM, OpenAL, Lua, jsoncpp
