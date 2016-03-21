@@ -34,14 +34,14 @@ namespace PreEngine
 				public:
 					AbstractShader();
 
-					AbstractShader(std::string filePath);
+					AbstractShader(const std::string& filePath);
 
 					virtual ~AbstractShader();
 
 				protected:
 					virtual GLuint Create() = 0;
 
-					std::string GetSourceString(std::string filePath, int depth = 0);
+					std::string GetSourceString(const std::string& filePath, int depth = 0);
 					
 					void Compile();
 

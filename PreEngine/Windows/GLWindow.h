@@ -517,9 +517,9 @@ namespace PreEngine
 			
 			if (release.key == GLFW_KEY_F) m_channel.Broadcast(PreEngine::Windows::Events::ToggleFullscreen{ m_sceneId, this, !m_isInFullscreen });
 
-			if (release.key >= GLFW_KEY_F1 && release.key <= GLFW_KEY_F25)
+			if (release.key >= GLFW_KEY_1 && release.key <= GLFW_KEY_9)
 			{
-				int baseCode = release.key - GLFW_KEY_F1;
+				int baseCode = release.key - GLFW_KEY_1;
 				MoveDirection direction = baseCode % 2 == 0 ? PreEngine::Windows::MoveDirection::LEFT : PreEngine::Windows::MoveDirection::RIGHT;
 				unsigned int sceneId = baseCode / 2;
 				m_channel.Broadcast(PreEngine::Windows::Events::OnMove{ sceneId, this, direction });

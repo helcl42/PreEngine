@@ -12,7 +12,7 @@ namespace PreEngine
 				{
 				}
 
-				AbstractShader::AbstractShader(std::string filePath)
+				AbstractShader::AbstractShader(const std::string& filePath)
 					: m_filePath(filePath)
 				{
 				}
@@ -22,7 +22,7 @@ namespace PreEngine
 					if (m_handle > 0) glDeleteShader(m_handle);
 				}
 
-				std::string AbstractShader::GetSourceString(std::string filePath, int depth)
+				std::string AbstractShader::GetSourceString(const std::string& filePath, int depth)
 				{
 					std::stringstream ss;
 					FileReader fileReader;
