@@ -33,14 +33,14 @@ namespace PreEngine
 				FileReader m_fileReader;
 				if (!m_fileReader.Open(filePath))
 				{
-					throw new ConfigException("Could not open config file: " + filePath);
+					throw ConfigException("Could not open config file: " + filePath);
 				}
 
 				std::string fileContent = m_fileReader.ReadAllLines();
 				bool parsingSuccessful = reader.parse(fileContent, root);
 				if (!parsingSuccessful)
 				{
-					throw new ConfigException("Failed to parse configuration" + reader.getFormatedErrorMessages());
+					throw ConfigException("Failed to parse configuration" + reader.getFormattedErrorMessages());
 				}
 				return root;
 			}

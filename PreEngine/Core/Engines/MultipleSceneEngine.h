@@ -179,7 +179,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new EngineException("Could not get non existing window at index " + index);
+					throw EngineException("Could not get non existing window at index " + index);
 				}
 			}
 
@@ -192,7 +192,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new EngineException("Could not get non existing scene at index " + index);
+					throw EngineException("Could not get non existing scene at index " + index);
 				}
 			}
 		}

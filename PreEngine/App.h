@@ -81,7 +81,7 @@ namespace PreEngine
 	{
 		if (!(m_state == AppState::INITIALIZED || m_state == AppState::ALREADY_RUN))
 		{
-			throw new AppException("App has to initizlied: Call Init before Run().");
+			throw AppException("App has to initizlied: Call Init before Run().");
 		}
 
 		m_state = AppState::RUNNING;

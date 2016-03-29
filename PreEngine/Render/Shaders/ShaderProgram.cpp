@@ -27,7 +27,7 @@ namespace PreEngine
 				if (m_handle == GL_FALSE)
 				{
 					m_status = ShaderProgramStatus::NOT_CREATED;
-					throw new ShaderProgramException("Error creating program object.");
+					throw ShaderProgramException("Error creating program object.");
 				}
 				m_status = ShaderProgramStatus::CREATED;
 				return m_handle;
@@ -44,7 +44,7 @@ namespace PreEngine
 				if (status == GL_FALSE)
 				{
 					Logger::GetInstance().Error() << "Program log: " << GLUtils::GetShaderProgramInfoLog(m_handle);
-					throw new ShaderProgramException("Failed to link shader program!");
+					throw ShaderProgramException("Failed to link shader program!");
 				}
 				m_status = ShaderProgramStatus::LINKED;
 
@@ -120,7 +120,7 @@ namespace PreEngine
 			GLuint ShaderProgram::GetSubroutineLocation(ShaderType shaderType, const std::string& subroutineName)
 			{
 				GLuint location = glGetSubroutineIndex(m_handle, shaderType, subroutineName.c_str());
-				if (location == GL_INVALID_INDEX) throw new ShaderProgramException("Uniform subroutine with name " + subroutineName + " does not exist.");
+				if (location == GL_INVALID_INDEX) throw ShaderProgramException("Uniform subroutine with name " + subroutineName + " does not exist.");
 				return location;
 			}
 
@@ -135,7 +135,7 @@ namespace PreEngine
 				if (!m_uniformsCache.Contains(uniformName))
 				{
 					GLint location = glGetUniformLocation(m_handle, uniformName.c_str());
-					if (location < 0) throw new ShaderProgramException("Uniform var with name " + uniformName + " does not exist.");
+					if (location < 0) throw ShaderProgramException("Uniform var with name " + uniformName + " does not exist.");
 					m_uniformsCache.Add(uniformName, location);
 					return location;
 				}

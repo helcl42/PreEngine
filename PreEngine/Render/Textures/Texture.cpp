@@ -30,7 +30,7 @@ namespace PreEngine
 				else if (magnification == MagnificationTextureFilterType::TEXTURE_FILTER_MAG_BILINEAR)
 					glSamplerParameteri(m_sampler, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				else
-					throw new TextureException("Invalid magnification filter: " + magnification);
+					throw TextureException("Invalid magnification filter: " + magnification);
 
 				// Set minification filter
 				if (minification == MinificationTextureFilterType::TEXTURE_FILTER_MIN_NEAREST)
@@ -44,7 +44,7 @@ namespace PreEngine
 				else if (minification == MinificationTextureFilterType::TEXTURE_FILTER_MIN_TRILINEAR)
 					glSamplerParameteri(m_sampler, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 				else
-					throw new TextureException("Invalid minification filter: " + minification);
+					throw TextureException("Invalid minification filter: " + minification);
 
 				m_minificationFilter = minification;
 				m_magnificationFilter = magnification;
@@ -139,7 +139,7 @@ namespace PreEngine
 				return m_format;
 			}
 
-			void Texture::SetInstance(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format)
+			void Texture::Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format)
 			{
 				if (m_initialized)
 				{

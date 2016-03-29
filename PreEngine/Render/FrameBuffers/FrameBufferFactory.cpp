@@ -36,7 +36,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new FrameBufferException("Creation of frame buffer texture failed");
+					throw FrameBufferException("Creation of frame buffer texture failed");
 				}
 			}
 
@@ -51,7 +51,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new FrameBufferException("Creation of frame buffer texture failed");
+					throw FrameBufferException("Creation of frame buffer texture failed");
 				}
 			}
 
@@ -90,7 +90,7 @@ namespace PreEngine
 
 				SetDrawBuffers((int)formats.size(), attachDepthBuffer);
 		
-				if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) throw new FrameBufferException("Creation of frame buffer failed");
+				if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) throw FrameBufferException("Creation of frame buffer failed");
 
 				return frameBuffer;
 			}

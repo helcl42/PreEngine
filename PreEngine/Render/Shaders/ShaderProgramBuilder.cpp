@@ -34,7 +34,7 @@ namespace PreEngine
 					else if (ci->first == ShaderType::GEOMETRY_SHADER) shader = m_shaderFactory->CreateGeometryShader(ci->second);
 					else if (ci->first == ShaderType::FRAGMENT_SHADER) shader = m_shaderFactory->CreateFragmentShader(ci->second);
 					else if (ci->first == ShaderType::COMPUTE_SHADER) shader = m_shaderFactory->CreateComputeShader(ci->second);
-					else throw new ShaderProgramException("Invalid shader type ?!");
+					else throw ShaderProgramException("Invalid shader type ?!");
 					program->AddShader(shader);
 				}
 			}
@@ -181,7 +181,7 @@ namespace PreEngine
 				ShaderProgram* program = new ShaderProgram();
 				program->Create();
 
-				if (m_binaryPath != "")
+				if (!m_binaryPath.empty())
 				{
 					if (!LoadShaderBinary(program))
 					{
@@ -189,7 +189,7 @@ namespace PreEngine
 						if (shouldLink)
 						{
 							program->Link(false);
-							if (!SaveShaderBinary(program)) throw new ShaderProgramException("Binary file " + m_binaryPath + " was not saved!");
+							if (!SaveShaderBinary(program)) throw ShaderProgramException("Binary file " + m_binaryPath + " was not saved!");
 						}
 					}
 				}

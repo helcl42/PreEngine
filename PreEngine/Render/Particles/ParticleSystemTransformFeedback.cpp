@@ -22,7 +22,7 @@ namespace PreEngine
 				if (m_isInitialized) return;
 
 				// HACK !!!
-				if (m_updateShaderPaths.size() < 2 || m_renderShaderPaths.size() < 3) throw new ParticlesException("Ivalid shaders paths set.");
+				if (m_updateShaderPaths.size() < 2 || m_renderShaderPaths.size() < 3) throw ParticlesException("Ivalid shaders paths set.");
 			
 				// update particles shader
 				const char* shaderVariyings[] =

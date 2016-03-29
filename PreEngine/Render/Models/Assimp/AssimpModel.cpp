@@ -29,7 +29,7 @@ namespace PreEngine
 
 				void AssimpModel::Render(GLenum how)
 				{
-					if (!m_isLoaded) throw new ModelException("Could not render not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not render not loaded model.");
 
 					glBindVertexArray(m_vertexAttributeObject);
 					for (unsigned int i = 0; i < m_meshSizes.size(); i++)
@@ -54,7 +54,7 @@ namespace PreEngine
 
 				void AssimpModel::Delete()
 				{
-					if (!m_isLoaded) throw new ModelException("Could not release not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not release not loaded model.");
 
 					for (std::vector<ITexture*>::iterator ii = m_textures.begin(); ii != m_textures.end(); ii++)
 					{

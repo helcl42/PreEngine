@@ -17,8 +17,9 @@
 #include <queue>
 #include <stack>
 #include <map>
-#include <inttypes.h>
+#include <cinttypes>
 #include <array>
+#include <chrono>
 #include <list>
 #include <set>
 #include <thread>

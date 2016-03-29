@@ -90,10 +90,10 @@ namespace PreEngine
 				FreeTypeFont* font = new FreeTypeFont();
 
 				FT_Error error = FT_Init_FreeType(&m_fontLib);
-				if (error) throw new FontException("Could not init FreeType library.");
+				if (error) throw FontException("Could not init FreeType library.");
 
 				error = FT_New_Face(m_fontLib, filePath.c_str(), 0, &m_fontFace);
-				if (error) throw new FontException("Could not create new FreeType font face.");
+				if (error) throw FontException("Could not create new FreeType font face.");
 
 				FT_Set_Pixel_Sizes(m_fontFace, pxSize, pxSize);
 

@@ -29,7 +29,7 @@ namespace PreEngine
 					m_handle = glCreateShader(ShaderType::COMPUTE_SHADER);
 					if (m_handle == GL_FALSE)
 					{
-						throw new ShaderProgramException("Error creating Compute Shader.");
+						throw ShaderProgramException("Error creating Compute Shader.");
 					}
 					return m_handle;
 				}

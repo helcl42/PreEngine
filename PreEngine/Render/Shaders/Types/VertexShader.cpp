@@ -27,7 +27,7 @@ namespace PreEngine
 					m_handle = glCreateShader(ShaderType::VERTEX_SHADER);
 					if (m_handle == GL_FALSE)
 					{
-						throw new ShaderProgramException("Error creating Vertex Shader.");
+						throw ShaderProgramException("Error creating Vertex Shader.");
 					}
 					return m_handle;
 				}

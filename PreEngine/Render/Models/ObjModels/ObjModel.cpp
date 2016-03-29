@@ -30,7 +30,7 @@ namespace PreEngine
 
 				void ObjModel::Render(GLenum how)
 				{
-					if (!m_isLoaded) throw new ModelException("Could not render not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not render not loaded model.");
 					glBindVertexArray(m_vertexAttributeObject);
 					m_ambientTexture->Bind();
 					glDrawArrays(how, 0, m_countOfFaces * 3);
@@ -38,7 +38,7 @@ namespace PreEngine
 
 				void ObjModel::RenderBoundingBox()
 				{
-					if (!m_isLoaded) throw new ModelException("Could not render bounding box of not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not render bounding box of not loaded model.");
 					glBindVertexArray(m_vertexAttributeObjectBB);
 
 					glEnable(GL_PRIMITIVE_RESTART);
@@ -48,7 +48,7 @@ namespace PreEngine
 
 				void ObjModel::Delete()
 				{
-					if (!m_isLoaded) throw new ModelException("Could not release not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not release not loaded model.");
 					if (m_defaultTexturesEnabled) m_ambientTexture->Delete();
 					glDeleteVertexArrays(1, &m_vertexAttributeObjectBB);
 					glDeleteVertexArrays(1, &m_vertexAttributeObject);

@@ -273,7 +273,7 @@ namespace PreEngine
 
 					::Assimp::Importer importer;
 					const aiScene* scene = importer.ReadFile(filePath, aiProcess_CalcTangentSpace | aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_SortByPType | aiProcess_GenSmoothNormals);
-					if (!scene) throw new ModelException("Could not load model: " + filePath);
+					if (!scene) throw ModelException("Could not load model: " + filePath);
 
 					ReadMeshes(scene, assimpModel, hasBumpMap);
 					ReadMaterials(scene, assimpModel, filePath, texturePath);
@@ -303,7 +303,7 @@ namespace PreEngine
 				IModel* AssimpModelFactory::CreateModel(std::string filePath, std::string texturePath, std::string normalTexturePath)
 				{
 					AssimpModel* assimpModel = CreateModelBase(filePath, texturePath, true);					
-					if (!SetNormalTexture(assimpModel, normalTexturePath)) throw new ModelException("Could not load Normal Map from: " + normalTexturePath);
+					if (!SetNormalTexture(assimpModel, normalTexturePath)) throw ModelException("Could not load Normal Map from: " + normalTexturePath);
 					assimpModel->m_hasBumpMap = true;
 					assimpModel->m_isLoaded = true;
 					return assimpModel;

@@ -27,7 +27,7 @@ namespace PreEngine
 					m_handle = glCreateShader(ShaderType::FRAGMENT_SHADER);
 					if (m_handle == GL_FALSE)
 					{
-						throw new ShaderProgramException("Error creating Fragment Shader.");
+						throw ShaderProgramException("Error creating Fragment Shader.");
 					}
 					return m_handle;
 				}

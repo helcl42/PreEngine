@@ -193,7 +193,7 @@ namespace PreEngine
 		void GLWindow<WindowType>::FocusCallback(GLFWwindow* window, int focused)
 		{
 			GLWindow<WindowType>* myWindow = (GLWindow<WindowType>*)glfwGetWindowUserPointer(window);
-			if (myWindow == NULL) throw new GLWindowException("FocusCallback: Window pointer not set.");
+			if (myWindow == NULL) throw GLWindowException("FocusCallback: Window pointer not set.");
 
 			glfwMakeContextCurrent(window);
 			EventChannel::Broadcast(PreEngine::Windows::Events::OnFocus{ myWindow->GetSceneId(), window, focused == GL_TRUE });
@@ -203,7 +203,7 @@ namespace PreEngine
 		void GLWindow<WindowType>::ResizeCallback(GLFWwindow* window, int width, int height)
 		{
 			GLWindow<WindowType>* myWindow = (GLWindow<WindowType>*)glfwGetWindowUserPointer(window);
-			if (myWindow == NULL) throw new GLWindowException("ResizeCallback: Window pointer not set.");
+			if (myWindow == NULL) throw GLWindowException("ResizeCallback: Window pointer not set.");
 			
 			glfwMakeContextCurrent(window);
 			EventChannel::Broadcast(PreEngine::Windows::Events::OnResize{ myWindow->GetSceneId(), window, width, height });
@@ -223,7 +223,7 @@ namespace PreEngine
 #ifdef _DEBUG
 				glfwSetErrorCallback(GLWindow<GLFWwindow>::ErrorCallback);
 #endif
-				if (!glfwInit()) throw new GLWindowException("Could not init glfw.");
+				if (!glfwInit()) throw GLWindowException("Could not init glfw.");
 			}
 			else 
 			{
@@ -234,7 +234,7 @@ namespace PreEngine
 			if (!m_window)
 			{
 				glfwTerminate();
-				throw new GLWindowException("Could not create glfw window.");
+				throw GLWindowException("Could not create glfw window.");
 			}
 
 			glfwSetWindowUserPointer(m_window, this);
@@ -285,7 +285,7 @@ namespace PreEngine
 			int loaded = ogl_LoadFunctions();
 			if (loaded == ogl_LOAD_FAILED)
 			{
-				throw new GLWindowException("Could not load GL functions.");
+				throw GLWindowException("Could not load GL functions.");
 			}
 		}
 
@@ -340,7 +340,7 @@ namespace PreEngine
 
 			int countOfMonitors;
 			GLFWmonitor** monitors = glfwGetMonitors(&countOfMonitors);
-			if (monitors == NULL || countOfMonitors <= 0) throw new GLWindowException("No monitors connected?!.");
+			if (monitors == NULL || countOfMonitors <= 0) throw GLWindowException("No monitors connected?!.");
 
 			if (monitorIndex >= countOfMonitors) monitorIndex = countOfMonitors - 1;
 

@@ -21,19 +21,19 @@ namespace PreEngine
 		{
 			if (m_deviceName == "") m_device = alcOpenDevice(NULL);
 			else m_device = alcOpenDevice(m_deviceName.c_str());
-			if (!m_device) throw new AudioException("OpenAL: could not open device");
+			if (!m_device) throw AudioException("OpenAL: could not open device");
 
 			m_context = alcCreateContext(m_device, NULL);
-			if (!m_context) throw new AudioException("OpenAL: could not create context");
+			if (!m_context) throw AudioException("OpenAL: could not create context");
 
 			ALboolean result = alcMakeContextCurrent(m_context);
-			if (result == ALC_FALSE) throw new AudioException("OpenAL: could not make context current");
+			if (result == ALC_FALSE) throw AudioException("OpenAL: could not make context current");
 
 			result = alIsExtensionPresent("AL_SOFT_source_length");
-			if (result == ALC_FALSE) throw new AudioException("Required AL_SOFT_source_length not supported");
+			if (result == ALC_FALSE) throw AudioException("Required AL_SOFT_source_length not supported");
 
 			result = alcIsExtensionPresent(m_device, "ALC_EXT_thread_local_context");
-			if (result == ALC_FALSE) throw new AudioException("Required ALC_EXT_thread_local_contex not supported - exiting");
+			if (result == ALC_FALSE) throw AudioException("Required ALC_EXT_thread_local_contex not supported - exiting");
 			
 			return true;
 		}
@@ -52,7 +52,7 @@ namespace PreEngine
 		void AudioContext::MakeContextMain()
 		{
 			ALboolean result = alcMakeContextCurrent(m_context);
-			if (result == ALC_FALSE) throw new AudioException("OpenAL: could not make context current");
+			if (result == ALC_FALSE) throw AudioException("OpenAL: could not make context current");
 		}
 
 		void AudioContext::DumpOutputDevices()

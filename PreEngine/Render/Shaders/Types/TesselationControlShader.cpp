@@ -27,7 +27,7 @@ namespace PreEngine
 					m_handle = glCreateShader(ShaderType::TESSELATION_CONTROL_SHADER);
 					if (m_handle == GL_FALSE)
 					{
-						throw new ShaderProgramException("Error creating Tesselation Control Shader.");
+						throw ShaderProgramException("Error creating Tesselation Control Shader.");
 					}
 					return m_handle;
 				}

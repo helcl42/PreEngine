@@ -46,7 +46,7 @@ namespace PreEngine
 
 				virtual std::string GetPath() const = 0;
 
-				virtual void SetInstance(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format) = 0;
+				virtual void Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format) = 0;
 
 				virtual bool IsInitialized() const = 0;
 

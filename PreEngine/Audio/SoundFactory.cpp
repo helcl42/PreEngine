@@ -36,7 +36,7 @@ namespace PreEngine
 		ISound* SoundFactory::CreateSoundFromWav(std::string filePath)
 		{
 			FileReader fileReader(filePath, std::ios::binary);
-			if (!fileReader.IsOpen()) throw new AudioException("Failed to open file");
+			if (!fileReader.IsOpen()) throw AudioException("Failed to open file");
 
 			Sound* sound = new Sound();
 
@@ -44,15 +44,15 @@ namespace PreEngine
 
 			char type[4];
 			fileReader.ReadBytes(type, 4);
-			if (type[0] != 'R' || type[1] != 'I' || type[2] != 'F' || type[3] != 'F') throw new AudioException("No RIFF");
+			if (type[0] != 'R' || type[1] != 'I' || type[2] != 'F' || type[3] != 'F') throw AudioException("No RIFF");
 
 			sound->m_size = fileReader.ReadLong();
 
 			fileReader.ReadBytes(type, 4);
-			if (type[0] != 'W' || type[1] != 'A' || type[2] != 'V' || type[3] != 'E') throw new AudioException("Not WAVE??!!");
+			if (type[0] != 'W' || type[1] != 'A' || type[2] != 'V' || type[3] != 'E') throw AudioException("Not WAVE??!!");
 
 			fileReader.ReadBytes(type, 4);
-			if (type[0] != 'f' || type[1] != 'm' || type[2] != 't' || type[3] != ' ') throw new AudioException("Not fmt??!!");
+			if (type[0] != 'f' || type[1] != 'm' || type[2] != 't' || type[3] != ' ') throw AudioException("Not fmt??!!");
 
 			sound->m_chunkSize = fileReader.ReadLong();
 			sound->m_formatType = fileReader.ReadShort();
@@ -73,12 +73,12 @@ namespace PreEngine
 			}
 			
 			fileReader.ReadBytes(type, 4);
-			if (type[0] != 'd' || type[1] != 'a' || type[2] != 't' || type[3] != 'a') throw new AudioException("Invalid DATA");
+			if (type[0] != 'd' || type[1] != 'a' || type[2] != 't' || type[3] != 'a') throw AudioException("Invalid DATA");
 
 			sound->m_dataSize = fileReader.ReadLong();
 
 			sound->m_format = GetFormat(sound->m_bitsPerSample, sound->m_channels);
-			if (!sound->m_format) throw new AudioException("Wrong format");
+			if (!sound->m_format) throw AudioException("Wrong format");
 
 			sound->m_data = new uint8_t[sound->m_dataSize];
 			fileReader.ReadBytes(sound->m_data, sound->m_dataSize);

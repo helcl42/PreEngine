@@ -27,7 +27,7 @@ namespace PreEngine
 					m_handle = glCreateShader(ShaderType::GEOMETRY_SHADER);
 					if (m_handle == GL_FALSE)
 					{
-						throw new ShaderProgramException("Error creating Geometry Shader.");
+						throw ShaderProgramException("Error creating Geometry Shader.");
 					}
 					return m_handle;
 				}

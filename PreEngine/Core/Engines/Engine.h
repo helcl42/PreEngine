@@ -43,7 +43,7 @@ namespace PreEngine
 				: AbstractEngine(config)
 			{
 				std::vector<SceneItemConfig*> sceneConfigs = config->GetSceneItems();
-				if (sceneConfigs.size() <= 0) throw new EngineException("Ivalid config: scene items count.");
+				if (sceneConfigs.size() <= 0) throw EngineException("Ivalid config: scene items count.");
 
 				SceneItemConfig* sceneConfig = sceneConfigs[0];
 

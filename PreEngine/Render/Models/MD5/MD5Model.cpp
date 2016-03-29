@@ -207,7 +207,7 @@ namespace PreEngine
 
 				void MD5Model::Render(GLenum how)
 				{
-					if (!m_isLoaded) throw new ModelException("Could not render not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not render not loaded model.");
 
 					glBindVertexArray(m_vertexAttributeObject);
 
@@ -239,7 +239,7 @@ namespace PreEngine
 
 				void MD5Model::Delete()
 				{
-					if (!m_isLoaded) throw new ModelException("Could not release not loaded model.");
+					if (!m_isLoaded) throw ModelException("Could not release not loaded model.");
 
 					for (std::vector<ITexture*>::iterator ii = m_textures.begin(); ii != m_textures.end(); ii++)
 					{

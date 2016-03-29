@@ -37,6 +37,8 @@ namespace PreEngine
 				void Add(TypeKey key, TypeValue data);
 
 				size_t GetCountOfItems() const;				
+
+				void Clear();
 			};
 
 			template <class TypeKey, class TypeValue>
@@ -86,6 +88,12 @@ namespace PreEngine
 			size_t GlobalCache<TypeKey, TypeValue>::GetCountOfItems() const
 			{
 				return m_cacheData.size();
+			}
+
+			template <class TypeKey, class TypeValue>
+			void GlobalCache<TypeKey, TypeValue>::Clear()
+			{
+				return m_cacheData.clear();
 			}
 		}
 	}

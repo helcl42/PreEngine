@@ -84,7 +84,7 @@ namespace PreEngine
 
 				std::string GetPath() const;
 
-				void SetInstance(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format = GL_RGB);
+				void Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format = GL_RGB);
 
 				bool IsInitialized() const;
 			};

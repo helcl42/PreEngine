@@ -39,8 +39,8 @@ namespace PreEngine
 			bool FrameBuffer::AddDepthBuffer()
 			{
 				//if (m_hasDepthBufferAttached) return false;
-				if (m_frameBufferHandle == GL_FALSE) throw new FrameBufferException("Could not add depth buffer to uninitialized frame buffer.");
-				if (m_depthRenderBufferHandle != GL_FALSE) throw new FrameBufferException("Frame Buffer has already depth buffer attached.");
+				if (m_frameBufferHandle == GL_FALSE) throw FrameBufferException("Could not add depth buffer to uninitialized frame buffer.");
+				if (m_depthRenderBufferHandle != GL_FALSE) throw FrameBufferException("Frame Buffer has already depth buffer attached.");
 
 				glBindFramebuffer(GL_FRAMEBUFFER, m_frameBufferHandle);
 
@@ -78,7 +78,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new FrameBufferException("Could get texture with index " + textureIndex);
+					throw FrameBufferException("Could get texture with index " + textureIndex);
 				}
 			}
 
@@ -90,7 +90,7 @@ namespace PreEngine
 				}
 				else
 				{
-					throw new FrameBufferException("Could not bind texture with index " + textureIndex);
+					throw FrameBufferException("Could not bind texture with index " + textureIndex);
 				}
 
 				if (regenerateMipMaps)

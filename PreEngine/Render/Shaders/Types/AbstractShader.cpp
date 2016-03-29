@@ -27,9 +27,9 @@ namespace PreEngine
 					std::stringstream ss;
 					FileReader fileReader;
 
-					if (depth > MAX_INCLUDE_DEPTH) throw new ShaderProgramException("Infinite Recursion ???: " + filePath);
+					if (depth > MAX_INCLUDE_DEPTH) throw ShaderProgramException("Infinite Recursion ???: " + filePath);
 
-					if (!fileReader.Open(filePath)) throw new ShaderProgramException("Error while openning file: " + filePath);
+					if (!fileReader.Open(filePath)) throw ShaderProgramException("Error while openning file: " + filePath);
 
 					while (!fileReader.IsEOF())
 					{
@@ -66,7 +66,7 @@ namespace PreEngine
 					{
 						Logger::GetInstance().Error() << "Shader File: " << m_filePath;
 						Logger::GetInstance().Error() << "Shader log: " << GLUtils::GetShaderProgramInfoLog(m_handle);
-						throw new ShaderProgramException("Compilation of shader " + m_filePath + " failed.");
+						throw ShaderProgramException("Compilation of shader " + m_filePath + " failed.");
 					}
 				}
 

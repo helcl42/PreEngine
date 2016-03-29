@@ -216,7 +216,7 @@ namespace PreEngine
 					}
 					else
 					{
-						throw new ModelException("Could not load MD5 model: " + filePath + " Error: " + std::string(model->importer.GetErrorString()));
+						throw ModelException("Could not load MD5 model: " + filePath + " Error: " + std::string(model->importer.GetErrorString()));
 					}
 
 					return model;

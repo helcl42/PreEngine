@@ -10,7 +10,7 @@ namespace PreEngine
 			int error = luaL_dofile(L, scriptName.c_str());
 			if (error != 0)
 			{
-				throw new ScriptingException("ERROR(" + StringUtils::ToString(error) + "): Problem with lua script file " + scriptName);
+				throw ScriptingException("ERROR(" + StringUtils::ToString(error) + "): Problem with lua script file " + scriptName);
 			}
 		}
 
@@ -21,7 +21,7 @@ namespace PreEngine
 			lua_getglobal(pL, name.c_str());
 			if (!lua_isstring(pL, 1))
 			{
-				throw new ScriptingException("<PopLuaString> Cannot retrieve: " + name);
+				throw ScriptingException("<PopLuaString> Cannot retrieve: " + name);
 			}
 
 			std::string retString = lua_tostring(pL, 1);
@@ -37,7 +37,7 @@ namespace PreEngine
 			lua_getglobal(pL, name.c_str());
 			if (!lua_isstring(pL, 1))
 			{
-				throw new ScriptingException("<PopLuaBool> Cannot retrieve: " + name);
+				throw ScriptingException("<PopLuaBool> Cannot retrieve: " + name);
 			}
 
 			bool b = lua_toboolean(pL, 1) != 0;
@@ -54,7 +54,7 @@ namespace PreEngine
 
 			if (!lua_isstring(L, -1))
 			{
-				throw new ScriptingException("<LuaPopStringFieldFromTable> Cannot retrieve: " + key);
+				throw ScriptingException("<LuaPopStringFieldFromTable> Cannot retrieve: " + key);
 			}
 
 			std::string s = lua_tostring(L, -1);
@@ -67,7 +67,7 @@ namespace PreEngine
 		{
 			if (luaL_dostring(L, code.c_str()) != 0)
 			{
-				throw new ScriptingException("<RunLuaChunk> Cannot run provided chunk of code: " + code);
+				throw ScriptingException("<RunLuaChunk> Cannot run provided chunk of code: " + code);
 			}
 		}
 

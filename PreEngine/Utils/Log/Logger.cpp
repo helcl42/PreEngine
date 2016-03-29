@@ -25,7 +25,7 @@ namespace PreEngine
 			void Logger::SetOutputFileName(const std::string& fileName)
 			{
 				m_outputFile.open(fileName, std::ofstream::out);
-				if (!m_outputFile.is_open()) throw new LoggerException("Could not open: " + fileName);
+				if (!m_outputFile.is_open()) throw LoggerException("Could not open: " + fileName);
 				m_outputFile.sync_with_stdio(false); // turn off stdio sync!
 			}
 

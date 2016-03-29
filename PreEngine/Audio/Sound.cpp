@@ -37,10 +37,10 @@ namespace PreEngine
 
 			alGenBuffers(1, &m_buffer);
 			alGenSources(1, &m_source);
-			if (alGetError() != AL_NO_ERROR) throw new AudioException("Error GenSource");
+			if (alGetError() != AL_NO_ERROR) throw AudioException("Error GenSource");
 
 			alBufferData(m_buffer, m_format, m_data, m_dataSize, m_sampleRate);
-			if (alGetError() != AL_NO_ERROR) throw new AudioException("Error loading ALBuffer");
+			if (alGetError() != AL_NO_ERROR) throw AudioException("Error loading ALBuffer");
 
 			alListenerfv(AL_POSITION, m_listenerPosition);
 			alListenerfv(AL_VELOCITY, m_listenerVelocity);
@@ -54,7 +54,7 @@ namespace PreEngine
 			alSourcei(m_source, AL_LOOPING, loop);
 
 			alSourcePlay(m_source);
-			if (alGetError() != AL_NO_ERROR) throw new AudioException("Error playing sound");
+			if (alGetError() != AL_NO_ERROR) throw AudioException("Error playing sound");
 			m_isPlaying = true;
 		}
 

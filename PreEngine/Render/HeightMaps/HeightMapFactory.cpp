@@ -27,13 +27,13 @@ namespace PreEngine
 				if (fif == FIF_UNKNOWN) fif = FreeImage_GetFIFFromFilename(filePath.c_str());
 
 				if (fif == FIF_UNKNOWN)
-					throw new HeightMapException("Unknown HeightMap format " + filePath + ".");
+					throw HeightMapException("Unknown HeightMap format " + filePath + ".");
 
 				if (FreeImage_FIFSupportsReading(fif))
 					dib = FreeImage_Load(fif, filePath.c_str());
 
 				if (!dib)
-					throw new HeightMapException("Load HeightMap " + filePath + " failed.");
+					throw HeightMapException("Load HeightMap " + filePath + " failed.");
 
 				return dib;
 			}
@@ -183,7 +183,7 @@ namespace PreEngine
 				unsigned char* data = FreeImage_GetBits(dib);
 
 				if (data == NULL || FreeImage_GetHeight(dib) == 0 || FreeImage_GetWidth(dib) == 0 || (FreeImage_GetBPP(dib) != 24 && FreeImage_GetBPP(dib) != 8))
-					throw new HeightMapException("HeightMap " + filePath + " is invalid.");
+					throw HeightMapException("HeightMap " + filePath + " is invalid.");
 
 				heightMap->m_rows = m_rows = FreeImage_GetHeight(dib);
 				heightMap->m_cols = m_cols = FreeImage_GetWidth(dib);

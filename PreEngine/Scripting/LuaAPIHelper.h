@@ -50,7 +50,7 @@ namespace PreEngine
 			lua_getglobal(pL, name.c_str());
 			if (!lua_isnumber(pL, 1))
 			{
-				throw new ScriptingException("<PopLuaNumber> Cannot retrieve: " + name);
+				throw ScriptingException("<PopLuaNumber> Cannot retrieve: " + name);
 			}
 
 			T val = (T)lua_tonumber(pL, 1);
@@ -66,7 +66,7 @@ namespace PreEngine
 
 			if (!lua_isnumber(pL, top))
 			{
-				throw new ScriptingException("<PopLuaTopNumber> Cannot get top of stack");
+				throw ScriptingException("<PopLuaTopNumber> Cannot get top of stack");
 			}
 
 			T val = (T)lua_tonumber(pL, top);
@@ -82,7 +82,7 @@ namespace PreEngine
 			lua_gettable(L, -2);
 			if (!lua_isnumber(L, -1))
 			{
-				throw new ScriptingException("<LuaPopNumberFieldFromTable> Cannot retrieve: " + key);
+				throw ScriptingException("<LuaPopNumberFieldFromTable> Cannot retrieve: " + key);
 			}
 
 			T val = (T)lua_tonumber(L, -1);

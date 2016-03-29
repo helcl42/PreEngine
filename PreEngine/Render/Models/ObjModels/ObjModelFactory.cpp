@@ -34,7 +34,7 @@ namespace PreEngine
 				{
 					ITexture* retMaterial = NULL;
 
-					if (!m_fileReader->Open(mtlFilePath)) throw new ModelException("Could not open material file: " + mtlFilePath);
+					if (!m_fileReader->Open(mtlFilePath)) throw ModelException("Could not open material file: " + mtlFilePath);
 
 					while (!m_fileReader->IsEOF())
 					{
@@ -116,19 +116,19 @@ namespace PreEngine
 						if (m_attrBitField & 1)
 						{
 							if (data.size() > 0 && data[0].size() > 0) vertexIndex = std::stoi(data[0]);
-							else throw new ModelException("Model has inconsistent vertices.");
+							else throw ModelException("Model has inconsistent vertices.");
 						}
 
 						if (m_attrBitField & 2)
 						{
 							if (data.size() >= 1 && data[1].size() > 0) texCoordIndex = std::stoi(data[1]);
-							else throw new ModelException("Model has inconsistent texture coordinates.");
+							else throw ModelException("Model has inconsistent texture coordinates.");
 						}
 
 						if (m_attrBitField & 4)
 						{
 							if (data.size() >= 2 && data[2].size() > 0) normalIndex = std::stoi(data[2]);
-							else throw new ModelException("Model has inconsistent normals.");
+							else throw ModelException("Model has inconsistent normals.");
 						}
 
 						if (vertexIndex > 0 && vertexIndex <= m_vertices.size()) objModel->m_vbo->AddData(&m_vertices[vertexIndex - 1], sizeof(glm::vec3));
@@ -178,7 +178,7 @@ namespace PreEngine
 						glEnableVertexAttribArray(1);
 						int dataOffset = 0;
 						if (m_attrBitField & 1) dataOffset += sizeof(glm::vec3);
-						glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, dataStride, (void*)dataOffset);
+						glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)dataOffset);
 					}
 
 					if (m_attrBitField & 4)
@@ -187,7 +187,7 @@ namespace PreEngine
 						int dataOffset = 0;
 						if (m_attrBitField & 1) dataOffset += sizeof(glm::vec3);
 						if (m_attrBitField & 2) dataOffset += sizeof(glm::vec2);
-						glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, dataStride, (void*)dataOffset);
+						glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)dataOffset);
 					}
 
 					glBindVertexArray(0); // Make sure the VAO is not changed from the outside
@@ -274,7 +274,7 @@ namespace PreEngine
 				{
 					ObjModel* objModel = new ObjModel();
 
-					if (!m_fileReader->Open(filePath)) throw new ModelException("Could not open .obj file: " + filePath);
+					if (!m_fileReader->Open(filePath)) throw ModelException("Could not open .obj file: " + filePath);
 
 					while (!m_fileReader->IsEOF())
 					{
@@ -285,7 +285,7 @@ namespace PreEngine
 
 					m_fileReader->Close();
 
-					if (m_attrBitField == 0) throw new ModelException("Model consists of invalid data.");
+					if (m_attrBitField == 0) throw ModelException("Model consists of invalid data.");
 
 					Center();
 					BindData(objModel);

@@ -66,12 +66,12 @@ namespace PreEngine
 
 			unsigned int SimpleFont::GetTextWidth(const std::string& text, int pxSize)
 			{
-				throw new FontException("Not implemented!");
+				throw FontException("Not implemented!");
 			}
 
 			unsigned int SimpleFont::GetTextHeight(const std::string& text, int pxSize)
 			{
-				throw new FontException("Not implemented!");
+				throw FontException("Not implemented!");
 			}
 
 			void SimpleFont::Print(const std::string& text, int x, int y, int size)
