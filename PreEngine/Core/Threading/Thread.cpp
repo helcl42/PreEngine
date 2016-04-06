@@ -42,9 +42,11 @@ namespace PreEngine
 #ifdef _WIN32
 				if (WaitForSingleObject(m_threadHandle, timeout) != WAIT_OBJECT_0)
 				{
-					CloseHandle(m_threadHandle);
+					if (m_threadHandle != INVALID_HANDLE_VALUE) CloseHandle(m_threadHandle);
+					else m_threadHandle = INVALID_HANDLE_VALUE;
 					return false;
 				}
+				m_threadHandle = INVALID_HANDLE_VALUE;
 				return true;
 #else
 				int rcCount = pthread_join(m_threadHandle, NULL);

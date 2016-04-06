@@ -15,7 +15,7 @@ namespace PreEngine
 			{
 			}
 
-			void VertexBufferObject::Create(int unsigned size)
+			void VertexBufferObject::Create(unsigned int size)
 			{
 				glGenBuffers(1, &m_handle);
 				m_data.reserve(size);

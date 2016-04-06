@@ -41,6 +41,9 @@ namespace PreEngine
 			virtual int GetIntResult(const std::string& code) = 0;
 
 			virtual void DumpStack() = 0;
+
+		public:
+			virtual ~IScriptor() {}
 		};
 	}
 }

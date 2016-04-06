@@ -26,6 +26,11 @@ namespace PreEngine
 			m_keyboardComponent->UnregisterKeyboardListener(listener);
 		}
 
+		bool InputFacade::IsKeyboardListenerRegistered(IKeyboardListener* listener)
+		{
+			return m_keyboardComponent->IsKeyboardListenerRegistered(listener);
+		}
+
 		bool InputFacade::IsKeyPressed(int keyCode) const
 		{
 			return m_keyboardComponent->IsKeyPressed(keyCode);

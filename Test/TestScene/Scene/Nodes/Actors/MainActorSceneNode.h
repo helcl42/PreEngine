@@ -1,7 +1,7 @@
 #include <PreEngine/Render/SceneNode.h>
 #include <PreEngine/Render/Models/MD2/MD2ModelFactory.h>
 #include <PreEngine/Render/Picking/RayCastingPicking.h>
-#include <PreEngine/Render/Models/Static/Line.h>
+#include <PreEngine/Render/Models/Primitives/Line.h>
 
 namespace TestScene
 {
@@ -10,7 +10,7 @@ namespace TestScene
 		using namespace PreEngine::Render;
 		using namespace PreEngine::Render::Picking;
 		using namespace PreEngine::Render::Models::MD2;
-		using namespace PreEngine::Render::Models::Static;
+		using namespace PreEngine::Render::Models::Primitives;
 		using namespace PreEngine::Inputs;
 
 		template <class RootType>

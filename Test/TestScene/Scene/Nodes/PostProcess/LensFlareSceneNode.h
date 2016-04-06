@@ -1,7 +1,7 @@
 #ifndef LENS_FLARE_SCENE_NODE_H
 #define LENS_FLARE_SCENE_NODE_H
 
-#include <PreEngine/Render/Models/Static/Quad.h>
+#include <PreEngine/Render/Models/Primitives/Quad.h>
 
 #include "../BaseSceneNode.h"
 #include "LensFlareSettings.h"
@@ -12,7 +12,7 @@ namespace TestScene
 	{
 		using namespace PreEngine::Render;
 		using namespace PreEngine::Render::Models;
-		using namespace PreEngine::Render::Models::Static;
+		using namespace PreEngine::Render::Models::Primitives;
 		using namespace PreEngine::Render::Lightning;
 		using namespace PreEngine::Inputs;
 

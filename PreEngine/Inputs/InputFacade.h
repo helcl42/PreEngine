@@ -29,6 +29,8 @@ namespace PreEngine
 
 			void UnregisterKeyboardListener(IKeyboardListener* listener);
 
+			bool IsKeyboardListenerRegistered(IKeyboardListener* listener);
+
 			bool IsKeyPressed(int keyCode) const;
 
 			bool IsMouseButtonPressed(int buttonId) const;

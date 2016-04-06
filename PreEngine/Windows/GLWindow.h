@@ -276,7 +276,7 @@ namespace PreEngine
 			m_channel.Broadcast(PreEngine::Windows::Events::OnClose{ this });
 
 			glfwDestroyWindow(m_window);
-			glfwTerminate();
+			if(m_masterWindow == this) glfwTerminate();
 		}
 
 		template <class WindowType>

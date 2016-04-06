@@ -178,7 +178,7 @@ namespace PreEngine
 						glEnableVertexAttribArray(1);
 						int dataOffset = 0;
 						if (m_attrBitField & 1) dataOffset += sizeof(glm::vec3);
-						glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)dataOffset);
+						glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)&dataOffset);
 					}
 
 					if (m_attrBitField & 4)
@@ -187,7 +187,7 @@ namespace PreEngine
 						int dataOffset = 0;
 						if (m_attrBitField & 1) dataOffset += sizeof(glm::vec3);
 						if (m_attrBitField & 2) dataOffset += sizeof(glm::vec2);
-						glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)dataOffset);
+						glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, dataStride, (GLvoid*)&dataOffset);
 					}
 
 					glBindVertexArray(0); // Make sure the VAO is not changed from the outside

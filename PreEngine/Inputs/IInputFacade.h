@@ -23,6 +23,8 @@ namespace PreEngine
 
 			virtual void UnregisterKeyboardListener(IKeyboardListener* listener) = 0;
 
+			virtual bool IsKeyboardListenerRegistered(IKeyboardListener* listener) = 0;
+
 			virtual bool IsKeyPressed(int keyCode) const = 0;
 
 			virtual bool IsMouseButtonPressed(int buttonId) const = 0;

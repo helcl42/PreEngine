@@ -8,6 +8,7 @@
 #include "IMouseButtonListener.h"
 #include "IMouseMoveListener.h"
 #include "IMouseScrollListener.h"
+#include "../AbstractInputComponent.h"
 
 namespace PreEngine
 {
@@ -19,7 +20,7 @@ namespace PreEngine
 			using namespace PreEngine::Core::Events;
 			using namespace PreEngine::Inputs::Core::Mouses::Events;
 
-			class MouseInputComponent
+			class MouseInputComponent : public AbstractInputComponent
 			{
 			private:
 				std::set<int> m_workingButtons;
@@ -48,7 +49,7 @@ namespace PreEngine
 				virtual ~MouseInputComponent();
 
 			public:
-				bool IsMouseButtonPressed(int buttonId) const;
+				bool IsMouseButtonPressed(int buttonId);
 
 				const OnMouseMove& GetLastMove() const;
 
@@ -58,13 +59,19 @@ namespace PreEngine
 
 				void UnregisterMouseButtonListener(IMouseButtonListener* listener);
 
+				bool IsMouseButtonListenerRegistered(IMouseButtonListener* listener);
+
 				void RegisterMouseMoveListener(IMouseMoveListener* listener);
 
 				void UnregisterMouseMoveListener(IMouseMoveListener* listener);
 
+				bool IsMouseMoveListenerRegistered(IMouseMoveListener* listener);
+
 				void RegisterMouseScrollListener(IMouseScrollListener* listener);
 
 				void UnregisterMouseScrollListener(IMouseScrollListener* listener);
+
+				bool IsMouseScrollListenerRegistered(IMouseScrollListener* listener);
 
 			public:
 				void operator()(const OnMouseButtonPress& press);

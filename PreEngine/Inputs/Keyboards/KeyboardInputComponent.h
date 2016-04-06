@@ -5,6 +5,7 @@
 #include "../../Core/Events/EventHandler.h"
 #include "../Core/Keyboards/KeyboardEvents.h"
 #include "IKeyboardListener.h"
+#include "../AbstractInputComponent.h"
 
 namespace PreEngine
 {
@@ -16,7 +17,7 @@ namespace PreEngine
 			using namespace PreEngine::Core::Events;
 			using namespace PreEngine::Inputs::Core::Keyboards::Events;
 
-			class KeyboardInputComponent
+			class KeyboardInputComponent : public AbstractInputComponent
 			{
 			private:
 				std::set<IKeyboardListener*> m_keyboardListeners;
@@ -37,7 +38,9 @@ namespace PreEngine
 
 				void UnregisterKeyboardListener(IKeyboardListener* listener);
 
-				bool IsKeyPressed(int keyCode) const;
+				bool IsKeyboardListenerRegistered(IKeyboardListener* listener);
+
+				bool IsKeyPressed(int keyCode);
 
 			public:
 				void operator()(const OnKeyPress& press);

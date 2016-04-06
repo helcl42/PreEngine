@@ -3,7 +3,7 @@
 
 #include <PreEngine/Render/SceneNode.h>
 #include <PreEngine/Render/Lightning/DirectionalLight.h>
-#include <PreEngine/Render/Models/Static/Sphere.h>
+#include <PreEngine/Render/Models/Primitives/Sphere.h>
 
 namespace TestScene
 {
@@ -11,7 +11,7 @@ namespace TestScene
 	{
 		using namespace PreEngine::Render;
 		using namespace PreEngine::Render::Models;
-		using namespace PreEngine::Render::Models::Static;
+		using namespace PreEngine::Render::Models::Primitives;
 		using namespace PreEngine::Render::Lightning;
 		using namespace PreEngine::Inputs;
 

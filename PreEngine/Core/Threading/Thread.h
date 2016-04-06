@@ -23,7 +23,7 @@ namespace PreEngine
 				static void ThreadProc(void* thizzz);
 
 #ifdef _WIN32
-				HANDLE m_threadHandle;
+				HANDLE m_threadHandle = INVALID_HANDLE_VALUE;
 #else
 				pthread_t m_threadHandle;
 				pthread_attr_t m_threadAttr;

@@ -20,21 +20,31 @@ namespace PreEngine
 
 			void KeyboardInputComponent::RegisterKeyboardListener(IKeyboardListener* listener)
 			{
+				std::lock_guard<std::mutex> lock(m_mutex);
 				m_keyboardListeners.insert(listener);
 			}
 
 			void KeyboardInputComponent::UnregisterKeyboardListener(IKeyboardListener* listener)
 			{
+				std::lock_guard<std::mutex> lock(m_mutex);
 				m_keyboardListeners.erase(listener);
 			}
 
-			bool KeyboardInputComponent::IsKeyPressed(int keyCode) const
+			bool KeyboardInputComponent::IsKeyboardListenerRegistered(IKeyboardListener* listener)
 			{
+				std::lock_guard<std::mutex> lock(m_mutex);
+				return m_keyboardListeners.find(listener) != m_keyboardListeners.cend();
+			}
+
+			bool KeyboardInputComponent::IsKeyPressed(int keyCode)
+			{
+				std::lock_guard<std::mutex> lock(m_mutex);
 				return m_workingKeys.find(keyCode) != m_workingKeys.cend();
 			}
 
 			void KeyboardInputComponent::operator()(const OnKeyPress& press)
 			{
+				std::lock_guard<std::mutex> lock(m_mutex);
 				m_workingKeys.insert(press.key);
 
 				for (std::set<IKeyboardListener*>::const_iterator ci = m_keyboardListeners.cbegin(); ci != m_keyboardListeners.cend(); ++ci)
@@ -45,6 +55,7 @@ namespace PreEngine
 
 			void KeyboardInputComponent::operator()(const OnKeyRelease& release)
 			{
+				std::lock_guard<std::mutex> lock(m_mutex);
 				m_workingKeys.erase(release.key);
 
 				for (std::set<IKeyboardListener*>::const_iterator ci = m_keyboardListeners.cbegin(); ci != m_keyboardListeners.cend(); ++ci)
