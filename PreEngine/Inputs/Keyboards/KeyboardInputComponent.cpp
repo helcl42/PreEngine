@@ -26,8 +26,9 @@ namespace PreEngine
 
 			void KeyboardInputComponent::UnregisterKeyboardListener(IKeyboardListener* listener)
 			{
-				std::lock_guard<std::mutex> lock(m_mutex);
-				m_keyboardListeners.erase(listener);
+				std::lock_guard<std::mutex> lock(m_mutex);				
+				auto it = std::find(m_keyboardListeners.begin(), m_keyboardListeners.end(), listener);
+				if (it != m_keyboardListeners.end()) m_keyboardListeners.erase(it);
 			}
 
 			bool KeyboardInputComponent::IsKeyboardListenerRegistered(IKeyboardListener* listener)

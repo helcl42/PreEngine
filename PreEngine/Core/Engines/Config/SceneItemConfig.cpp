@@ -26,7 +26,8 @@ namespace PreEngine
 					else if (layoutString == "SIDE_BY_SIDE") m_sceneLayout = SceneLayout::SIDE_BY_SIDE;
 					else m_sceneLayout = SceneLayout::SINGLE;
 
-					m_fullSceen = m_root["FullScreen"].asBool();
+					m_isInFullSceen = m_root["FullScreen"].asBool();
+					m_isDecorated = m_root["IsDecorated"].asBool();
 					m_width = m_root["Width"].asUInt();
 					m_height = m_root["Height"].asUInt();
 
@@ -50,12 +51,22 @@ namespace PreEngine
 
 				bool SceneItemConfig::IsFullScreen() const
 				{
-					return m_fullSceen;
+					return m_isInFullSceen;
 				}
 
-				void SceneItemConfig::SetFullScree(bool isFullScreen)
+				void SceneItemConfig::SetFullScreen(bool isFullScreen)
 				{
-					m_fullSceen = isFullScreen;
+					m_isInFullSceen = isFullScreen;
+				}
+
+				bool SceneItemConfig::IsDecorated() const
+				{
+					return m_isDecorated;
+				}
+
+				void SceneItemConfig::SetDecorated(bool has)
+				{
+					m_isDecorated = has;
 				}
 
 				unsigned int SceneItemConfig::GetHeight() const

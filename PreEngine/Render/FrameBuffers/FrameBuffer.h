@@ -82,7 +82,6 @@ namespace PreEngine
 				static void BindFrameBuffer(unsigned int sceneId, GLuint frameBufferHandle);
 
 			public:
-				// DEPRECATED
 				static void BindDefaultFrameBuffer(unsigned int sceneId, int width, int height);
 
 				static void BindDefaultFrameBuffer(unsigned int sceneId, int offsetX, int offsetY, int width, int height);

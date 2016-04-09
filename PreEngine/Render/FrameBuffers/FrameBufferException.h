@@ -17,7 +17,6 @@ namespace PreEngine
 				FrameBufferException(const std::string& message)
 					: std::runtime_error(message)
 				{
-					Logger::GetInstance().Error() << message;
 				}
 
 				virtual ~FrameBufferException()

@@ -39,10 +39,10 @@ namespace PreEngine
 		virtual ~App();
 
 	protected:
-		virtual void InitApp() = 0;
+		virtual bool InitApp() = 0;
 
 	public:
-		void Init();
+		virtual void Init(); // let it overridable
 
 		virtual void Run(); // let it overridable
 	};
@@ -59,7 +59,6 @@ namespace PreEngine
 		m_engine = new EngineType(m_config);
 	}
 
-
 	template <class ClientType, class EngineType, class ConfigType>
 	App<ClientType, EngineType, ConfigType>::~App()
 	{
@@ -72,8 +71,13 @@ namespace PreEngine
 	template <class ClientType, class EngineType, class ConfigType>
 	void App<ClientType, EngineType, ConfigType>::Init()
 	{
-		InitApp();
-		m_state = INITIALIZED;
+		if (m_state == AppState::INITIALIZED || m_state == AppState::ALREADY_RUN)
+		{
+			throw AppException("App is already initialized.");
+		}
+
+		bool result = InitApp();
+		m_state = result ? AppState::INITIALIZED : AppState::NOT_INITIALIZED;
 	}
 
 	template <class ClientType, class EngineType, class ConfigType>
@@ -81,7 +85,7 @@ namespace PreEngine
 	{
 		if (!(m_state == AppState::INITIALIZED || m_state == AppState::ALREADY_RUN))
 		{
-			throw AppException("App has to initizlied: Call Init before Run().");
+			throw AppException("App has to be initizlied before calling Run().");
 		}
 
 		m_state = AppState::RUNNING;

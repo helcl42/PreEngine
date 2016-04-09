@@ -15,7 +15,6 @@ namespace PreEngine
 			ScriptingException(const std::string& message)
 				: std::runtime_error(message)
 			{
-				Logger::GetInstance().Error() << message;
 			}
 
 			virtual ~ScriptingException()

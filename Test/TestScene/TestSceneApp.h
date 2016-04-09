@@ -23,10 +23,11 @@ namespace TestScene
 		{
 		}
 
-		void InitApp()
+		bool InitApp()
 		{
 			IScene<World>* scene = m_engine->GetScene();
 			scene->AddSceneNode(new World());
+			return true;
 		}
 	};
 }

@@ -50,6 +50,13 @@ namespace PreEngine
 
 				virtual ~OnEnginePostShutDown() {}
 			};
+
+			struct OnEngineShutDownRequest : BaseEvent
+			{
+				OnEngineShutDownRequest() {}
+
+				virtual ~OnEngineShutDownRequest() {}
+			};
 		}
 	}
 }

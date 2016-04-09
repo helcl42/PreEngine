@@ -15,7 +15,6 @@ namespace PreEngine
 				TextureException(const std::string& message)
 					: std::runtime_error(message)
 				{
-					Utils::Log::Logger::GetInstance().Error() << message;
 				}
 
 				virtual ~TextureException()

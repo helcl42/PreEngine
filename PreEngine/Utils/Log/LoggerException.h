@@ -13,7 +13,6 @@ namespace PreEngine
 				LoggerException(const std::string& message)
 					: std::runtime_error(message)
 				{
-					std::cout << message;
 				}
 
 				virtual ~LoggerException()

@@ -15,7 +15,6 @@ namespace PreEngine
 			GLWindowException(const std::string& message)
 				: std::runtime_error(message)
 			{
-				Logger::GetInstance().Error() << message;
 			}
 
 			virtual ~GLWindowException()

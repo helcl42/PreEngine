@@ -18,8 +18,8 @@ namespace PreEngine
 			{
 				SAFE_DELETE(m_mouseScrollHandler);
 				SAFE_DELETE(m_mouseMoveHandler);
-				SAFE_DELETE(m_mouseButtonPressHandler);
 				SAFE_DELETE(m_mouseButtonReleaseHandler);
+				SAFE_DELETE(m_mouseButtonPressHandler);				
 			}
 
 			bool MouseInputComponent::IsMouseButtonPressed(int buttonId)
@@ -46,8 +46,9 @@ namespace PreEngine
 
 			void MouseInputComponent::UnregisterMouseButtonListener(IMouseButtonListener* listener)
 			{
-				std::lock_guard<std::mutex> lock(m_mutex);
-				m_mouseButtonListeners.erase(listener);
+				std::lock_guard<std::mutex> lock(m_mutex);			
+				auto it = std::find(m_mouseButtonListeners.begin(), m_mouseButtonListeners.end(), listener);
+				if (it != m_mouseButtonListeners.end()) m_mouseButtonListeners.erase(it);
 			}
 
 			bool MouseInputComponent::IsMouseButtonListenerRegistered(IMouseButtonListener* listener)
@@ -64,8 +65,9 @@ namespace PreEngine
 
 			void MouseInputComponent::UnregisterMouseMoveListener(IMouseMoveListener* listener)
 			{
-				std::lock_guard<std::mutex> lock(m_mutex);
-				m_mouseMoveListeners.erase(listener);
+				std::lock_guard<std::mutex> lock(m_mutex);				
+				auto it = std::find(m_mouseMoveListeners.begin(), m_mouseMoveListeners.end(), listener);
+				if (it != m_mouseMoveListeners.end()) m_mouseMoveListeners.erase(it);
 			}
 
 			bool MouseInputComponent::IsMouseMoveListenerRegistered(IMouseMoveListener* listener)
@@ -82,8 +84,9 @@ namespace PreEngine
 
 			void MouseInputComponent::UnregisterMouseScrollListener(IMouseScrollListener* listener)
 			{
-				std::lock_guard<std::mutex> lock(m_mutex);
-				m_mouseScrollListeners.erase(listener);
+				std::lock_guard<std::mutex> lock(m_mutex);				
+				auto it = std::find(m_mouseScrollListeners.begin(), m_mouseScrollListeners.end(), listener);
+				if (it != m_mouseScrollListeners.end()) m_mouseScrollListeners.erase(it);
 			}
 
 			bool MouseInputComponent::IsMouseScrollListenerRegistered(IMouseScrollListener* listener)

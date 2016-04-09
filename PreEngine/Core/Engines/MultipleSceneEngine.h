@@ -98,7 +98,7 @@ namespace PreEngine
 					m_scenes[i]->Init();
 				}
 
-				m_mainWindow->MakeWindowContextMain();				
+				m_mainWindow->MakeWindowContextMain();
 
 				EventChannel::Broadcast(Core::OnEnginePostInit{});
 			}
@@ -112,7 +112,7 @@ namespace PreEngine
 
 				float deltaTime = 0.0f;
 				bool shouldSwitchContext = m_windows.size() > 1;
-				while (!m_mainWindow->ShouldClose())
+				while (!m_mainWindow->ShouldClose() && !m_finishRequested)
 				{
 					GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
 
@@ -130,6 +130,8 @@ namespace PreEngine
 							m_scenes[i]->Update(deltaTime);
 							m_scenes[i]->Render();
 							m_windows[i]->SwapBuffers();
+
+							GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
 						}
 
 						deltaTime = 0.0f;
@@ -144,6 +146,8 @@ namespace PreEngine
 			template<class RootType>
 			void MultipleSceneEngine<RootType>::ShutDown()
 			{
+				EventChannel::Broadcast(Core::OnEnginePreShutDown{});
+
 				for (std::vector<IScene<RootType>*>::iterator ii = m_scenes.begin(); ii != m_scenes.end(); ++ii)
 				{
 					(*ii)->ShutDown();
@@ -156,6 +160,8 @@ namespace PreEngine
 
 				m_audioContext->ShutDown();
 				m_input->ShutDown();
+
+				EventChannel::Broadcast(Core::OnEnginePostShutDown{});
 			}
 
 			template<class RootType>
@@ -173,27 +179,15 @@ namespace PreEngine
 			template<class RootType>
 			PreEngine::Windows::IWindow<GLFWwindow>* MultipleSceneEngine<RootType>::GetWindow(unsigned int index) const
 			{
-				if (index >= 0 && index < m_windows.size())
-				{
-					return m_windows[index];
-				}
-				else
-				{
-					throw EngineException("Could not get non existing window at index " + index);
-				}
+				if (index < 0 || index >= m_windows.size()) throw EngineException("Could not get non existing window at index " + index);
+				return m_windows[index];
 			}
 
 			template<class RootType>
 			IScene<RootType>* MultipleSceneEngine<RootType>::GetScene(unsigned int index) const
 			{
-				if (index >= 0 && index < m_scenes.size())
-				{
-					return m_scenes[index];
-				}
-				else
-				{
-					throw EngineException("Could not get non existing scene at index " + index);
-				}
+				if (index < 0 && index >= m_scenes.size()) throw EngineException("Could not get non existing scene at index " + index);
+				return m_scenes[index];
 			}
 		}
 	}

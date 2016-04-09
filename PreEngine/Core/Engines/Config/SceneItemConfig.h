@@ -22,7 +22,9 @@ namespace PreEngine
 				protected:
 					SceneLayout m_sceneLayout;
 
-					bool m_fullSceen;
+					bool m_isInFullSceen;
+
+					bool m_isDecorated;
 
 					unsigned int m_width;
 
@@ -51,7 +53,11 @@ namespace PreEngine
 
 					bool IsFullScreen() const;
 
-					void SetFullScree(bool isFullScreen);
+					void SetFullScreen(bool isFullScreen);
+
+					bool IsDecorated() const;
+
+					void SetDecorated(bool has);
 
 					unsigned int GetHeight() const;
 

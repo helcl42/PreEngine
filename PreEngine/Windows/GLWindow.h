@@ -64,6 +64,8 @@ namespace PreEngine
 
 			bool m_isInFullscreen = false;
 
+			bool m_isDecorated = true;
+
 			bool m_isFocused = false;
 
 			GLWindow<WindowType>* m_masterWindow = NULL;
@@ -127,6 +129,8 @@ namespace PreEngine
 
 			bool IsInFullScreen() const;
 
+			bool IsDecorated() const;
+
 			bool IsFocused() const;
 
 			void RefreshWindow();
@@ -160,9 +164,8 @@ namespace PreEngine
 			m_height = sceneConfig->GetHeight();
 			m_topOffset = sceneConfig->GetOffsetTop();
 			m_leftOffset = sceneConfig->GetOffsetLeft();
-
 			m_isInFullscreen = sceneConfig->IsFullScreen();
-
+			m_isDecorated = sceneConfig->IsDecorated();
 			m_glMajorVersion = openGLConfig->GetMajorVersion(); 
 			m_glMinorVersion = openGLConfig->GetMinorVersion();
 			m_antialiazingLevel = openGLConfig->GetAntializingLevel();
@@ -221,6 +224,7 @@ namespace PreEngine
 			if (m_masterWindow == this)
 			{
 #ifdef _DEBUG
+				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 				glfwSetErrorCallback(GLWindow<GLFWwindow>::ErrorCallback);
 #endif
 				if (!glfwInit()) throw GLWindowException("Could not init glfw.");
@@ -250,10 +254,10 @@ namespace PreEngine
 				LoadGLFunctions();
 
 				glfwSwapInterval(0);
-
+#ifdef _DEBUG
 				Logger::GetInstance().Info() << GLUtils::GetGLInfo() << std::endl;
 				Logger::GetInstance().Info() << GLUtils::GetGLExtensionsInfo() << std::endl;
-#ifdef _DEBUG
+
 				GLUtils::InitDebugMode();
 #endif
 				m_channel.Broadcast(PreEngine::Windows::Events::OnCreate{ this });
@@ -298,9 +302,7 @@ namespace PreEngine
 			glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 			glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-#ifdef _DEBUG
-			glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
-#endif
+			glfwWindowHint(GLFW_VISIBLE, GL_TRUE);
 			glfwWindowHint(GLFW_SAMPLES, m_antialiazingLevel);
 
 			if (m_isInFullscreen)
@@ -322,7 +324,7 @@ namespace PreEngine
 			}
 			else
 			{
-				glfwWindowHint(GLFW_DECORATED, GL_TRUE);
+				glfwWindowHint(GLFW_DECORATED, m_isDecorated ? GL_TRUE : GL_FALSE);
 
 				m_width = m_normalWidth;
 				m_height = m_normalHeight;
@@ -468,6 +470,12 @@ namespace PreEngine
 		bool GLWindow<WindowType>::IsInFullScreen() const
 		{
 			return m_isInFullscreen;
+		}
+
+		template <class WindowType>
+		bool GLWindow<WindowType>::IsDecorated() const
+		{
+			return m_isDecorated;
 		}
 
 		template <class WindowType>

@@ -81,7 +81,7 @@ namespace PreEngine
 				m_clock->Reset();
 
 				float deltaTime = 0.0f;
-				while (!m_window->ShouldClose())
+				while (!m_window->ShouldClose() && !m_finishRequested)
 				{
 					GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
 

@@ -9,6 +9,7 @@ namespace PreEngine
 			AbstractEngine::AbstractEngine(EngineConfig* config)
 				: m_config(config)
 			{
+				m_shutDownRquestHandler = new EventHandler<AbstractEngine, OnEngineShutDownRequest>(this);
 				m_unlimitedLoop = config->IsUnlimitedLoop();
 
 				m_clock = new Clock<float>();
@@ -21,6 +22,7 @@ namespace PreEngine
 				SAFE_DELETE(m_audioContext);
 				SAFE_DELETE(m_clock);
 				SAFE_DELETE(m_input);
+				SAFE_DELETE(m_shutDownRquestHandler);
 			}
 
 			Input* AbstractEngine::GetInput() const
@@ -41,6 +43,11 @@ namespace PreEngine
 			AudioContext* AbstractEngine::GetAudioContext() const
 			{
 				return m_audioContext;
+			}
+
+			void AbstractEngine::operator()(const OnEngineShutDownRequest& shutDownRequest)
+			{
+				m_finishRequested = true;
 			}
 		}
 	}

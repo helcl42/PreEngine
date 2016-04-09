@@ -156,20 +156,9 @@ namespace PreEngine
 				}
 			}
 
-			// DEPRECATED
 			void FrameBuffer::BindDefaultFrameBuffer(unsigned int sceneId, int width, int height)
 			{
-				if (s_customDefaultFrameBuffers.find(sceneId) != s_customDefaultFrameBuffers.end() && !s_customDefaultFrameBuffers[sceneId].empty())
-				{
-					IFrameBuffer* currentDefaultFrameBuffer = s_customDefaultFrameBuffers[sceneId].top();					
-					FrameBuffer::BindFrameBuffer(sceneId, currentDefaultFrameBuffer->GetHandle());
-					s_customDefaultFrameBuffers[sceneId].pop();
-				}
-				else
-				{
-					FrameBuffer::BindFrameBuffer(sceneId, 0);
-				}
-				EventChannel::Broadcast(Frustums::Events::OnResize{ (int)sceneId, 0, 0, width, height });
+				BindDefaultFrameBuffer(sceneId, 0, 0, width, height);
 			}
 
 			void FrameBuffer::BindDefaultFrameBuffer(unsigned int sceneId, int offsetX, int offsetY, int width, int height)
