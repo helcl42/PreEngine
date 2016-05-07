@@ -43,7 +43,6 @@ namespace PreEngine
 				if (WaitForSingleObject(m_threadHandle, timeout) != WAIT_OBJECT_0)
 				{
 					if (m_threadHandle != INVALID_HANDLE_VALUE) CloseHandle(m_threadHandle);
-					else m_threadHandle = INVALID_HANDLE_VALUE;
 					return false;
 				}
 				m_threadHandle = INVALID_HANDLE_VALUE;

@@ -123,6 +123,10 @@ namespace PreEngine
 		{
 			m_tag = m_name;
 			m_viewFrustumChangeHandler = new EventHandler<SceneNode, OnViewFrustumChange>(this);
+
+			if (m_scenePosition == ScenePosition::LEFT || m_scenePosition == ScenePosition::RIGHT) m_sceneLayout = SceneLayout::SIDE_BY_SIDE;
+			else if (m_scenePosition == ScenePosition::BOTTOM || m_scenePosition == ScenePosition::TOP) m_sceneLayout = SceneLayout::OVER_UNDER;
+			else m_sceneLayout = SceneLayout::SINGLE;
 		}
 
 		template <class ObjectType, class RootType>

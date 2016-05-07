@@ -26,8 +26,8 @@ namespace PreEngine
 					else if (layoutString == "SIDE_BY_SIDE") m_sceneLayout = SceneLayout::SIDE_BY_SIDE;
 					else m_sceneLayout = SceneLayout::SINGLE;
 
-					m_isInFullSceen = m_root["FullScreen"].asBool();
-					m_isDecorated = m_root["IsDecorated"].asBool();
+					m_isInFullSceen = m_root.isMember("FullScreen") ? m_root["FullScreen"].asBool() : false;
+					m_isDecorated = m_root.isMember("IsDecorated") ? m_root["IsDecorated"].asBool() : true;
 					m_width = m_root["Width"].asUInt();
 					m_height = m_root["Height"].asUInt();
 

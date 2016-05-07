@@ -63,9 +63,9 @@ namespace PreEngine
 				}
 
 				void Timer::Stop()
-				{
+				{					
+					if(!m_isFinished) Join();
 					m_isFinished = true;
-					Join();
 				}
 
 				void Timer::SetMsTimeout(unsigned int timeout)
@@ -77,6 +77,7 @@ namespace PreEngine
 				{
 					return !m_isFinished;
 				}
+
 				bool Timer::RegisterListener(ITimerObservable* listener)
 				{
 					return m_observer.RegisterListener(listener);
