@@ -21,7 +21,7 @@ namespace PreEngine
 	{
 		using namespace PreEngine::Core;
 		using namespace PreEngine::Core::Config;
-		using namespace PreEngine::Core::Engines::Config;		
+		using namespace PreEngine::Core::Engines::Config;
 		using namespace PreEngine::Utils;
 		using namespace PreEngine::Utils::GL;
 		using namespace PreEngine::Utils::Log;
@@ -29,7 +29,7 @@ namespace PreEngine
 		using namespace PreEngine::Windows::Events;
 		using namespace PreEngine::Inputs::Core::Keyboards::Events;
 		using namespace PreEngine::Inputs::Core::Mouses::Events;
-		
+
 		template <class WindowType>
 		class GLWindow : public System, public IWindow<WindowType>
 		{
@@ -133,6 +133,8 @@ namespace PreEngine
 
 			bool IsFocused() const;
 
+			void SetFocused();
+
 			void RefreshWindow();
 
 			void SwapBuffers() const;
@@ -166,10 +168,10 @@ namespace PreEngine
 			m_leftOffset = sceneConfig->GetOffsetLeft();
 			m_isInFullscreen = sceneConfig->IsFullScreen();
 			m_isDecorated = sceneConfig->IsDecorated();
-			m_glMajorVersion = openGLConfig->GetMajorVersion(); 
+			m_glMajorVersion = openGLConfig->GetMajorVersion();
 			m_glMinorVersion = openGLConfig->GetMinorVersion();
 			m_antialiazingLevel = openGLConfig->GetAntializingLevel();
-				
+
 			m_normalWidth = m_width;
 			m_normalHeight = m_height;
 
@@ -207,7 +209,7 @@ namespace PreEngine
 		{
 			GLWindow<WindowType>* myWindow = (GLWindow<WindowType>*)glfwGetWindowUserPointer(window);
 			if (myWindow == NULL) throw GLWindowException("ResizeCallback: Window pointer not set.");
-			
+
 			glfwMakeContextCurrent(window);
 			EventChannel::Broadcast(PreEngine::Windows::Events::OnResize{ myWindow->GetSceneId(), window, width, height });
 		}
@@ -229,7 +231,7 @@ namespace PreEngine
 #endif
 				if (!glfwInit()) throw GLWindowException("Could not init glfw.");
 			}
-			else 
+			else
 			{
 				m_masterWindow->RegisterChildWindow(this);
 			}
@@ -280,7 +282,7 @@ namespace PreEngine
 			m_channel.Broadcast(PreEngine::Windows::Events::OnClose{ this });
 
 			glfwDestroyWindow(m_window);
-			if(m_masterWindow == this) glfwTerminate();
+			if (m_masterWindow == this) glfwTerminate();
 		}
 
 		template <class WindowType>
@@ -479,9 +481,15 @@ namespace PreEngine
 		}
 
 		template <class WindowType>
-		bool GLWindow<WindowType>::IsFocused() const 
+		bool GLWindow<WindowType>::IsFocused() const
 		{
 			return m_isFocused;
+		}
+
+		template <class WindowType>
+		void GLWindow<WindowType>::SetFocused()
+		{
+			glfwFocusWindow(m_window);
 		}
 
 		template <class WindowType>

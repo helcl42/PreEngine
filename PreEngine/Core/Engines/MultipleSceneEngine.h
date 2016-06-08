@@ -99,6 +99,7 @@ namespace PreEngine
 				}
 
 				m_mainWindow->MakeWindowContextMain();
+				m_mainWindow->SetFocused();
 
 				EventChannel::Broadcast(Core::OnEnginePostInit{});
 			}

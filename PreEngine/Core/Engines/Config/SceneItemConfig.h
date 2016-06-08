@@ -3,6 +3,7 @@
 
 #include "../../Common.h"
 #include "../../../Render/SceneLayout.h"
+#include "../../../Render/SceneEye.h"
 #include "../../Config/AbstractConfig.h"
 #include "ViewFrustumConfig.h"
 
@@ -37,6 +38,8 @@ namespace PreEngine
 					unsigned int m_displayIndex;
 
 					ViewFrustumConfig* m_viewFrustumConfig;
+
+					SceneEye m_sceneEye;
 
 				public:
 					SceneItemConfig(Json::Value root);
@@ -82,6 +85,10 @@ namespace PreEngine
 					ViewFrustumConfig* GetViewFrustumConfig() const;
 
 					void SetViewFrustumConfig(ViewFrustumConfig* config);
+
+					SceneEye GetSceneEye() const;
+
+					void SetSceneEye(SceneEye eye);
 				};
 			}
 		}

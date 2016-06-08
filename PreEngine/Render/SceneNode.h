@@ -13,6 +13,7 @@
 #include "Frustums/ViewFrustum.h"
 #include "SceneLayout.h"
 #include "ScenePosition.h"
+#include "SceneEye.h"
 #include "../Core/Object.h"
 
 namespace PreEngine
@@ -44,6 +45,7 @@ namespace PreEngine
 
 			ScenePosition m_scenePosition;
 
+			SceneEye m_sceneEye;
 
 			std::string m_tag;
 
@@ -51,12 +53,12 @@ namespace PreEngine
 
 			std::vector<ISceneNode<RootType>*> m_children;
 
-			float m_deltaTime;
+			float m_deltaTime;			
 
 		public:
-			SceneNode(unsigned int sceneId = 0, enum ScenePosition position = ScenePosition::NONE);
+			SceneNode(unsigned int sceneId = 0, enum ScenePosition position = ScenePosition::NONE, enum SceneEye eye = SceneEye::CENTER_EYE);
 
-			SceneNode(RootType* root, unsigned int sceneId = 0, enum ScenePosition position = ScenePosition::NONE);
+			SceneNode(RootType* root, unsigned int sceneId = 0, enum ScenePosition position = ScenePosition::NONE, enum SceneEye eye = SceneEye::CENTER_EYE);
 
 			virtual ~SceneNode();
 
@@ -72,8 +74,6 @@ namespace PreEngine
 			SearchedType* FindSingleByType(ISceneNode<RootType>* root) const;
 
 		public:
-			bool IsRealMaster() const;
-
 			bool IsMaster() const;
 
 			bool IsSlave() const;
@@ -118,8 +118,8 @@ namespace PreEngine
 		};
 
 		template <class ObjectType, class RootType>
-		SceneNode<ObjectType, RootType>::SceneNode(unsigned int sceneId, enum ScenePosition position)
-			: m_sceneId(sceneId), m_scenePosition(position), m_root(NULL)
+		SceneNode<ObjectType, RootType>::SceneNode(unsigned int sceneId, enum ScenePosition position, enum SceneEye eye)
+			: m_sceneId(sceneId), m_scenePosition(position), m_root(NULL), m_sceneEye(eye)
 		{
 			m_tag = m_name;
 			m_viewFrustumChangeHandler = new EventHandler<SceneNode, OnViewFrustumChange>(this);
@@ -130,8 +130,8 @@ namespace PreEngine
 		}
 
 		template <class ObjectType, class RootType>
-		SceneNode<ObjectType, RootType>::SceneNode(RootType* root, unsigned int sceneId, enum ScenePosition position)
-			: SceneNode<ObjectType, RootType>(sceneId, position)
+		SceneNode<ObjectType, RootType>::SceneNode(RootType* root, unsigned int sceneId, enum ScenePosition position, enum SceneEye eye)
+			: SceneNode<ObjectType, RootType>(sceneId, position, eye)
 		{
 			m_root = root;
 		}
@@ -145,12 +145,6 @@ namespace PreEngine
 			{
 				SAFE_DELETE(*ii);
 			}*/
-		}
-
-		template <class ObjectType, class RootType>
-		bool SceneNode<ObjectType, RootType>::IsRealMaster() const
-		{
-			return (m_scenePosition == ScenePosition::LEFT || m_scenePosition == ScenePosition::TOP || m_scenePosition == ScenePosition::NONE) && m_sceneId == 0;
 		}
 
 		template <class ObjectType, class RootType>

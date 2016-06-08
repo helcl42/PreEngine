@@ -37,6 +37,11 @@ namespace PreEngine
 					m_displayIndex = m_root["DisplayIndex"].asUInt();
 
 					if (m_root.isMember("ViewFrustum")) m_viewFrustumConfig = new ViewFrustumConfig(m_root["ViewFrustum"]);
+
+					std::string sceneEye = m_root["SceneEye"].asString();
+					if (sceneEye == "LEFT_EYE") m_sceneEye = SceneEye::LEFT_EYE;
+					else if (sceneEye == "RIGHT_EYE") m_sceneEye = SceneEye::RIGHT_EYE;
+					else m_sceneEye = SceneEye::CENTER_EYE;
 				}
 
 				SceneLayout SceneItemConfig::GetSceneLayout() const
@@ -127,6 +132,16 @@ namespace PreEngine
 				void SceneItemConfig::SetViewFrustumConfig(ViewFrustumConfig* config)
 				{
 					m_viewFrustumConfig = config;
+				}
+
+				SceneEye SceneItemConfig::GetSceneEye() const
+				{
+					return m_sceneEye;
+				}
+
+				void SceneItemConfig::SetSceneEye(SceneEye eye)
+				{
+					m_sceneEye = eye;
 				}
 			}
 		}

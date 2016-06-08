@@ -24,6 +24,8 @@ namespace PreEngine
 
 			virtual bool IsFocused() const = 0;
 
+			virtual void SetFocused() = 0;
+
 			virtual WindowType* GetWindow() const = 0;
 
 			virtual void SwapBuffers() const = 0;
@@ -39,6 +41,7 @@ namespace PreEngine
 			virtual void MakeWindowContextMain() = 0;
 
 			virtual void RegisterChildWindow(IWindow<WindowType>* child) = 0;
+			
 
 		public:
 			virtual ~IWindow() {}

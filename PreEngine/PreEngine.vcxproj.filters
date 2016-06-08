@@ -935,6 +935,9 @@
     <ClInclude Include="Render\Models\Primitives\Torus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Render\SceneEye.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vld.ini" />
