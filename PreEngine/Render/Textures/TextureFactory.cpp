@@ -17,13 +17,13 @@ namespace PreEngine
 			FIBITMAP* TextureFactory::GetImage(const std::string& filePath)
 			{
 				FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
-				FIBITMAP* dib(0);
+				FIBITMAP* dib = NULL;
 
 				fif = FreeImage_GetFileType(filePath.c_str(), 0);
 
 				if (fif == FIF_UNKNOWN)  fif = FreeImage_GetFIFFromFilename(filePath.c_str());
 
-				if (fif == FIF_UNKNOWN) throw TextureException("Unknown HeightMap format " + filePath + ".");
+				if (fif == FIF_UNKNOWN) throw TextureException("Unknown Texture format " + filePath + ".");
 
 				if (FreeImage_FIFSupportsReading(fif)) dib = FreeImage_Load(fif, filePath.c_str());
 
@@ -116,7 +116,6 @@ namespace PreEngine
 			ITexture* TextureFactory::CreateTexture(const std::string& filePath, bool generateMipMaps)
 			{
 				FIBITMAP* dib = GetImage(filePath);
-
 				if (!dib) return NULL;
 
 				unsigned char* data = FreeImage_GetBits(dib);

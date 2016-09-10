@@ -14,8 +14,6 @@ namespace PreEngine
 		protected:
 			EventChannel m_channel;
 
-			std::string m_name;
-
 		private:
 			System(const System&);
 

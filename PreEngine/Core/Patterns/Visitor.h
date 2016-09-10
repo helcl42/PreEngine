@@ -1,30 +1,38 @@
 #ifndef VISITOR_H
 #define VISITOR_H
 
-
-template <class VisitableType>
-class IVisitor
+namespace PreEngine
 {
-public:
-	virtual void Visit(VisitableType* visitable) = 0;
-
-public:
-	virtual ~IVisitor() {}
-};
-
-template <class VisitableType>
-class IVisitable
-{
-public:
-	template <typename VisitorType>
-	void Accept(VisitorType* visitor)
+	namespace Core
 	{
-		visitor->Visit(static_cast<VisitableType*>(this));
-	}
+		namespace Patterns
+		{
+			template <class VisitableType>
+			class IVisitor
+			{
+			public:
+				virtual void Visit(VisitableType* visitable) = 0;
 
-public:
-	virtual ~IVisitable() {}
-};
+			public:
+				virtual ~IVisitor() {}
+			};
+
+			template <class VisitableType>
+			class IVisitable
+			{
+			public:
+				template <typename VisitorType>
+				void Accept(VisitorType* visitor)
+				{
+					visitor->Visit(static_cast<VisitableType*>(this));
+				}
+
+			public:
+				virtual ~IVisitable() {}
+			};
+		}
+	}
+}
 
 //////////////////////////////////////////////////
 // Usage

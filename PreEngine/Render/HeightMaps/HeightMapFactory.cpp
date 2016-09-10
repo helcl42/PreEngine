@@ -159,6 +159,8 @@ namespace PreEngine
 				// indices
 				heightMap->m_vboIndices->Bind(GL_ELEMENT_ARRAY_BUFFER);
 				heightMap->m_vboIndices->UploadDataToGPU(GL_STATIC_DRAW);
+
+				glBindVertexArray(0);
 			}
 
 			void HeightMapFactory::InvalidateState()
@@ -172,18 +174,16 @@ namespace PreEngine
 				m_normals.clear();
 			}
 
-			IHeightMap* HeightMapFactory::CreateHeightMap(const std::string filePath)
+			HeightMap* HeightMapFactory::GetHeightMapCommon(const std::string textureFilePath)
 			{
-				InvalidateState();
-
-				FIBITMAP* dib = GetImage(filePath);
+				FIBITMAP* dib = GetImage(textureFilePath);
 
 				HeightMap* heightMap = new HeightMap();
 
 				unsigned char* data = FreeImage_GetBits(dib);
 
 				if (data == NULL || FreeImage_GetHeight(dib) == 0 || FreeImage_GetWidth(dib) == 0 || (FreeImage_GetBPP(dib) != 24 && FreeImage_GetBPP(dib) != 8))
-					throw HeightMapException("HeightMap " + filePath + " is invalid.");
+					throw HeightMapException("HeightMap " + textureFilePath + " is invalid.");
 
 				heightMap->m_rows = m_rows = FreeImage_GetHeight(dib);
 				heightMap->m_cols = m_cols = FreeImage_GetWidth(dib);
@@ -198,7 +198,14 @@ namespace PreEngine
 				BindHeightMapData(heightMap);
 				heightMap->m_vertexData = m_vertexData;
 				heightMap->m_isLoaded = true;
+				return heightMap;
+			}
 
+			IHeightMap* HeightMapFactory::CreateHeightMap(const std::string& textureFilePath)
+			{
+				HeightMap* heightMap = GetHeightMapCommon(textureFilePath);
+				heightMap->m_hasGrass = false;
+				InvalidateState();
 				return heightMap;
 			}
 		}

@@ -44,10 +44,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, 2);
 				}
 
-				void Line::RenderBoundingBox()
-				{
-				}
-
 				void Line::Delete()
 				{
 					m_vbo->Delete();

@@ -85,6 +85,26 @@ namespace PreEngine
 
 						virtual ~OnMouseScroll() {}
 					};
+
+					struct OnMouseLockRequest : BaseEvent
+					{
+						bool lock;
+
+						OnMouseLockRequest(bool l)
+							: lock(l) {}
+
+						virtual ~OnMouseLockRequest() {}
+					};
+
+					struct OnMouseShowRequest : BaseEvent
+					{
+						bool show;
+
+						OnMouseShowRequest(bool s)
+							: show(s) {}
+
+						virtual ~OnMouseShowRequest() {}
+					};
 				}
 			}
 		}

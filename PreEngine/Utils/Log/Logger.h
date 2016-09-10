@@ -2,6 +2,7 @@
 #define LOGGER_H
 
 #include "../../Core/Common.h"
+
 #include "LoggerException.h"
 
 namespace PreEngine
@@ -9,15 +10,17 @@ namespace PreEngine
 	namespace Utils
 	{
 		namespace Log
-		{
-			class Logger
+		{			
+			using namespace PreEngine::Core::Patterns;
+
+			class Logger : public Singleton<Logger>
 			{
 			private:
+				friend Singleton<Logger>;
+
 				friend struct LogHelper;
 
 			private:
-				static Logger s_instance;
-
 				struct LogHelper;
 
 				std::mutex m_mutex;
@@ -25,7 +28,7 @@ namespace PreEngine
 				std::ofstream m_outputFile;
 
 			private:
-				Logger(const Logger&);;
+				Logger(const Logger&);
 
 				Logger(Logger&&);
 
@@ -36,8 +39,6 @@ namespace PreEngine
 				Logger();
 
 			public:
-				static Logger& GetInstance();
-
 				void SetOutputFileName(const std::string& filename);
 
 				template <typename T>

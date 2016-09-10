@@ -12,7 +12,7 @@
 
 #include "../../Core/Common.h"
 #include "../../Core/Threading/Thread.h"
-#include "../../Core/Observer.h"
+#include "../../Core/Patterns/Observer.h"
 
 #include "TCPClientSocket.h"
 #include "../INetworkObservable.h"
@@ -27,6 +27,7 @@ namespace PreEngine
 			using namespace PreEngine::Core::Threading;
 			using namespace PreEngine::Network;
 			using namespace PreEngine::Core;
+			using namespace PreEngine::Core::Patterns;
 
 			class TCPStreamClient : public Thread
 			{

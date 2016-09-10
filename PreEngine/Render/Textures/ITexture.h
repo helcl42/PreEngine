@@ -22,8 +22,6 @@ namespace PreEngine
 
 				virtual void Bind(int textureUnit = 0) = 0;
 
-				virtual void Unbind() = 0;
-
 				virtual void SetSamplerParameter(GLenum parameter, GLenum value) = 0;
 
 				virtual unsigned int GetWidth() const = 0;
@@ -46,7 +44,7 @@ namespace PreEngine
 
 				virtual std::string GetPath() const = 0;
 
-				virtual void Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format) = 0;
+				virtual void Update(unsigned int w, unsigned int h, GLvoid* data, GLenum inputDataFormat, GLint internalFormat, bool generateMipMaps) = 0;
 
 				virtual bool IsInitialized() const = 0;
 

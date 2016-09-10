@@ -4,13 +4,6 @@ namespace PreEngine
 {
 	namespace Core
 	{
-		IDGenerator IDGenerator::s_instance;
-
-		IDGenerator& IDGenerator::GetInstance()
-		{
-			return s_instance;
-		}
-
 		IDGenerator::IDGenerator()
 		{
 		}

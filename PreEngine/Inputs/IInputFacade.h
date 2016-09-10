@@ -33,6 +33,14 @@ namespace PreEngine
 
 			virtual const OnMouseScroll& GetLastScroll() const = 0;
 
+			virtual void ShowCursor(bool show) = 0;
+
+			virtual bool IsCursorShown() const = 0;
+
+			virtual void LockMouse(bool lock) = 0;
+
+			virtual bool IsMouseLocked() const = 0;
+
 			virtual void RegisterMouseButtonListener(IMouseButtonListener* listener) = 0;
 
 			virtual void UnregisterMouseButtonListener(IMouseButtonListener* listener) = 0;

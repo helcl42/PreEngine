@@ -11,7 +11,7 @@
 #include "Shaders/ShaderProgram.h"
 #include "Shaders/ShaderFactory.h"
 #include "Frustums/ViewFrustum.h"
-#include "SceneLayout.h"
+#include "SceneEye.h"
 #include "ScenePosition.h"
 #include "SceneEye.h"
 #include "../Core/Object.h"
@@ -41,8 +41,6 @@ namespace PreEngine
 
 			glm::mat4 m_orthographicProjectionMatrix;
 
-			SceneLayout m_sceneLayout;
-
 			ScenePosition m_scenePosition;
 
 			SceneEye m_sceneEye;
@@ -54,6 +52,8 @@ namespace PreEngine
 			std::vector<ISceneNode<RootType>*> m_children;
 
 			float m_deltaTime;			
+
+			bool m_enabled;
 
 		public:
 			SceneNode(unsigned int sceneId = 0, enum ScenePosition position = ScenePosition::NONE, enum SceneEye eye = SceneEye::CENTER_EYE);
@@ -98,6 +98,10 @@ namespace PreEngine
 
 			void SetTag(const std::string& tag);
 
+			void SetEnabled(bool enabled);
+
+			bool IsEnabled() const;
+
 			void AddChild(ISceneNode<RootType>* child);
 
 			std::vector<ISceneNode<RootType>*> FindByTag(const std::string& tag) const;
@@ -119,14 +123,10 @@ namespace PreEngine
 
 		template <class ObjectType, class RootType>
 		SceneNode<ObjectType, RootType>::SceneNode(unsigned int sceneId, enum ScenePosition position, enum SceneEye eye)
-			: m_sceneId(sceneId), m_scenePosition(position), m_root(NULL), m_sceneEye(eye)
+			: m_sceneId(sceneId), m_scenePosition(position), m_root(NULL), m_sceneEye(eye), m_enabled(true)
 		{
 			m_tag = m_name;
 			m_viewFrustumChangeHandler = new EventHandler<SceneNode, OnViewFrustumChange>(this);
-
-			if (m_scenePosition == ScenePosition::LEFT || m_scenePosition == ScenePosition::RIGHT) m_sceneLayout = SceneLayout::SIDE_BY_SIDE;
-			else if (m_scenePosition == ScenePosition::BOTTOM || m_scenePosition == ScenePosition::TOP) m_sceneLayout = SceneLayout::OVER_UNDER;
-			else m_sceneLayout = SceneLayout::SINGLE;
 		}
 
 		template <class ObjectType, class RootType>
@@ -235,6 +235,18 @@ namespace PreEngine
 		void SceneNode<ObjectType, RootType>::SetTag(const std::string& tagName)
 		{
 			m_tag = tagName;
+		}
+
+		template <class ObjectType, class RootType>
+		void SceneNode<ObjectType, RootType>::SetEnabled(bool enabled)
+		{
+			m_enabled = enabled;
+		}
+
+		template <class ObjectType, class RootType>
+		bool SceneNode<ObjectType, RootType>::IsEnabled() const
+		{
+			return m_enabled;
 		}
 
 		template <class ObjectType, class RootType>

@@ -3,7 +3,7 @@
 
 #include "ScenePosition.h"
 #include "ISceneNode.h"
-#include "SceneLayout.h"
+#include "SceneEye.h"
 
 namespace PreEngine
 {
@@ -29,7 +29,7 @@ namespace PreEngine
 
 			virtual unsigned int GetHeight() const = 0;
 
-			virtual SceneLayout GetSceneLayout() const = 0;
+			virtual SceneEye GetSceneEye() const = 0;
 
 		public:
 			virtual ~IScene() {}

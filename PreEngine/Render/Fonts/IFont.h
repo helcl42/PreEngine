@@ -20,6 +20,8 @@ namespace PreEngine
 
 				virtual void Print(const std::string& text, int x, int y, int pxSize = -1) = 0;
 
+				virtual void Print(const std::wstring& text, int x, int y, int pxSize = -1) = 0;
+
 				virtual void Delete() = 0;
 
 				virtual void SetShaderProgram(IShaderProgram* shaderProgram) = 0;

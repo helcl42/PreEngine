@@ -39,10 +39,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, 36);
 				}
 
-				void Cube::RenderBoundingBox()
-				{
-				}
-
 				void Cube::Delete()
 				{
 					m_vbo->Delete();

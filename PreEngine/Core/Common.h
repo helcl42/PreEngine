@@ -2,9 +2,9 @@
 #define COMMON_H
 
 // Memory leak debugger
-#ifdef _DEBUG
-	#include <vld.h> 
-#endif
+//#ifdef _DEBUG
+//	#include <vld.h> 
+//#endif
 
 #include <cstdlib>
 #include <time.h>
@@ -29,7 +29,7 @@
 #define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE 
 #define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF 
 
-#include "../OpenGL/gl_core_4_4.h"
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #define GLM_FORCE_RADIANS
@@ -38,6 +38,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/compatibility.hpp>
+
+#include "Patterns/StateMachine.h"
+#include "Patterns/Singleton.h"
+#include "Patterns/Observer.h"
+#include "Patterns/Visitor.h"
+#include "Patterns/Nullable.h"
 
 #include "IDGenerator.h"
 #include "../Utils/GL/GLUtils.h"

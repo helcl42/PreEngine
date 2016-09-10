@@ -33,6 +33,8 @@ namespace PreEngine
 
 				virtual void Render() = 0;
 
+				virtual void RenderGrass() = 0;
+
 				virtual void RenderNormals() = 0;
 
 				virtual void ShutDown() = 0;
@@ -42,6 +44,22 @@ namespace PreEngine
 				virtual IShaderProgram* GetShaderProgram() const = 0;
 
 				virtual void SetShaderProgram(IShaderProgram* program) = 0;
+
+				virtual IShaderProgram* GetGrassShaderProgram() const = 0;
+
+				virtual void SetGrassShaderProgram(IShaderProgram* program) = 0;
+
+				virtual void SetHasGrass(bool has) = 0;
+
+				virtual bool HasGrass() const = 0;
+
+				virtual void SetMinGrassLevel(float minLevel) = 0;
+
+				virtual float GetMinGrassLevel() const = 0;
+
+				virtual void SetMaxGrassLevel(float maxLevel) = 0;
+
+				virtual float GetMaxGrassLevel() const = 0;
 
 			public:
 				virtual ~IHeightMap() {}

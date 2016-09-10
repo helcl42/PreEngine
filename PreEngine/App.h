@@ -33,8 +33,15 @@ namespace PreEngine
 
 		AppState m_state;
 
+		bool m_externalConfig = false;;
+
+	private:
+		void OnCreate();
+
 	public:
 		App(const std::string& configPath);
+
+		App(ConfigType* config);
 
 		virtual ~App();
 
@@ -50,22 +57,37 @@ namespace PreEngine
 	template <class ClientType, class EngineType, class ConfigType>
 	App<ClientType, EngineType, ConfigType>::App(const std::string& configPath)
 	{
-		Logger::GetInstance().SetOutputFileName(GetCanonicalName() + ".log");
-		Logger::GetInstance().Info() << "App '" + GetName() + "' Started";
-
-		m_state = AppState::NOT_INITIALIZED;
-
+		OnCreate();
 		m_config = new ConfigType(configPath);
 		m_engine = new EngineType(m_config);
+		m_externalConfig = false;
+	}
+
+	template <class ClientType, class EngineType, class ConfigType>
+	App<ClientType, EngineType, ConfigType>::App(ConfigType* config)
+	{
+		OnCreate();
+		m_config = config;
+		m_engine = new EngineType(m_config);
+		m_externalConfig = true;
 	}
 
 	template <class ClientType, class EngineType, class ConfigType>
 	App<ClientType, EngineType, ConfigType>::~App()
 	{
 		SAFE_DELETE(m_engine);
-		SAFE_DELETE(m_config);
+		if(!m_externalConfig) SAFE_DELETE(m_config);
 
 		Logger::GetInstance().Info() << "App '" + GetName() + "' Finished";
+	}
+
+	template <class ClientType, class EngineType, class ConfigType>
+	void App<ClientType, EngineType, ConfigType>::OnCreate()
+	{
+		Logger::GetInstance().SetOutputFileName(GetCanonicalName() + ".log");
+		Logger::GetInstance().Info() << "App '" + GetName() + "' Started";
+
+		m_state = AppState::NOT_INITIALIZED;
 	}
 
 	template <class ClientType, class EngineType, class ConfigType>

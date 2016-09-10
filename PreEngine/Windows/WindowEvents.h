@@ -25,8 +25,6 @@ namespace PreEngine
 
 			struct OnCreate : BaseEvent
 			{
-				std::string message;
-
 				GLWindow<GLFWwindow>* window;
 
 
@@ -35,7 +33,6 @@ namespace PreEngine
 				OnCreate(GLWindow<GLFWwindow>* window)
 					: window(window)
 				{
-					message = std::string("Hey I'm created window.");
 				}
 
 				virtual ~OnCreate()
@@ -45,9 +42,7 @@ namespace PreEngine
 
 
 			struct OnFocus : BaseEvent
-			{
-				std::string message;
-
+			{				
 				GLFWwindow* window;
 
 				unsigned int sceneId;
@@ -59,7 +54,6 @@ namespace PreEngine
 				OnFocus(unsigned int sceneId, GLFWwindow* window, bool focused)
 					: sceneId(sceneId), window(window), isFocused(focused)
 				{
-					message = std::string("Hey I focus window.");
 				}
 
 				virtual ~OnFocus()
@@ -69,8 +63,6 @@ namespace PreEngine
 
 			struct OnResize : BaseEvent
 			{
-				std::string message;
-
 				GLFWwindow* window;
 
 				unsigned int sceneId;
@@ -85,7 +77,6 @@ namespace PreEngine
 				OnResize(unsigned int sceneId, GLFWwindow* window, int width, int height)
 					: sceneId(sceneId), window(window), width(width), height(height)
 				{
-					message = std::string("Hey I'm resizing window.");
 				}
 
 				virtual ~OnResize()
@@ -95,8 +86,6 @@ namespace PreEngine
 
 			struct OnMove : BaseEvent
 			{
-				std::string message;
-
 				PreEngine::Windows::GLWindow<GLFWwindow>* window;
 
 				unsigned int sceneId;
@@ -109,7 +98,6 @@ namespace PreEngine
 				OnMove(unsigned int sceneId, PreEngine::Windows::GLWindow<GLFWwindow>* window, enum PreEngine::Windows::MoveDirection direction)
 					: sceneId(sceneId), window(window), direction(direction)
 				{
-					message = std::string("Hey I'm moving window window.");
 				}
 
 				virtual ~OnMove()
@@ -120,8 +108,6 @@ namespace PreEngine
 
 			struct ToggleFullscreen : BaseEvent
 			{
-				std::string message;
-
 				PreEngine::Windows::GLWindow<GLFWwindow>* window;
 
 				unsigned int sceneId;
@@ -134,7 +120,6 @@ namespace PreEngine
 				ToggleFullscreen(unsigned int sceneId, PreEngine::Windows::GLWindow<GLFWwindow>* window, bool fullScreen)
 					: sceneId(sceneId), window(window), fullScreen(fullScreen)
 				{
-					message = std::string("Hey I toggle to/from fullscreen");
 				}
 
 				virtual ~ToggleFullscreen()
@@ -145,8 +130,6 @@ namespace PreEngine
 
 			struct OnReset : BaseEvent
 			{
-				std::string message;
-
 				PreEngine::Windows::GLWindow<GLFWwindow>* window;
 
 				unsigned int sceneId;
@@ -157,7 +140,6 @@ namespace PreEngine
 				OnReset(unsigned int sceneId, PreEngine::Windows::GLWindow<GLFWwindow>* window)
 					: sceneId(sceneId), window(window)
 				{
-					message = std::string("Hey I'm reseting window.");
 				}
 
 				virtual ~OnReset()
@@ -168,8 +150,6 @@ namespace PreEngine
 
 			struct OnClose : BaseEvent
 			{
-				std::string message;
-
 				PreEngine::Windows::GLWindow<GLFWwindow>* window;
 
 
@@ -178,7 +158,6 @@ namespace PreEngine
 				OnClose(PreEngine::Windows::GLWindow<GLFWwindow>* window)
 					: window(window)
 				{
-					message = std::string("Hey I'm closing window :(");
 				}
 
 				virtual ~OnClose()

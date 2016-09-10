@@ -27,7 +27,6 @@ namespace PreEngine
 				void EngineConfig::Init()
 				{
 					m_windowTitle = m_root["WindowTitle"].asString();
-					m_unlimitedLoop = m_root["UnlimitedLoop"].asBool();
 
 					const Json::Value scenes = m_root["Scenes"];
 					for (unsigned int index = 0; index < scenes.size(); ++index)
@@ -36,6 +35,12 @@ namespace PreEngine
 
 						SceneItemConfig* item = new SceneItemConfig(scene);
 						m_sceneItems.push_back(item);
+					}
+
+					m_vSync = false;
+					if (m_root.isMember("VSync"))
+					{
+						m_vSync = m_root["VSync"].asBool();
 					}
 
 					if (m_root.isMember("OpenGL"))
@@ -58,19 +63,24 @@ namespace PreEngine
 					m_windowTitle = title;
 				}
 
-				bool EngineConfig::IsUnlimitedLoop() const
+				bool EngineConfig::IsVSyncEnabled() const
 				{
-					return m_unlimitedLoop;
+					return m_vSync;
 				}
 
-				void EngineConfig::SetUnlimitedLoop(bool unlimited)
+				void EngineConfig::SetVSyncEnabled(bool enabled)
 				{
-					m_unlimitedLoop = unlimited;
+					m_vSync = enabled;
 				}
-
+			
 				std::vector<SceneItemConfig*> EngineConfig::GetSceneItems() const
 				{
 					return m_sceneItems;
+				}
+
+				SceneItemConfig* EngineConfig::GetSceneItem(unsigned int index) const
+				{
+					return m_sceneItems[index];
 				}
 
 				void EngineConfig::SetSceneItems(std::vector<SceneItemConfig*> sceneItems)

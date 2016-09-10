@@ -40,7 +40,7 @@ namespace PreEngine
 
 			EventHandler<AbstractScene<RootType>, Windows::Events::OnResize>* m_resizeHandler;
 
-			SceneLayout m_sceneLayout;
+			SceneEye m_sceneEye;
 
 			SceneItemConfig* m_sceneConfig;
 
@@ -56,7 +56,7 @@ namespace PreEngine
 
 			unsigned int GetHeight() const;
 
-			SceneLayout GetSceneLayout() const;
+			SceneEye GetSceneEye() const;
 
 		public:
 			void operator() (const Windows::Events::OnResize& resize);
@@ -67,7 +67,7 @@ namespace PreEngine
 		AbstractScene<RootType>::AbstractScene(unsigned int sceneId, SceneItemConfig* sceneConfig)
 			: m_sceneId(sceneId), m_sceneConfig(sceneConfig)
 		{
-			m_sceneLayout = sceneConfig->GetSceneLayout();
+			m_sceneEye = sceneConfig->GetSceneEye();
 			m_resizeHandler = new EventHandler<AbstractScene, Windows::Events::OnResize>(this);
 
 			ViewFrustumConfig* frustumConfig = sceneConfig->GetViewFrustumConfig();
@@ -101,9 +101,9 @@ namespace PreEngine
 		}
 
 		template <class RootType>
-		SceneLayout AbstractScene<RootType>::GetSceneLayout() const
+		SceneEye AbstractScene<RootType>::GetSceneEye() const
 		{
-			return m_sceneLayout;
+			return m_sceneEye;
 		}
 
 		template <class RootType>

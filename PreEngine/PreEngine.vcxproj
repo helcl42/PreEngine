@@ -67,15 +67,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\build\code\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3160Win32\FreeImage\Dist;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN32\glfw-3.2.bin.WIN32\lib-vc2015;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\build\src\lib_json\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\build\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\build\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\PreEngine\Glad\include;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
     <TargetExt>.lib</TargetExt>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\build\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\lib-vc2015;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\build\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\build\x64\Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\build\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\GLFW\GLFW_x64\glfw\build\src\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\build\x64\Debug;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\build\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\PreEngine\Glad\include;$(PREENGINE_DEPENDENCIES_ROOT)\GLFW\GLFW_x64\glfw\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
@@ -84,11 +84,11 @@
     <TargetExt>.lib</TargetExt>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN32\glfw-3.2.bin.WIN32\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\PreEngine\Glad\include;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN32\glfw-3.2.bin.WIN32\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\lib-vc2015;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\build\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\build\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\build\x64\Release;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\glfw-3.2.bin.WIN64\glfw-3.2.bin.WIN64\include;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.1.1-win-binaries\assimp-3.1.1-win-binaries\lib64;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\GLFW\GLFW_x64\glfw\build\src\Release;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\build\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\build\x64\Release;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\build\x64\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\PreEngine\Glad\include;$(PREENGINE_DEPENDENCIES_ROOT)\GLFW\GLFW_x64\glfw\include;$(PREENGINE_DEPENDENCIES_ROOT)\lua-5.3.2\lua-5.3.2;$(PREENGINE_DEPENDENCIES_ROOT)\assimp-3.2\assimp-3.2\assimp-3.2\include;$(PREENGINE_DEPENDENCIES_ROOT)\FreeImage3170Win32Win64\FreeImage\Dist\x64;$(PREENGINE_DEPENDENCIES_ROOT)\freetype-2.6.3\freetype-2.6.3\include;$(PREENGINE_DEPENDENCIES_ROOT)\glm-0.9.7.3\glm;$(PREENGINE_DEPENDENCIES_ROOT)\jsoncpp-1.7.0\jsoncpp-1.7.0\include;$(PREENGINE_DEPENDENCIES_ROOT)\openal-soft\openal-soft\include;$(IncludePath)</IncludePath>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -177,6 +177,7 @@
     <ClCompile Include="Core\Threading\STLThread.cpp" />
     <ClCompile Include="Core\Threading\Thread.cpp" />
     <ClCompile Include="Core\IDGenerator.cpp" />
+    <ClCompile Include="Glad\src\glad.c" />
     <ClCompile Include="Inputs\AbstractInputComponent.cpp" />
     <ClCompile Include="Inputs\InputFacade.cpp" />
     <ClCompile Include="Inputs\Keyboards\KeyboardInputComponent.cpp" />
@@ -194,10 +195,10 @@
     <ClCompile Include="Render\Effects\Fog.cpp" />
     <ClCompile Include="Render\Effects\Shadows.cpp" />
     <ClCompile Include="Render\Fonts\AbstractFont.cpp" />
-    <ClCompile Include="Render\Fonts\SimpleFont\SimpleFont.cpp" />
     <ClCompile Include="Render\Models\MD2\AnimationType.cpp" />
     <ClCompile Include="Render\Models\MD5\MD5Model.cpp" />
     <ClCompile Include="Render\Models\MD5\MD5ModelFactory.cpp" />
+    <ClCompile Include="Render\Models\Primitives\Circle.cpp" />
     <ClCompile Include="Render\Models\Primitives\Line.cpp" />
     <ClCompile Include="Render\Models\Primitives\Quad.cpp" />
     <ClCompile Include="Render\Picking\Ray.cpp" />
@@ -219,7 +220,6 @@
     <ClCompile Include="Render\Models\Primitives\Sphere.cpp" />
     <ClCompile Include="Render\Models\Primitives\Teapot.cpp" />
     <ClCompile Include="Render\Models\Primitives\Torus.cpp" />
-    <ClCompile Include="OpenGL\gl_core_4_4.c" />
     <ClCompile Include="Render\Particles\ParticleSystemTransformFeedback.cpp" />
     <ClCompile Include="Render\Picking\ColorPicking.cpp" />
     <ClCompile Include="Render\Picking\RayCastingPicking.cpp" />
@@ -262,6 +262,7 @@
     <ClCompile Include="Utils\Network\HostToIPUtil.cpp" />
     <ClCompile Include="Utils\Serialization\Json\JsonSerializer.cpp" />
     <ClCompile Include="Utils\StringUtils.cpp" />
+    <ClCompile Include="Utils\Time\FPSService.cpp" />
     <ClCompile Include="Utils\Time\Timers\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +278,10 @@
     <ClInclude Include="Core\Config\ConfigExeption.h" />
     <ClInclude Include="Core\Engines\Config\EngineConfig.h" />
     <ClInclude Include="Core\Engines\Config\OpenGLConfig.h" />
+    <ClInclude Include="Core\Patterns\Singleton.h" />
+    <ClInclude Include="Glad\include\glad\glad.h" />
+    <ClInclude Include="Glad\include\KHR\khrplatform.h" />
+    <ClInclude Include="Render\Models\Primitives\Circle.h" />
     <ClInclude Include="Render\SceneEye.h" />
     <ClInclude Include="Core\Engines\Config\SceneItemConfig.h" />
     <ClInclude Include="Core\Engines\Config\ViewFrustumConfig.h" />
@@ -284,14 +289,14 @@
     <ClInclude Include="Core\Engines\Engine.h" />
     <ClInclude Include="Core\Engines\EngineException.h" />
     <ClInclude Include="Core\Events\BaseEvent.h" />
-    <ClInclude Include="Core\Nullable.h" />
+    <ClInclude Include="Core\Patterns\Nullable.h" />
     <ClInclude Include="Core\Object.h" />
-    <ClInclude Include="Core\Observer.h" />
+    <ClInclude Include="Core\Patterns\Observer.h" />
     <ClInclude Include="Core\Threading\IThread.h" />
     <ClInclude Include="Core\Threading\STLThread.h" />
     <ClInclude Include="Core\Threading\Thread.h" />
     <ClInclude Include="Core\IDGenerator.h" />
-    <ClInclude Include="Core\Visitor.h" />
+    <ClInclude Include="Core\Patterns\Visitor.h" />
     <ClInclude Include="Inputs\AbstractInputComponent.h" />
     <ClInclude Include="Inputs\IInputFacade.h" />
     <ClInclude Include="Inputs\InputFacade.h" />
@@ -322,6 +327,7 @@
     <ClInclude Include="Inputs\Core\Keyboards\KeyboardEvents.h" />
     <ClInclude Include="Inputs\Core\Mouses\MouseEvents.h" />
     <ClInclude Include="Render\Frustums\ViewFrustumEvents.h" />
+    <ClInclude Include="Utils\Time\FPSService.h" />
     <ClInclude Include="Windows\WindowEvents.h" />
     <ClInclude Include="Core\System.h" />
     <ClInclude Include="Render\DoubleScene.h" />
@@ -329,7 +335,6 @@
     <ClInclude Include="Render\Effects\IEffect.h" />
     <ClInclude Include="Render\Effects\Shadows.h" />
     <ClInclude Include="Render\Fonts\AbstractFont.h" />
-    <ClInclude Include="Render\Fonts\SimpleFont\SimpleFont.h" />
     <ClInclude Include="Render\Fonts\IFont.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="AppException.h" />
@@ -358,7 +363,6 @@
     <ClInclude Include="Render\Lightning\Material.h" />
     <ClInclude Include="Render\Lightning\PointLight.h" />
     <ClInclude Include="Render\Lightning\SpotLight.h" />
-    <ClInclude Include="OpenGL\gl_core_4_4.h" />
     <ClInclude Include="Render\Models\IAnimatedModel.h" />
     <ClInclude Include="Render\Models\MD2\AnimationType.h" />
     <ClInclude Include="Render\Models\Primitives\AbstractDrawableObject.h" />
@@ -370,7 +374,6 @@
     <ClInclude Include="Render\Models\Primitives\Teapot.h" />
     <ClInclude Include="Render\Models\Primitives\TeapotData.h" />
     <ClInclude Include="Render\Models\Primitives\Torus.h" />
-    <ClInclude Include="Render\SceneLayout.h" />
     <ClInclude Include="Render\Frustums\IViewFrustum.h" />
     <ClInclude Include="Render\Models\MD2\MD2ModelCommon.h" />
     <ClInclude Include="Render\Models\MD2\IMD2ModelFactory.h" />
@@ -384,8 +387,8 @@
     <ClInclude Include="Scripting\LuaAPIHelper.h" />
     <ClInclude Include="Scripting\ScriptingException.h" />
     <ClInclude Include="Scripting\Scriptor.h" />
-    <ClInclude Include="AI\FSM\IState.h" />
-    <ClInclude Include="AI\FSM\StateMachine.h" />
+    <ClInclude Include="Core\Patterns\IState.h" />
+    <ClInclude Include="Core\Patterns\StateMachine.h" />
     <ClInclude Include="Utils\Memory\MemoryUtil.h" />
     <ClInclude Include="Utils\Network\HostToIPUtil.h" />
     <ClInclude Include="Utils\Serialization\Json\IJsonSerializable.h" />

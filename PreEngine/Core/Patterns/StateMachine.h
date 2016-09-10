@@ -5,9 +5,9 @@
 
 namespace PreEngine
 {
-	namespace Utils
+	namespace Core
 	{
-		namespace AI
+		namespace Patterns
 		{
 			template <class ObjectType>
 			class StateMachine
@@ -34,24 +34,24 @@ namespace PreEngine
 
 				void SetPreviousState(IState<ObjectType>* state);
 
-				void  Update();
+				void Update();
 
-				void  ChangeState(IState<ObjectType>* newState);
+				void ChangeState(IState<ObjectType>* newState);
 
-				void  RevertToPreviousState();
+				void RevertToPreviousState();
 
-				bool  IsInState(const IState<ObjectType>& st) const;
+				bool IsInState(const IState<ObjectType>* st) const;
 
-				IState<ObjectType>* CurrentState() const;
+				IState<ObjectType>* GetCurrentState() const;
 
-				IState<ObjectType>* GlobalState() const;
+				IState<ObjectType>* GetGlobalState() const;
 
-				IState<ObjectType>* PreviousState() const;
+				IState<ObjectType>* GetPreviousState() const;
 			};
 
 			template <class ObjectType>
 			StateMachine<ObjectType>::StateMachine(ObjectType* owner)
-				: m_owner(owner), m_pCurrentState(NULL), m_pPreviousState(NULL), m_pGlobalState(NULL)
+				: m_owner(owner), m_currentState(NULL), m_previousState(NULL), m_globalState(NULL)
 			{
 			}
 
@@ -63,27 +63,27 @@ namespace PreEngine
 			template <class ObjectType>
 			void StateMachine<ObjectType>::SetCurrentState(IState<ObjectType>* state)
 			{
-				m_pCurrentState = state;
+				m_currentState = state;
 			}
 
 			template <class ObjectType>
 			void StateMachine<ObjectType>::SetGlobalState(IState<ObjectType>* state)
 			{
-				m_pGlobalState = state;
+				m_globalState = state;
 			}
 
 			template <class ObjectType>
 			void StateMachine<ObjectType>::SetPreviousState(IState<ObjectType>* state)
 			{
-				m_pPreviousState = state;
+				m_previousState = state;
 			}
 
 			template <class ObjectType>
 			void StateMachine<ObjectType>::Update()
 			{
-				if (m_globalState)   m_pGlobalState->Execute(m_owner);
+				if (m_globalState) m_globalState->Execute(m_owner);
 
-				if (m_currentState) m_pCurrentState->Execute(m_owner);
+				if (m_currentState) m_currentState->Execute(m_owner);
 			}
 
 			template <class ObjectType>
@@ -101,31 +101,32 @@ namespace PreEngine
 			template <class ObjectType>
 			void StateMachine<ObjectType>::RevertToPreviousState()
 			{
-				ChangeState(m_pPreviousState);
+				ChangeState(m_previousState);
 			}
 
 			template <class ObjectType>
-			bool StateMachine<ObjectType>::IsInState(const IState<ObjectType>& st)const
+			bool StateMachine<ObjectType>::IsInState(const IState<ObjectType>* st) const
 			{
-				return typeid(*m_pCurrentState) == typeid(st);
+				if (m_currentState == NULL) return false;
+				return m_currentState == st;
 			}
 
 			template <class ObjectType>
-			IState<ObjectType>* StateMachine<ObjectType>::CurrentState()  const
+			IState<ObjectType>* StateMachine<ObjectType>::GetCurrentState() const
 			{
-				return m_pCurrentState;
+				return m_currentState;
 			}
 
 			template <class ObjectType>
-			IState<ObjectType>* StateMachine<ObjectType>::GlobalState()   const
+			IState<ObjectType>* StateMachine<ObjectType>::GetGlobalState() const
 			{
-				return m_pGlobalState;
+				return m_globalState;
 			}
 
 			template <class ObjectType>
-			IState<ObjectType>* StateMachine<ObjectType>::PreviousState() const
+			IState<ObjectType>* StateMachine<ObjectType>::GetPreviousState() const
 			{
-				return m_pPreviousState;
+				return m_previousState;
 			}
 		}
 	}

@@ -40,15 +40,37 @@ namespace PreEngine
 
 				IVertexBufferObject* m_vboIndices;
 
+				IVertexBufferObject* m_vboGrass;
+
 				IShaderProgram* m_program;
 
 				IShaderFactory* m_shaderFactory;
 
+				bool m_hasGrass;
+
+				float m_minGrassLevel = 0.0f;
+
+				float m_maxGrassLevel = 1.0f;
+
+				int m_countOfGrassTraingles = 0;
+
+				GLuint m_grassVertexAttributeObject;
+
+				IShaderProgram* m_grassProgram;
+
+				float m_deltaTime = 0.0f;
+
+				float m_elasedTime = 0.0f;
 
 			public:
 				HeightMap();
 
 				virtual ~HeightMap();
+
+			private:
+				void DeleteGrass();
+
+				void GenerateGrass();
 
 			public:
 				bool IsLoaded() const;
@@ -69,6 +91,8 @@ namespace PreEngine
 
 				void Render();
 
+				void RenderGrass();
+
 				void RenderNormals();
 
 				void ShutDown();
@@ -78,6 +102,22 @@ namespace PreEngine
 				IShaderProgram* GetShaderProgram() const;
 
 				void SetShaderProgram(IShaderProgram* program);
+
+				IShaderProgram* GetGrassShaderProgram() const;
+
+				void SetGrassShaderProgram(IShaderProgram* program);
+
+				void SetHasGrass(bool has);
+
+				bool HasGrass() const;
+
+				void SetMinGrassLevel(float minLevel);
+
+				float GetMinGrassLevel() const;
+
+				void SetMaxGrassLevel(float maxLevel);
+
+				float GetMaxGrassLevel() const;
 			};
 		}
 	}

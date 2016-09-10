@@ -7,11 +7,14 @@ namespace PreEngine
 {
 	namespace Core
 	{
-		class IDGenerator
+		using namespace PreEngine::Core::Patterns;
+
+		class IDGenerator : public Singleton<IDGenerator>
 		{
 		private:
-			static IDGenerator s_instance;
+			friend Singleton<IDGenerator>;
 
+		private:			
 			std::mutex m_mutex;
 
 			uint64_t m_identifier = 0;
@@ -20,8 +23,6 @@ namespace PreEngine
 			IDGenerator();
 
 		public:
-			static IDGenerator& GetInstance();
-
 			virtual ~IDGenerator();
 
 		public:

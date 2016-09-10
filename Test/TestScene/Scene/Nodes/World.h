@@ -5,6 +5,7 @@
 #include <PreEngine/Inputs/InputFacade.h>
 #include <PreEngine/Utils/Render/RenderUtil.h>
 #include <PreEngine/Audio/SoundFactory.h>
+#include <PreEngine/Utils/Time/FPSService.h>
 
 #include "BaseSceneNode.h"
 #include "Skybox/SkyboxSceneNode.h"
@@ -31,6 +32,7 @@ namespace TestScene
 		using namespace PreEngine::Utils::Render;
 		using namespace PreEngine::Inputs;
 		using namespace PreEngine::Audio;
+		using namespace PreEngine::Utils::Time;
 
 		class World : public BaseSceneNode<World, World>, public IKeyboardListener
 		{
@@ -42,6 +44,8 @@ namespace TestScene
 			Material m_shinyMaterial;
 
 			ISound* m_windowSound;
+
+			FPSService m_fpsService;
 
 			CameraSceneNode<World>* m_camera;
 

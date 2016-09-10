@@ -9,7 +9,7 @@
 #define	TIMER_H
 
 #include "../../../Core/Common.h"
-#include "../../../Core/Observer.h"
+#include "../../../Core/Patterns/Observer.h"
 #include "../../../Core/Threading/Thread.h"
 
 #include "ITimer.h"
@@ -24,6 +24,7 @@ namespace PreEngine
 			namespace Timers
 			{
 				using namespace PreEngine::Core;
+				using namespace PreEngine::Core::Patterns;
 				using namespace PreEngine::Core::Threading;
 				using namespace PreEngine::Utils::Log;
 
@@ -34,7 +35,13 @@ namespace PreEngine
 
 					bool m_runOnce = false;
 
-					Observer<ITimerObservable> m_observer;
+					bool m_forceStop = false;
+
+					bool m_paused = false;
+
+					long m_elapsedMs = 0;
+
+					Observer<ITimerObservable> m_observer;					
 
 				public:
 					Timer(bool runOnceOnly);
@@ -53,9 +60,17 @@ namespace PreEngine
 				public:
 					void Start();
 
+					void Pause();
+
+					void TogglePause();
+
 					void Stop();
 
-					void SetMsTimeout(unsigned int timeout);
+					void SetMSTimeout(unsigned int timeout);
+
+					unsigned int GetMSTimeout() const;
+
+					long GetElapsedTimeInMS() const;
 
 					bool IsActive() const;
 

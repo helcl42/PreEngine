@@ -51,6 +51,26 @@ namespace PreEngine
 			return m_mouseComponent->GetLastScroll();
 		}
 
+		void InputFacade::ShowCursor(bool show)
+		{
+			m_mouseComponent->ShowCursor(show);
+		}
+
+		bool InputFacade::IsCursorShown() const
+		{
+			return m_mouseComponent->IsCursorShown();
+		}
+
+		void InputFacade::LockMouse(bool lock)
+		{
+			m_mouseComponent->LockMouse(lock);
+		}
+
+		bool InputFacade::IsMouseLocked() const
+		{
+			return m_mouseComponent->IsMouseLocked();
+		}
+
 		void InputFacade::RegisterMouseButtonListener(IMouseButtonListener* listener)
 		{
 			m_mouseComponent->RegisterMouseButtonListener(listener);

@@ -86,10 +86,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, m_countOfFaces * 3);
 				}
 
-				void Cylinder::RenderBoundingBox()
-				{
-				}
-
 				void Cylinder::Delete()
 				{
 					m_vbo->Delete();

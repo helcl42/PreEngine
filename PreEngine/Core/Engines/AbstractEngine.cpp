@@ -10,7 +10,6 @@ namespace PreEngine
 				: m_config(config)
 			{
 				m_shutDownRquestHandler = new EventHandler<AbstractEngine, OnEngineShutDownRequest>(this);
-				m_unlimitedLoop = config->IsUnlimitedLoop();
 
 				m_clock = new Clock<float>();
 				m_input = new Input();

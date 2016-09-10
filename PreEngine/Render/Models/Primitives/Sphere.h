@@ -32,8 +32,6 @@ namespace PreEngine
 
 					void Render(GLenum how = GL_TRIANGLES);
 
-					void RenderBoundingBox();
-
 					void Delete();
 				};
 			}

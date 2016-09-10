@@ -63,6 +63,10 @@ namespace PreEngine
 				{
 					return m_countOfFaces;
 				}
+
+				void AbstractDrawableObject::RenderBoundingBox()
+				{
+				}
 			}
 		}
 	}

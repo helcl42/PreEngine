@@ -46,6 +46,8 @@ namespace PreEngine
 					bool IsLoaded() const;
 
 					unsigned int GetPolygonCount() const;
+
+					virtual void RenderBoundingBox();
 				};
 			}
 		}

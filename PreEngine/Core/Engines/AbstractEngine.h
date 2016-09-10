@@ -38,10 +38,6 @@ namespace PreEngine
 
 				IClock<float>* m_clock;
 
-				bool  m_unlimitedLoop;
-
-				const float FIXED_FRAME_PERIOD = 1.0f / 60.0f;
-
 				EngineConfig* m_config;
 
 				AudioContext* m_audioContext;

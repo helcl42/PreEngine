@@ -12,19 +12,18 @@ namespace PreEngine
 			using namespace PreEngine::Core;
 
 			template <class TypeKey, class TypeValue>
-			class GlobalCache
+			class GlobalCache : public Singleton<GlobalCache<TypeKey, TypeValue>>
 			{
 			private:
-				std::map<TypeKey, TypeValue> m_cacheData;
+				friend Singleton<GlobalCache<TypeKey, TypeValue>>;
 
-				static GlobalCache<TypeKey, TypeValue> s_instance;
+			private:
+				std::map<TypeKey, TypeValue> m_cacheData;
 
 			private:
 				GlobalCache();
 
-			public:
-				static GlobalCache<TypeKey, TypeValue>& GetInstance();
-
+			public:				
 				virtual ~GlobalCache();
 
 			public:
@@ -36,19 +35,12 @@ namespace PreEngine
 
 				void Add(TypeKey key, TypeValue data);
 
+				size_t Delete(TypeKey key);
+
 				size_t GetCountOfItems() const;				
 
 				void Clear();
 			};
-
-			template <class TypeKey, class TypeValue>
-			GlobalCache<TypeKey, TypeValue> GlobalCache<TypeKey, TypeValue>::s_instance;
-
-			template <class TypeKey, class TypeValue>
-			GlobalCache<TypeKey, TypeValue>& GlobalCache<TypeKey, TypeValue>::GetInstance()
-			{
-				return s_instance;
-			}
 
 			template <class TypeKey, class TypeValue>
 			GlobalCache<TypeKey, TypeValue>::GlobalCache()
@@ -82,6 +74,12 @@ namespace PreEngine
 			void GlobalCache<TypeKey, TypeValue>::Add(TypeKey key, TypeValue data)
 			{
 				m_cacheData.insert(std::make_pair(key, data));
+			}
+
+			template <class TypeKey, class TypeValue>
+			size_t GlobalCache<TypeKey, TypeValue>::Delete(TypeKey key)
+			{
+				return m_cacheData.erase(key);
 			}
 
 			template <class TypeKey, class TypeValue>

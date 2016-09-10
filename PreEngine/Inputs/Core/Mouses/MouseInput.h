@@ -27,6 +27,16 @@ namespace PreEngine
 
 					glm::dvec2 m_actualMousePosition;
 
+					glm::dvec2 m_actualMousePositionAbsolute;
+
+					EventHandler<MouseInput, OnMouseLockRequest> m_mouseLockRequestHandler{ this };
+
+					EventHandler<MouseInput, OnMouseShowRequest> m_mouseShowRequestHandler{ this };
+
+					bool m_mouseLockEnabled = true;
+
+					const double MIN_MOUSE_DELTA = 1.0;
+
 				private:
 					static void MouseScrollCallback(GLFWwindow* window, double xPos, double yPos);
 
@@ -43,6 +53,11 @@ namespace PreEngine
 					void Update(float deltaTime);
 
 					void ShutDown();
+
+				public:
+					void operator()(const OnMouseLockRequest& lockRequest);
+
+					void operator()(const OnMouseShowRequest& showRequest);
 				};
 			}
 		}

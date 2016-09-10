@@ -54,14 +54,14 @@ namespace PreEngine
 				for (unsigned int i = 0; i < scenes.size(); i++)
 				{
 					SceneItemConfig* sceneConfig = scenes[i];
-					std::string windowTitle(config->GetWindowTitle() + " (" + (i == 0 ? "Master" : "Slave " + std::to_string(i)) + ") ");
+					std::string windowTitle((i == 0 ? "Master" : "Slave " + std::to_string(i)) + ": " + config->GetWindowTitle());
 
 					PreEngine::Windows::GLWindow<GLFWwindow>* window = new PreEngine::Windows::GLWindow<GLFWwindow>(i, windowTitle, sceneConfig, config->GetOpenGLConfig(), m_mainWindow);
 					if (i == 0)	m_mainWindow = window;
 					m_windows.push_back(window);
 
 					IScene<RootType>* scene = NULL;
-					if (sceneConfig->GetSceneLayout() == SceneLayout::SINGLE) scene = new Scene<RootType>(i, sceneConfig);
+					if (sceneConfig->GetSceneEye() == SceneEye::CENTER_EYE || sceneConfig->GetSceneEye() == SceneEye::LEFT_EYE || sceneConfig->GetSceneEye() == SceneEye::RIGHT_EYE) scene = new Scene<RootType>(i, sceneConfig);
 					else scene = new DoubleScene<RootType>(i, sceneConfig);
 
 					if (i == 0) m_mainScene = scene;
@@ -95,11 +95,12 @@ namespace PreEngine
 				{
 					m_windows[i]->Init();
 					m_windows[i]->MakeWindowContextMain();
+					glfwSwapInterval(m_config->IsVSyncEnabled() ? 1 : 0);
 					m_scenes[i]->Init();
 				}
 
 				m_mainWindow->MakeWindowContextMain();
-				m_mainWindow->SetFocused();
+				m_mainWindow->SetFocused();				
 
 				EventChannel::Broadcast(Core::OnEnginePostInit{});
 			}
@@ -115,28 +116,23 @@ namespace PreEngine
 				bool shouldSwitchContext = m_windows.size() > 1;
 				while (!m_mainWindow->ShouldClose() && !m_finishRequested)
 				{
-					GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
-
 					m_clock->UpdateClock();
 					deltaTime += m_clock->GetDelta();
 
-					if (deltaTime >= FIXED_FRAME_PERIOD || m_unlimitedLoop)
+					m_input->Update(deltaTime);
+
+					for (unsigned int i = 0; i < m_windows.size(); i++)
 					{
-						m_input->Update(deltaTime);
+						if (shouldSwitchContext) m_windows[i]->MakeWindowContextMain();
 
-						for (unsigned int i = 0; i < m_windows.size(); i++)
-						{
-							if (shouldSwitchContext) m_windows[i]->MakeWindowContextMain();
+						m_scenes[i]->Update(deltaTime);
+						m_scenes[i]->Render();
+						m_windows[i]->SwapBuffers();
 
-							m_scenes[i]->Update(deltaTime);
-							m_scenes[i]->Render();
-							m_windows[i]->SwapBuffers();
-
-							GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
-						}
-
-						deltaTime = 0.0f;
+						GLUtils::CheckForOpenGLError(__FILE__, __LINE__);
 					}
+
+					deltaTime = 0.0f;
 
 					glfwPollEvents();
 				}

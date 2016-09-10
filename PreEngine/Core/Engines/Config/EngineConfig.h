@@ -19,7 +19,7 @@ namespace PreEngine
 				protected:
 					std::string m_windowTitle;
 
-					bool m_unlimitedLoop;
+					bool m_vSync;
 
 					std::vector<SceneItemConfig*> m_sceneItems;
 
@@ -38,11 +38,13 @@ namespace PreEngine
 
 					void SetWindowTitle(std::string title);
 
-					bool IsUnlimitedLoop() const;
+					bool IsVSyncEnabled() const;
 
-					void SetUnlimitedLoop(bool unlimited);
+					void SetVSyncEnabled(bool enabled);
 
 					std::vector<SceneItemConfig*> GetSceneItems() const;
+
+					SceneItemConfig* GetSceneItem(unsigned int index) const;
 
 					void SetSceneItems(std::vector<SceneItemConfig*> sceneItems);
 

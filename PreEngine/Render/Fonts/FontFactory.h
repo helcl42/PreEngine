@@ -18,9 +18,11 @@ namespace PreEngine
 
 				ITextureFactory* m_textureFactory;
 
+				int m_oneCharSquareSize;
+
 
 			private:
-				void CreateChar(FreeTypeFont* font, int index);
+				void CreateChar(FreeTypeFont* font, int index, GLubyte* bData);
 
 				inline int GetNextHigherPowerOfTwo(int n);
 
@@ -30,9 +32,7 @@ namespace PreEngine
 				virtual ~FontFactory();
 
 			public:
-				IFont* CreateFreeTypeFont(const std::string& filePath, int pxSize);
-
-				IFont* CreateSimpleFontFromTexture(const std::string& filePath, int pxSize, int rows, int colums);
+				IFont* CreateFreeTypeFont(const std::string& filePath, int pxSize, int maxCharSupport = 1024);
 			};
 		}
 	}

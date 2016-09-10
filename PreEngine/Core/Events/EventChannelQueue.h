@@ -1,12 +1,7 @@
 #ifndef EVENT_CHANNEL_QUEUE_H
 #define EVENT_CHANNEL_QUEUE_H
 
-#include <algorithm>
-#include <functional>
-#include <iostream>
-#include <mutex>
-#include <vector>
-#include <utility>
+#include "../Common.h"
 
 namespace PreEngine
 {
@@ -14,11 +9,13 @@ namespace PreEngine
 	{
 		namespace Events
 		{
+			using namespace PreEngine::Core::Patterns;
+
 			template <typename EventType>
-			class EventChannelQueue
+			class EventChannelQueue : public Singleton<EventChannelQueue<EventType>>
 			{
 			private:
-				static EventChannelQueue s_instance;
+				friend Singleton<EventChannelQueue<EventType>>;
 
 			private:
 				std::mutex m_mutex;
@@ -27,9 +24,7 @@ namespace PreEngine
 
 				std::vector<void*> m_originalPointers;
 
-			public:
-				static EventChannelQueue& GetInstance();
-
+			public:				
 				template <typename EventHandlerType> 
 				void Add(EventHandlerType* handler);
 
@@ -47,15 +42,6 @@ namespace PreEngine
 				std::function<void(const EventType&)> CreateHandler(EventHandlerType* handler);
 			};
 
-
-			template <typename EventType>
-			EventChannelQueue<EventType> EventChannelQueue<EventType>::s_instance;
-
-			template <typename EventType>
-			EventChannelQueue<EventType>& EventChannelQueue<EventType>::GetInstance()
-			{
-				return s_instance;
-			}
 
 			template <typename EventType>
 			EventChannelQueue<EventType>::EventChannelQueue()

@@ -10,16 +10,9 @@ namespace PreEngine
 	namespace Utils
 	{
 		namespace Log
-		{
-			Logger Logger::s_instance;
-
+		{			
 			Logger::Logger()
 			{
-			}
-
-			Logger& Logger::GetInstance()
-			{
-				return s_instance;
 			}
 
 			void Logger::SetOutputFileName(const std::string& fileName)

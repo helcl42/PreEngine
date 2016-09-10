@@ -49,7 +49,7 @@ namespace PreEngine
 
 				m_window = new PreEngine::Windows::GLWindow<GLFWwindow>(0, m_config->GetWindowTitle(), sceneConfigs[0], m_config->GetOpenGLConfig());
 
-				if (sceneConfig->GetSceneLayout() == SceneLayout::SINGLE) m_scene = new Scene<RootType>(0, sceneConfig);
+				if (sceneConfig->GetSceneEye() == SceneEye::CENTER_EYE || sceneConfig->GetSceneEye() == SceneEye::LEFT_EYE || sceneConfig->GetSceneEye() == SceneEye::RIGHT_EYE) m_scene = new Scene<RootType>(0, sceneConfig);
 				else m_scene = new DoubleScene<RootType>(0, sceneConfig);
 			}
 
@@ -63,12 +63,14 @@ namespace PreEngine
 			template<class RootType>
 			void Engine<RootType>::Init()
 			{
-				EventChannel::Broadcast(Core::OnEnginePreInit{});
+				EventChannel::Broadcast(Core::OnEnginePreInit{});				
 
-				m_window->Init();				
+				m_window->Init();
 				m_input->Init();
 				m_audioContext->Init();
 				m_scene->Init();
+
+				glfwSwapInterval(m_config->IsVSyncEnabled() ? 1 : 0);
 
 				EventChannel::Broadcast(Core::OnEnginePostInit{});
 			}
@@ -87,16 +89,14 @@ namespace PreEngine
 
 					m_clock->UpdateClock();
 					deltaTime += m_clock->GetDelta();
-					if (deltaTime >= FIXED_FRAME_PERIOD || m_unlimitedLoop)
-					{
-						m_input->Update(deltaTime);
 
-						m_scene->Update(deltaTime);
-						m_scene->Render();
+					m_input->Update(deltaTime);
 
-						m_window->SwapBuffers();
-						deltaTime = 0.0f;
-					}
+					m_scene->Update(deltaTime);
+					m_scene->Render();
+
+					m_window->SwapBuffers();
+					deltaTime = 0.0f;
 
 					glfwPollEvents();
 				}
@@ -108,7 +108,7 @@ namespace PreEngine
 			void Engine<RootType>::ShutDown()
 			{
 				EventChannel::Broadcast(Core::OnEnginePreShutDown{});
-				
+
 				m_scene->ShutDown();
 				m_audioContext->ShutDown();
 				m_input->ShutDown();

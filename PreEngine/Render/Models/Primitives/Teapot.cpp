@@ -274,10 +274,6 @@ namespace PreEngine
 					glDrawElements(how, 6 * m_countOfFaces, GL_UNSIGNED_INT, NULL);
 				}
 
-				void Teapot::RenderBoundingBox()
-				{
-				}
-
 				void Teapot::Delete()
 				{
 					m_vbo->Delete();

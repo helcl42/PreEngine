@@ -24,9 +24,9 @@ namespace PreEngine
 
 				std::set<int> m_workingKeys;
 
-				EventHandler<KeyboardInputComponent, OnKeyPress>* m_keyPressHandler;
+				EventHandler<KeyboardInputComponent, OnKeyPress> m_keyPressHandler{ this };
 
-				EventHandler<KeyboardInputComponent, OnKeyRelease>* m_keyReleaseHandler;
+				EventHandler<KeyboardInputComponent, OnKeyRelease> m_keyReleaseHandler{ this };
 
 			public:
 				KeyboardInputComponent();

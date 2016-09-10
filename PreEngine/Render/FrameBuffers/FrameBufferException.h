@@ -9,7 +9,7 @@ namespace PreEngine
 	{
 		namespace FrameBuffers
 		{
-			using namespace Utils::Log;
+			using namespace PreEngine::Utils::Log;
 
 			class FrameBufferException : public std::runtime_error
 			{

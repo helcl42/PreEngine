@@ -16,6 +16,9 @@
 
 #include "../AbstractFont.h"
 
+#define CHARS_PER_TEXTURE 1024
+#define CHARS_PER_TEXTUREROOT 32
+
 namespace PreEngine
 {
 	namespace Render
@@ -31,20 +34,19 @@ namespace PreEngine
 				friend class FontFactory;
 
 			private:
-				ITexture* m_charTextures[256];
+				std::vector<ITexture*> m_charGroupTextures;
 
-				int m_advX[256];
-				int m_advY[256];
+				std::vector<int> m_advancesX, m_advancesY;
 
-				int m_bearingX[256];
-				int m_bearingY[256];
+				std::vector<int> m_bearingsX, m_bearingsY;
 
-				int m_charWidth[256];
-				int m_charHeight[256];
+				std::vector<int> m_charWidths, m_charHeights;				
+
+				bool m_initialized;
 
 				int m_newLine;
 
-				const int UNDEFINED_CHAR_REPLACEMENT = 63;
+				const int UNDEFINED_CHAR_REPLACEMENT = '?';
 
 			public:
 				FreeTypeFont();
@@ -57,6 +59,8 @@ namespace PreEngine
 				unsigned int GetTextHeight(const std::string& text, int pxSize);
 
 				void Print(const std::string& text, int x, int y, int pxSize = -1);
+
+				void Print(const std::wstring& text, int x, int y, int pxSize = -1);
 
 				void Delete();
 

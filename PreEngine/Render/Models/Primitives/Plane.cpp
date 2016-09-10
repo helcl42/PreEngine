@@ -111,10 +111,6 @@ namespace PreEngine
 					glDrawElements(how, 6 * m_countOfFaces, GL_UNSIGNED_INT, NULL);
 				}
 
-				void Plane::RenderBoundingBox()
-				{
-				}
-
 				void Plane::Delete()
 				{
 					m_vbo->Delete();

@@ -30,10 +30,17 @@ namespace PreEngine
 				{
 					while (!m_isFinished)
 					{
-						for (unsigned int i = 0; i < 1000; i++)
+						for (unsigned int i = 0; i < 1000;)
 						{
-							if (m_isFinished) return;
+							if (m_isFinished) return;							
+
 							std::this_thread::sleep_for(std::chrono::microseconds(m_msTimeout));
+
+							if (!m_paused)
+							{
+								i++;
+								m_elapsedMs += static_cast<long>(static_cast<double>(m_msTimeout) / 1000.0);
+							}
 						}
 
 						const std::vector<ITimerObservable*>& observables = m_observer.GetObservables();
@@ -48,29 +55,57 @@ namespace PreEngine
 
 				void Timer::OnThreadFinished()
 				{
-					const std::vector<ITimerObservable*>& observables = m_observer.GetObservables();
-					for (std::vector<ITimerObservable*>::const_iterator ci = observables.cbegin(); ci != observables.cend(); ++ci)
+					if (!m_forceStop)
 					{
-						(*ci)->OnTimerFinished();
+						const std::vector<ITimerObservable*>& observables = m_observer.GetObservables();
+						for (std::vector<ITimerObservable*>::const_iterator ci = observables.cbegin(); ci != observables.cend(); ++ci)
+						{
+							(*ci)->OnTimerFinished();
+						}
 					}
 				}
 
 				void Timer::Start()
 				{
-					if (m_isFinished) Stop();
+					if (!m_isFinished) Stop();					
+					m_forceStop = false;
 					m_isFinished = false;
+					m_elapsedMs = 0;
 					RunThread();
 				}
 
-				void Timer::Stop()
-				{					
-					if(!m_isFinished) Join();
-					m_isFinished = true;
+				void Timer::Pause()
+				{
+					m_paused = true;
 				}
 
-				void Timer::SetMsTimeout(unsigned int timeout)
+				void Timer::TogglePause()
+				{
+					m_paused = !m_paused;
+				}
+
+				void Timer::Stop()
+				{
+					m_forceStop = true;
+					if (!m_isFinished) Join();
+					m_isFinished = true;
+					m_paused = false;
+				}
+
+				void Timer::SetMSTimeout(unsigned int timeout)
 				{
 					m_msTimeout = timeout;
+				}
+
+				unsigned int Timer::GetMSTimeout() const
+				{
+					return m_msTimeout;
+				}
+
+				long Timer::GetElapsedTimeInMS() const
+				{
+					if(IsActive()) return m_elapsedMs;
+					return 0L;
 				}
 
 				bool Timer::IsActive() const

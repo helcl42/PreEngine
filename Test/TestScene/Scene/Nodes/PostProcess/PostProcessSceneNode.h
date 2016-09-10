@@ -84,8 +84,7 @@ namespace TestScene
 
 			std::string GetInfo() const
 			{
-				std::stringstream ss;				
-				ss << std::endl << "---------------------------------------" << std::endl;
+				std::stringstream ss;
 				ss << "PostProcess: " << (m_isEnabled ? "Enabled" : "Disabled") << std::endl;
 				ss << "---------------------------------------" << std::endl;
 				ss << m_lensFlareSceneNode->GetInfo();

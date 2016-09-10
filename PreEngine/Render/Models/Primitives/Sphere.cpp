@@ -110,10 +110,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, m_countOfFaces * 3);
 				}
 
-				void Sphere::RenderBoundingBox()
-				{
-				}
-
 				void Sphere::Delete()
 				{
 					m_vbo->Delete();

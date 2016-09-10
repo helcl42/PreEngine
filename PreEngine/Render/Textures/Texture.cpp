@@ -75,12 +75,7 @@ namespace PreEngine
 				glBindTexture(GL_TEXTURE_2D, m_handle);
 				glBindSampler(textureUnit, m_sampler);
 			}
-
-			void Texture::Unbind()
-			{
-				glBindTexture(GL_TEXTURE_2D, 0);
-			}
-
+		
 			void Texture::Delete()
 			{
 				glDeleteSamplers(1, &m_sampler);
@@ -139,22 +134,22 @@ namespace PreEngine
 				return m_format;
 			}
 
-			void Texture::Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format)
-			{
-				if (m_initialized)
+			void Texture::Update(unsigned int w, unsigned int h, GLvoid* data, GLenum inputDataFormat, GLint internalFormat, bool generateMipMaps)
+			{				
+				if (m_initialized && data != NULL)
 				{
-					glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, format, GL_UNSIGNED_BYTE, (GLvoid*)data);
+					glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, internalFormat, GL_UNSIGNED_BYTE, (GLvoid*)data);
 				}
 				else
 				{
-					glTexImage2D(GL_TEXTURE_2D, 0, format, w, h, 0, format, GL_UNSIGNED_BYTE, (GLvoid*)data);
-					m_initialized = true;
+					glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, w, h, 0, inputDataFormat, GL_UNSIGNED_BYTE, (GLvoid*)data);
+					m_initialized = data != NULL;
 				}
 
 				m_width = w;
 				m_height = h;
 				m_data = (GLubyte*)data;
-				m_format = format;
+				m_format = inputDataFormat;
 
 				if (generateMipMaps) glGenerateMipmap(GL_TEXTURE_2D);
 			}

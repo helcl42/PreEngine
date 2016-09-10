@@ -33,8 +33,6 @@ namespace PreEngine
 
 					void Render(GLenum how = GL_LINES);
 
-					void RenderBoundingBox();
-
 					void Delete();
 				};
 			}

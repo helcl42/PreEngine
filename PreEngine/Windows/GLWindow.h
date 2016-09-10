@@ -255,7 +255,6 @@ namespace PreEngine
 				MakeWindowContextMain();
 				LoadGLFunctions();
 
-				glfwSwapInterval(0);
 #ifdef _DEBUG
 				Logger::GetInstance().Info() << GLUtils::GetGLInfo() << std::endl;
 				Logger::GetInstance().Info() << GLUtils::GetGLExtensionsInfo() << std::endl;
@@ -288,11 +287,7 @@ namespace PreEngine
 		template <class WindowType>
 		void GLWindow<WindowType>::LoadGLFunctions()
 		{
-			int loaded = ogl_LoadFunctions();
-			if (loaded == ogl_LOAD_FAILED)
-			{
-				throw GLWindowException("Could not load GL functions.");
-			}
+			gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		}
 
 		template <class WindowType>
@@ -306,7 +301,8 @@ namespace PreEngine
 			glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 			glfwWindowHint(GLFW_VISIBLE, GL_TRUE);
 			glfwWindowHint(GLFW_SAMPLES, m_antialiazingLevel);
-
+			//glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
+		
 			if (m_isInFullscreen)
 			{
 				glfwWindowHint(GLFW_DECORATED, GL_FALSE);
@@ -339,7 +335,7 @@ namespace PreEngine
 		template <class WindowType>
 		void GLWindow<WindowType>::MoveWindowToMonitor(GLFWwindow* window, int monitorIndex)
 		{
-			int xPositon = 0, yPosition = 0;
+			int xPosition = 0, yPosition = 0;
 			int windowWidth = 0, windowHeight = 0;
 
 			int countOfMonitors;
@@ -352,16 +348,16 @@ namespace PreEngine
 			windowWidth = mode->width;
 			windowHeight = mode->height;
 
-			glfwGetMonitorPos(monitors[monitorIndex], &xPositon, &yPosition);
+			glfwGetMonitorPos(monitors[monitorIndex], &xPosition, &yPosition);
 
 			if (m_isInFullscreen)
 			{
-				glfwSetWindowPos(window, xPositon, yPosition);
+				glfwSetWindowPos(window, xPosition, yPosition);
 				glfwSetWindowSize(window, windowWidth, windowHeight);
 			}
 			else
 			{
-				glfwSetWindowPos(window, xPositon + m_leftOffset, yPosition + m_topOffset);
+				glfwSetWindowPos(window, xPosition + m_leftOffset, yPosition + m_topOffset);
 			}
 		}
 

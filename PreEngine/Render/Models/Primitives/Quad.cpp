@@ -55,10 +55,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, 4);
 				}
 
-				void Quad::RenderBoundingBox()
-				{
-				}
-
 				void Quad::Delete()
 				{
 					m_vbo->Delete();

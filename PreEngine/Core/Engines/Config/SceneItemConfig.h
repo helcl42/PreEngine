@@ -2,7 +2,6 @@
 #define SCENE_ITEM_CONFIG_H
 
 #include "../../Common.h"
-#include "../../../Render/SceneLayout.h"
 #include "../../../Render/SceneEye.h"
 #include "../../Config/AbstractConfig.h"
 #include "ViewFrustumConfig.h"
@@ -21,8 +20,6 @@ namespace PreEngine
 				class SceneItemConfig : public AbstractConfig
 				{
 				protected:
-					SceneLayout m_sceneLayout;
-
 					bool m_isInFullSceen;
 
 					bool m_isDecorated;
@@ -50,10 +47,6 @@ namespace PreEngine
 					void Init();
 
 				public:
-					SceneLayout GetSceneLayout() const;
-
-					void SetSceneLayout(SceneLayout layout);
-
 					bool IsFullScreen() const;
 
 					void SetFullScreen(bool isFullScreen);

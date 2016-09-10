@@ -55,6 +55,10 @@ namespace PreEngine
 
 			virtual void SetTag(const std::string& tag) = 0;
 
+			virtual void SetEnabled(bool enabled) = 0;
+
+			virtual bool IsEnabled() const = 0;
+
 		public:
 			virtual ~ISceneNode() {}
 		};

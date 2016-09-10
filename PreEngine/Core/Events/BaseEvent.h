@@ -9,9 +9,20 @@ namespace PreEngine
 		{
 			struct BaseEvent
 			{
-				BaseEvent() {}
+				bool alreadyHandled = false;
 
-				virtual ~BaseEvent() {}
+				BaseEvent() 
+				{
+				}
+
+				virtual ~BaseEvent() 
+				{
+				}
+
+				bool IsHandled() const
+				{
+					return alreadyHandled;
+				}
 			};
 		}
 	}

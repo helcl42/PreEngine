@@ -4,7 +4,7 @@
 #include "../../Core/Common.h"
 #include "../../Core/Events/BaseEvent.h"
 
-#include "../SceneLayout.h"
+#include "../SceneEye.h"
 #include "../ScenePosition.h"
 
 namespace PreEngine
@@ -85,15 +85,15 @@ namespace PreEngine
 
 					int height;
 
-					SceneLayout sceneLayout;
+					SceneEye sceneEye;
 
 					ScenePosition scenePosition;
 
 
 					OnViewPortChange() {}
 
-					OnViewPortChange(int sceneId, int offsetX, int offsetY, int w, int h, SceneLayout layout, ScenePosition position)
-						: sceneId(sceneId), offsetX(offsetX), offsetY(offsetY), width(w), height(h), sceneLayout(layout), scenePosition(position)
+					OnViewPortChange(int sceneId, int offsetX, int offsetY, int w, int h, SceneEye layout, ScenePosition position)
+						: sceneId(sceneId), offsetX(offsetX), offsetY(offsetY), width(w), height(h), sceneEye(layout), scenePosition(position)
 					{
 					}
 

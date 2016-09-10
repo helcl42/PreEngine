@@ -3,9 +3,9 @@
 
 namespace PreEngine
 {
-	namespace AI
+	namespace Core
 	{
-		namespace FSM
+		namespace Patterns
 		{
 			template <class ObjectType>
 			class IState

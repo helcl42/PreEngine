@@ -35,7 +35,6 @@ namespace PreEngine
 
 			void Input::operator()(const OnCreate& created)
 			{
-				std::cout << "Input: window create message received: " << created.message << std::endl;
 				if (m_mouseInput == NULL) m_mouseInput = new MouseInput(created.window);
 				if (m_keyboardInput == NULL) m_keyboardInput = new KeyboardInput(created.window);
 
@@ -44,8 +43,7 @@ namespace PreEngine
 			}
 
 			void Input::operator()(const OnClose& closed)
-			{
-				std::cout << "Input: window closed message received: " << closed.message << std::endl;
+			{				
 				SAFE_DELETE(m_keyboardInput);
 				SAFE_DELETE(m_mouseInput);
 			}

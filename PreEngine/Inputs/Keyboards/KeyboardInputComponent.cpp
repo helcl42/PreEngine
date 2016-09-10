@@ -7,15 +7,12 @@ namespace PreEngine
 		namespace Keyboards
 		{
 			KeyboardInputComponent::KeyboardInputComponent()
+				: AbstractInputComponent()
 			{
-				m_keyPressHandler = new EventHandler<KeyboardInputComponent, OnKeyPress>(this);
-				m_keyReleaseHandler = new EventHandler<KeyboardInputComponent, OnKeyRelease>(this);
 			}
 
 			KeyboardInputComponent::~KeyboardInputComponent()
 			{
-				SAFE_DELETE(m_keyPressHandler);
-				SAFE_DELETE(m_keyReleaseHandler);
 			}
 
 			void KeyboardInputComponent::RegisterKeyboardListener(IKeyboardListener* listener)

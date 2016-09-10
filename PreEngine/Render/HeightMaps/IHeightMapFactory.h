@@ -12,7 +12,7 @@ namespace PreEngine
 			class IHeightMapFactory
 			{
 			public:
-				virtual IHeightMap* CreateHeightMap(const std::string path) = 0;
+				virtual IHeightMap* CreateHeightMap(const std::string& textureFilePath) = 0;
 
 			public:
 				virtual ~IHeightMapFactory() {}

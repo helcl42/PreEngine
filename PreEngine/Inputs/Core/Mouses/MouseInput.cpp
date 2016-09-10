@@ -32,16 +32,21 @@ namespace PreEngine
 
 					glm::dvec2 windowMeasures(m_window->GetWidth(), m_window->GetHeight());
 
-					if (newPosition.x != m_actualMousePosition.x || newPosition.y != m_actualMousePosition.y)
+					if (newPosition.x < m_actualMousePositionAbsolute.x - MIN_MOUSE_DELTA || newPosition.x > m_actualMousePositionAbsolute.x + MIN_MOUSE_DELTA
+						|| newPosition.y < m_actualMousePositionAbsolute.y - MIN_MOUSE_DELTA || newPosition.y > m_actualMousePositionAbsolute.y + MIN_MOUSE_DELTA)
 					{
 						//if (m_window->IsFocused() || m_window->IsInFullScreen())
 						//{
 						m_channel.Broadcast(OnMouseMove{ newPosition, m_actualMousePosition, newPosition - m_actualMousePosition, windowMeasures });
+						m_actualMousePositionAbsolute = newPosition;
 						m_actualMousePosition = glm::dvec2(m_window->GetWidth() >> 1, m_window->GetHeight() >> 1);
 						//}
 					}
 
-					glfwSetCursorPos(m_window->GetWindow(), m_window->GetWidth() >> 1, m_window->GetHeight() >> 1);
+					if (m_mouseLockEnabled)
+					{
+						glfwSetCursorPos(m_window->GetWindow(), m_window->GetWidth() >> 1, m_window->GetHeight() >> 1);
+					}
 				}
 
 				void MouseInput::ShutDown()
@@ -69,6 +74,16 @@ namespace PreEngine
 						EventChannel::Broadcast(OnMouseButtonRelease{ button, newPosition, modifiers });
 						break;
 					}
+				}
+
+				void MouseInput::operator()(const OnMouseLockRequest& lockRequest)
+				{
+					m_mouseLockEnabled = lockRequest.lock;
+				}
+
+				void MouseInput::operator()(const OnMouseShowRequest& showRequest)
+				{
+					glfwSetInputMode(m_window->GetWindow(), GLFW_CURSOR, showRequest.show ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN);
 				}
 			}
 		}

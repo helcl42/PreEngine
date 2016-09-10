@@ -110,21 +110,25 @@ namespace PreEngine
 		{
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			if (m_sceneLayout == SceneLayout::SIDE_BY_SIDE)
+			if (m_sceneEye == SceneEye::LEFT_RIGHT_EYE)
 			{
-				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, 0, int(m_width / 2), int(m_height), SceneLayout::SIDE_BY_SIDE, ScenePosition::LEFT });
+				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, 0, int(m_width / 2), int(m_height), SceneEye::LEFT_RIGHT_EYE, ScenePosition::LEFT });
 				Render(m_leftNodes);
 
-				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, int(m_width / 2), 0, int(m_width / 2), int(m_height), SceneLayout::SIDE_BY_SIDE, ScenePosition::RIGHT });
+				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, int(m_width / 2), 0, int(m_width / 2), int(m_height), SceneEye::LEFT_RIGHT_EYE, ScenePosition::RIGHT });
+				Render(m_rightNodes);
+			}
+			else if(m_sceneEye == SceneEye::TOP_BOTTOM_EYE)
+			{
+				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, int(m_height / 2), int(m_width), int(m_height / 2), SceneEye::TOP_BOTTOM_EYE, ScenePosition::TOP });
+				Render(m_leftNodes);
+
+				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, 0, int(m_width), int(m_height / 2), SceneEye::TOP_BOTTOM_EYE, ScenePosition::BOTTOM });
 				Render(m_rightNodes);
 			}
 			else
 			{
-				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, int(m_height / 2), int(m_width), int(m_height / 2), SceneLayout::OVER_UNDER, ScenePosition::TOP });
-				Render(m_leftNodes);
-
-				EventChannel::Broadcast(OnViewPortChange{ (int)m_sceneId, 0, 0, int(m_width), int(m_height / 2), SceneLayout::OVER_UNDER, ScenePosition::BOTTOM });
-				Render(m_rightNodes);
+				throw new EngineException("Ivalid SceneEye!");
 			}
 
 			glFinish();

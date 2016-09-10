@@ -21,11 +21,6 @@ namespace PreEngine
 
 				void SceneItemConfig::Init()
 				{
-					std::string layoutString = m_root["SceneLayout"].asString();
-					if (layoutString == "OVER_UNDER") m_sceneLayout = SceneLayout::OVER_UNDER;
-					else if (layoutString == "SIDE_BY_SIDE") m_sceneLayout = SceneLayout::SIDE_BY_SIDE;
-					else m_sceneLayout = SceneLayout::SINGLE;
-
 					m_isInFullSceen = m_root.isMember("FullScreen") ? m_root["FullScreen"].asBool() : false;
 					m_isDecorated = m_root.isMember("IsDecorated") ? m_root["IsDecorated"].asBool() : true;
 					m_width = m_root["Width"].asUInt();
@@ -34,24 +29,16 @@ namespace PreEngine
 					m_offsetTop = m_root.isMember("Top") ? m_root["Top"].asInt() : 60;
 					m_offsetLeft = m_root.isMember("Left") ? m_root["Left"].asInt() : 30;
 
-					m_displayIndex = m_root["DisplayIndex"].asUInt();
+					m_displayIndex = m_root["DisplayIndex"].asInt();
 
 					if (m_root.isMember("ViewFrustum")) m_viewFrustumConfig = new ViewFrustumConfig(m_root["ViewFrustum"]);
 
 					std::string sceneEye = m_root["SceneEye"].asString();
 					if (sceneEye == "LEFT_EYE") m_sceneEye = SceneEye::LEFT_EYE;
 					else if (sceneEye == "RIGHT_EYE") m_sceneEye = SceneEye::RIGHT_EYE;
+					else if (sceneEye == "LEFT_RIGHT_EYE") m_sceneEye = SceneEye::LEFT_RIGHT_EYE;
+					else if (sceneEye == "TOP_BOTTOM_EYE") m_sceneEye = SceneEye::TOP_BOTTOM_EYE;
 					else m_sceneEye = SceneEye::CENTER_EYE;
-				}
-
-				SceneLayout SceneItemConfig::GetSceneLayout() const
-				{
-					return m_sceneLayout;
-				}
-
-				void SceneItemConfig::SetSceneLayout(SceneLayout layout)
-				{
-					m_sceneLayout = layout;
 				}
 
 				bool SceneItemConfig::IsFullScreen() const

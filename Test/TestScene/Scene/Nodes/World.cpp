@@ -119,9 +119,10 @@ namespace TestScene
 			TextData controlData(GetInfo(), 20, m_height - 30, 18, glm::vec4(1.0, 1.0, 1.0, 1.0));
 			m_textViewer->AddMessage(controlData);
 
-			std::stringstream ss;
-			ss << int(1 / deltaTime) << " FPS / " << deltaTime << std::endl;
+			m_fpsService.Update(deltaTime);
 
+			std::stringstream ss;
+			ss << int(m_fpsService.GetAverageFPS()) << " FPS / " << std::fixed << std::setprecision(3) << m_fpsService.GetAverageDeltaTime() << std::endl;
 			TextData fpsMessage(ss.str(), m_width - m_textViewer->GetTextWidth(ss.str(), 18) - 20, 20, 18, glm::vec4(1.0, 1.0, 1.0, 1.0));
 			m_textViewer->AddMessage(fpsMessage);
 		}

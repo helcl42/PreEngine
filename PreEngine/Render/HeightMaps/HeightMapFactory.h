@@ -48,10 +48,12 @@ namespace PreEngine
 
 				void BindHeightMapData(HeightMap* heightMap);
 
+				HeightMap* GetHeightMapCommon(const std::string textureFilePath);
+
 				void InvalidateState();
 
 			public:
-				IHeightMap* CreateHeightMap(const std::string filePath);
+				IHeightMap* CreateHeightMap(const std::string& textureFilePath);
 			};
 		}
 	}

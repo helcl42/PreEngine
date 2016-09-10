@@ -29,6 +29,8 @@ namespace PreEngine
 
 				void Add(TypeKey key, TypeValue data);
 
+				size_t Delete(TypeKey key);
+
 				size_t GetCountOfItems() const;
 
 				void Clear();
@@ -61,6 +63,12 @@ namespace PreEngine
 			void Cache<TypeKey, TypeValue>::Add(TypeKey key, TypeValue data)
 			{
 				m_cacheData.insert(std::make_pair(key, data));
+			}
+
+			template <class TypeKey, class TypeValue>
+			size_t Cache<TypeKey, TypeValue>::Delete(TypeKey key)
+			{
+				return m_cacheData.erase(key);
 			}
 
 			template <class TypeKey, class TypeValue>

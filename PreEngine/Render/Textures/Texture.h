@@ -60,8 +60,6 @@ namespace PreEngine
 
 				void Bind(int textureUnit = 0);
 
-				void Unbind();
-
 				void SetSamplerParameter(GLenum parameter, GLenum value);
 
 				void SetWrap();
@@ -84,7 +82,7 @@ namespace PreEngine
 
 				std::string GetPath() const;
 
-				void Update(unsigned int w, unsigned int h, GLvoid* data, bool generateMipMaps, GLenum format = GL_RGB);
+				void Update(unsigned int w, unsigned int h, GLvoid* data, GLenum inputDataFormat, GLint internalFormat, bool generateMipMaps);
 
 				bool IsInitialized() const;
 			};

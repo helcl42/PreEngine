@@ -40,12 +40,15 @@ namespace PreEngine
 
 			bool TCPStreamClient::Disconnect()
 			{
-				m_clientSocket->Close();
-				m_isConnected = false;
-				const std::vector<INetworkObservable*>& observables = m_observer.GetObservables();
-				for (std::vector<INetworkObservable*>::const_iterator ci = observables.cbegin(); ci != observables.cend(); ++ci)
+				if (m_clientSocket != NULL)
 				{
-					(*ci)->OnDisconnect();
+					m_clientSocket->Close();
+					m_isConnected = false;
+					const std::vector<INetworkObservable*>& observables = m_observer.GetObservables();
+					for (std::vector<INetworkObservable*>::const_iterator ci = observables.cbegin(); ci != observables.cend(); ++ci)
+					{
+						(*ci)->OnDisconnect();
+					}
 				}
 				return true;
 			}

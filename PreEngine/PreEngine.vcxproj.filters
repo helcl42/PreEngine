@@ -30,9 +30,6 @@
     <ClCompile Include="Core\System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGL\gl_core_4_4.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils\Math\PrimeSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,9 +97,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Render\Fonts\FreeTypeFont\FreeTypeFont.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\Fonts\SimpleFont\SimpleFont.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Render\Fonts\AbstractFont.cpp">
@@ -306,6 +300,15 @@
     <ClCompile Include="Render\Models\Primitives\Torus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\Time\FPSService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Glad\src\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Models\Primitives\Circle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils\StringUtils.h">
@@ -333,9 +336,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\System.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenGL\gl_core_4_4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils\Math\PrimeSearch.h">
@@ -503,9 +503,6 @@
     <ClInclude Include="Core\Threading\Thread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Render\SceneLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Render\ScenePosition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -531,9 +528,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Render\Fonts\FreeTypeFont\FreeTypeFont.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\Fonts\SimpleFont\SimpleFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Render\Fonts\AbstractFont.h">
@@ -665,9 +659,6 @@
     <ClInclude Include="Scripting\IScriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Visitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\Memory\MemoryUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -732,12 +723,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Render\Effects\FogType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AI\FSM\IState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AI\FSM\StateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Render\Lightning\AbstractLight.h">
@@ -854,12 +839,6 @@
     <ClInclude Include="Core\Threading\IThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Nullable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Utils\Time\Timers\ITimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -936,6 +915,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Render\SceneEye.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Time\FPSService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Glad\include\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Glad\include\KHR\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\Nullable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\Observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\Visitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\IState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\StateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Patterns\Singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Models\Primitives\Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

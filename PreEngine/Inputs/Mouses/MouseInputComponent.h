@@ -25,13 +25,13 @@ namespace PreEngine
 			private:
 				std::set<int> m_workingButtons;
 
-				EventHandler<MouseInputComponent, OnMouseButtonPress>* m_mouseButtonPressHandler;
+				EventHandler<MouseInputComponent, OnMouseButtonPress> m_mouseButtonPressHandler{ this };
 
-				EventHandler<MouseInputComponent, OnMouseButtonRelease>* m_mouseButtonReleaseHandler;
+				EventHandler<MouseInputComponent, OnMouseButtonRelease> m_mouseButtonReleaseHandler{ this };
 
-				EventHandler<MouseInputComponent, OnMouseMove>* m_mouseMoveHandler;
+				EventHandler<MouseInputComponent, OnMouseMove> m_mouseMoveHandler{ this };
 
-				EventHandler<MouseInputComponent, OnMouseScroll>* m_mouseScrollHandler;
+				EventHandler<MouseInputComponent, OnMouseScroll> m_mouseScrollHandler{ this };
 
 				OnMouseMove m_lastMove;
 
@@ -42,6 +42,10 @@ namespace PreEngine
 				std::set<IMouseButtonListener*> m_mouseButtonListeners;
 
 				std::set<IMouseScrollListener*> m_mouseScrollListeners;
+
+				bool m_cursorShown = false;
+
+				bool m_mouseLocked = true;
 
 			public:
 				MouseInputComponent();
@@ -54,6 +58,14 @@ namespace PreEngine
 				const OnMouseMove& GetLastMove() const;
 
 				const OnMouseScroll& GetLastScroll() const;
+
+				void ShowCursor(bool show);
+
+				bool IsCursorShown() const;
+
+				void LockMouse(bool lock);
+
+				bool IsMouseLocked() const;
 
 				void RegisterMouseButtonListener(IMouseButtonListener* listener);
 

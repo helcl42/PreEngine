@@ -107,10 +107,6 @@ namespace PreEngine
 					glDrawArrays(how, 0, m_countOfFaces * 3);
 				}
 
-				void Torus::RenderBoundingBox()
-				{
-				}
-
 				void Torus::Delete()
 				{
 					m_vbo->Delete();

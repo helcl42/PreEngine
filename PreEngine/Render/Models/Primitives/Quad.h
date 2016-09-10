@@ -23,8 +23,6 @@ namespace PreEngine
 
 					void Render(GLenum how = GL_TRIANGLE_FAN);
 
-					void RenderBoundingBox();
-
 					void Delete();
 				};
 			}

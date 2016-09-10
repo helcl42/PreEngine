@@ -7,19 +7,12 @@ namespace PreEngine
 		namespace Mouses
 		{
 			MouseInputComponent::MouseInputComponent()
+				: AbstractInputComponent()
 			{
-				m_mouseButtonPressHandler = new EventHandler<MouseInputComponent, OnMouseButtonPress>(this);
-				m_mouseButtonReleaseHandler = new EventHandler<MouseInputComponent, OnMouseButtonRelease>(this);
-				m_mouseMoveHandler = new EventHandler<MouseInputComponent, OnMouseMove>(this);
-				m_mouseScrollHandler = new EventHandler<MouseInputComponent, OnMouseScroll>(this);
 			}
 
 			MouseInputComponent::~MouseInputComponent()
 			{
-				SAFE_DELETE(m_mouseScrollHandler);
-				SAFE_DELETE(m_mouseMoveHandler);
-				SAFE_DELETE(m_mouseButtonReleaseHandler);
-				SAFE_DELETE(m_mouseButtonPressHandler);				
 			}
 
 			bool MouseInputComponent::IsMouseButtonPressed(int buttonId)
@@ -36,6 +29,28 @@ namespace PreEngine
 			const OnMouseScroll& MouseInputComponent::GetLastScroll() const
 			{
 				return m_lastScroll;
+			}
+
+			void MouseInputComponent::ShowCursor(bool show)
+			{
+				EventChannel::Broadcast(OnMouseShowRequest{ show });
+				m_cursorShown = show;
+			}
+
+			bool MouseInputComponent::IsCursorShown() const
+			{
+				return m_cursorShown;
+			}
+
+			void MouseInputComponent::LockMouse(bool lock)
+			{
+				EventChannel::Broadcast(OnMouseLockRequest{ lock });
+				m_mouseLocked = lock;
+			}
+
+			bool MouseInputComponent::IsMouseLocked() const
+			{
+				return m_mouseLocked;
 			}
 
 			void MouseInputComponent::RegisterMouseButtonListener(IMouseButtonListener* listener)
