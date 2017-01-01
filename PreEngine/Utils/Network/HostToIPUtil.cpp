@@ -19,6 +19,32 @@ namespace PreEngine
 				return result;
 			}
 
+			addrinfo* HostToIPUtil::GetAddressInfo(const std::string& host, const int port)
+			{
+				struct addrinfo hints, *result = NULL;
+
+				memset(&hints, 0, sizeof(hints));
+				//hints.ai_family = AF_UNSPEC;
+				//hints.ai_socktype = SOCK_STREAM;
+				//hints.ai_protocol = IPPROTO_TCP;
+
+				if (getaddrinfo(host.c_str(), std::to_string(port).c_str(), &hints, &result) != 0) return NULL;
+				return result;
+			}
+
+			addrinfo* HostToIPUtil::GetAddressInfo(const int port)
+			{
+				struct addrinfo hints, *result = NULL;
+
+				memset(&hints, 0, sizeof(hints));
+				//hints.ai_family = AF_UNSPEC;
+				//hints.ai_socktype = SOCK_STREAM;
+				//hints.ai_protocol = IPPROTO_TCP;
+
+				if (getaddrinfo(NULL, std::to_string(port).c_str(), &hints, &result) != 0) return NULL;
+				return result;
+			}
+
 			void HostToIPUtil::PrintAddressInfo(const std::string& host)
 			{
 				char addrstr[100];

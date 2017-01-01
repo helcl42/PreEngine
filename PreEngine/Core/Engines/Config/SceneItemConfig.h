@@ -20,7 +20,7 @@ namespace PreEngine
 				class SceneItemConfig : public AbstractConfig
 				{
 				protected:
-					bool m_isInFullSceen;
+					bool m_isInFullScreen;
 
 					bool m_isDecorated;
 
@@ -34,9 +34,9 @@ namespace PreEngine
 
 					unsigned int m_displayIndex;
 
-					ViewFrustumConfig* m_viewFrustumConfig;
-
 					SceneEye m_sceneEye;
+
+					ViewFrustumConfig* m_viewFrustumConfig;
 
 				public:
 					SceneItemConfig(Json::Value root);
@@ -44,7 +44,14 @@ namespace PreEngine
 					virtual ~SceneItemConfig();
 
 				public:
+					SceneItemConfig(const SceneItemConfig& other);
+
+					SceneItemConfig& operator=(const SceneItemConfig& other);
+
+				public:
 					void Init();
+
+					virtual Json::Value GetValue() const;
 
 				public:
 					bool IsFullScreen() const;

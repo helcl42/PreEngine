@@ -18,11 +18,37 @@ namespace PreEngine
 				{
 				}
 
+				ViewFrustumConfig::ViewFrustumConfig(const ViewFrustumConfig& other)
+					: AbstractConfig(other), m_fieldOfView(other.m_fieldOfView), m_nearClippingPlane(other.m_nearClippingPlane), m_farClippingPlane(other.m_farClippingPlane)
+				{
+				}
+
+				ViewFrustumConfig& ViewFrustumConfig::operator=(const ViewFrustumConfig& other)
+				{
+					if (&other != this)
+					{
+						AbstractConfig::operator=(other);
+						m_fieldOfView = other.m_fieldOfView; 
+						m_nearClippingPlane = other.m_nearClippingPlane;
+						m_farClippingPlane = other.m_farClippingPlane;
+					}
+					return *this;
+				}
+
 				void ViewFrustumConfig::Init()
 				{	
 					m_fieldOfView = (float)m_root["FieldOfView"].asDouble();
 					m_nearClippingPlane = (float)m_root["NearClippingPlane"].asDouble();
 					m_farClippingPlane = (float)m_root["FarClippingPlane"].asDouble();
+				}
+
+				Json::Value ViewFrustumConfig::GetValue() const
+				{
+					Json::Value newRoot;
+					newRoot["FieldOfView"] = m_fieldOfView;
+					newRoot["NearClippingPlane"] = m_nearClippingPlane;
+					newRoot["FarClippingPlane"] = m_farClippingPlane;
+					return newRoot;
 				}
 
 				float ViewFrustumConfig::GetFieldOfView() const

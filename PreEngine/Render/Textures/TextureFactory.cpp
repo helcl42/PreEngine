@@ -12,24 +12,36 @@ namespace PreEngine
 
 			TextureFactory::~TextureFactory()
 			{
+				//for (auto& image : GlobalCache<std::string, FIBITMAP*>::GetInstance().GetAll())
+				//{
+				//	SAFE_DELETE(image.second);
+				//}
 			}
 
 			FIBITMAP* TextureFactory::GetImage(const std::string& filePath)
 			{
-				FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
-				FIBITMAP* dib = NULL;
+				FIBITMAP* bitmap = NULL;				
+				if (!GlobalCache<std::string, FIBITMAP*>::GetInstance().Contains(filePath))
+				{
+					FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
 
-				fif = FreeImage_GetFileType(filePath.c_str(), 0);
+					fif = FreeImage_GetFileType(filePath.c_str(), 0);
 
-				if (fif == FIF_UNKNOWN)  fif = FreeImage_GetFIFFromFilename(filePath.c_str());
+					if (fif == FIF_UNKNOWN)  fif = FreeImage_GetFIFFromFilename(filePath.c_str());
 
-				if (fif == FIF_UNKNOWN) throw TextureException("Unknown Texture format " + filePath + ".");
+					if (fif == FIF_UNKNOWN) throw TextureException("Unknown Texture format " + filePath + ".");
 
-				if (FreeImage_FIFSupportsReading(fif)) dib = FreeImage_Load(fif, filePath.c_str());
+					if (FreeImage_FIFSupportsReading(fif)) bitmap = FreeImage_Load(fif, filePath.c_str());
 
-				//if (!dib)	throw TextureException("Load HeightMap " + filePath + " failed.");
+					//if (!dib)	throw TextureException("Load HeightMap " + filePath + " failed.");
 
-				return dib;
+					GlobalCache<std::string, FIBITMAP*>::GetInstance().Add(filePath, bitmap);
+				}
+				else
+				{
+					bitmap = GlobalCache<std::string, FIBITMAP*>::GetInstance().Get(filePath);
+				}
+				return bitmap;
 			}
 
 			GLint TextureFactory::GetMaxMipMapLevel(int width, int height)
@@ -68,21 +80,19 @@ namespace PreEngine
 				return GL_TEXTURE_MAX_LEVEL - 1;
 			}
 
-			ITexture* TextureFactory::CreateDepthBufferTexture(int width, int height)
+			ITexture* TextureFactory::CreateDepthBufferTexture(int width, int height, bool addStencil)
 			{
 				GLuint depthTexHandle;
 				glGenTextures(1, &depthTexHandle);
 				glBindTexture(GL_TEXTURE_2D, depthTexHandle);
-				glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH_COMPONENT24, width, height);
-
+				glTexImage2D(GL_TEXTURE_2D, 0, addStencil ? GL_DEPTH24_STENCIL8 : GL_DEPTH_COMPONENT24, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, NULL);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);
-				Texture* texture = new Texture(depthTexHandle, width, height);
-				return texture;
+				return new Texture(depthTexHandle, width, height);
 			}
 
 			Texture* TextureFactory::CreateTextureBase(GLubyte* data, int width, int height, int bpp, GLenum format, bool generateMipMaps)
@@ -122,12 +132,15 @@ namespace PreEngine
 
 				if (data == NULL || FreeImage_GetWidth(dib) == 0 || FreeImage_GetHeight(dib) == 0) throw TextureException("Texture " + filePath + " contains invalid data.");
 
-				GLenum format = GL_RGB;
-				if (FreeImage_GetBPP(dib) == 32) format = GL_RGBA;
-				if (FreeImage_GetBPP(dib) == 24) format = GL_BGR;
-				if (FreeImage_GetBPP(dib) == 8) format = GL_RED;
+				unsigned int bpp = FreeImage_GetBPP(dib);
 
-				return CreateTexture(data, FreeImage_GetWidth(dib), FreeImage_GetHeight(dib), FreeImage_GetBPP(dib), format, generateMipMaps);
+				GLenum format = GL_RGB;
+				if (bpp == 32) format = GL_BGRA;
+				if (bpp == 24) format = GL_BGR;
+				if (bpp == 16) format = GL_RG;
+				if (bpp == 8) format = GL_RED;
+
+				return CreateTexture(data, FreeImage_GetWidth(dib), FreeImage_GetHeight(dib), bpp, format, generateMipMaps);
 			}
 
 			ITexture* TextureFactory::CreateTexture(GLubyte* data, int width, int height, int bpp, GLenum format, bool generateMipMaps)

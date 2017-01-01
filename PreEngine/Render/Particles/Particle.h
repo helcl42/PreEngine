@@ -14,7 +14,7 @@ namespace PreEngine
 			public:
 				glm::vec3 position;
 
-				glm::vec3 velocity;
+				glm::vec3 m_velocity;
 
 				glm::vec3 color;
 

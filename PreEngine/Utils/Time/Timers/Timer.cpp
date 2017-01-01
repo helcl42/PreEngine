@@ -122,7 +122,6 @@ namespace PreEngine
 				{
 					return m_observer.RegisterListener(listener);
 				}
-
 			}
 		}
 	}

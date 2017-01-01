@@ -23,6 +23,7 @@ namespace PreEngine
 #ifdef _WIN32
 				_endthreadex(0);
 #endif
+				thizz->m_isFinished = true;
 			}
 
 			void Thread::RunThread()
@@ -38,6 +39,8 @@ namespace PreEngine
 
 			bool Thread::Join(unsigned int timeout)
 			{
+				if (m_isFinished) return true;
+
 				m_isFinished = true;
 #ifdef _WIN32
 				if (WaitForSingleObject(m_threadHandle, timeout) != WAIT_OBJECT_0)

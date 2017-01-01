@@ -30,8 +30,18 @@ namespace PreEngine
 
 					virtual ~EngineConfig();
 
+				public:
+					EngineConfig(const EngineConfig& other);
+
+					EngineConfig& operator=(const EngineConfig& other);
+
 				protected:
 					void Init();
+
+				public:
+					Json::Value GetValue() const;
+
+					virtual void Sync() const;
 
 				public:
 					std::string GetWindowTitle() const;

@@ -14,9 +14,9 @@ namespace PreEngine
 			public:
 				virtual void SetFiltering(enum MagnificationTextureFilterType magnification, enum MinificationTextureFilterType minification) = 0;
 
-				virtual int GetMinificationFilter() const = 0;
+				virtual MinificationTextureFilterType GetMinificationFilter() const = 0;
 
-				virtual int GetMagnificationFilter() const = 0;
+				virtual MagnificationTextureFilterType GetMagnificationFilter() const = 0;
 
 				virtual void Delete() = 0;
 
@@ -38,7 +38,7 @@ namespace PreEngine
 
 				virtual GLenum GetFormat() const = 0;
 
-				virtual void SetWrap() = 0;
+				virtual void SetWrap(GLint value) = 0;
 
 				virtual unsigned int GetSampler() const = 0;
 

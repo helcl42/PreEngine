@@ -28,7 +28,14 @@ namespace PreEngine
 					virtual ~ViewFrustumConfig();
 
 				public:
+					ViewFrustumConfig(const ViewFrustumConfig& other);
+
+					ViewFrustumConfig& operator=(const ViewFrustumConfig& other);
+
+				public:
 					void Init();
+
+					Json::Value GetValue() const;
 
 				public:
 					float GetFieldOfView() const;

@@ -16,7 +16,7 @@ namespace PreEngine
 			public:
 				virtual ITexture* CreateEmptyTexture(int width, int height, int bpp, GLenum format) = 0;
 
-				virtual ITexture* CreateDepthBufferTexture(int width, int height) = 0;
+				virtual ITexture* CreateDepthBufferTexture(int width, int height, bool addStencil = false) = 0;
 
 				virtual ITexture* CreateTexture(const std::string& filePath, bool generateMipMaps = false) = 0;
 

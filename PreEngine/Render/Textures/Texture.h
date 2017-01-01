@@ -52,9 +52,9 @@ namespace PreEngine
 			public:
 				void SetFiltering(enum MagnificationTextureFilterType magnification, enum MinificationTextureFilterType minification);
 
-				int GetMinificationFilter() const;
+				MinificationTextureFilterType GetMinificationFilter() const;
 
-				int GetMagnificationFilter() const;
+				MagnificationTextureFilterType GetMagnificationFilter() const;
 
 				void Delete();
 
@@ -62,7 +62,7 @@ namespace PreEngine
 
 				void SetSamplerParameter(GLenum parameter, GLenum value);
 
-				void SetWrap();
+				void SetWrap(GLint value);
 
 				unsigned int GetWidth() const;
 

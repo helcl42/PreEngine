@@ -1,9 +1,10 @@
 #ifndef ABSTRACT_TEXTURE_FACTORY_H
 #define ABSTRACT_TEXTURE_FACTORY_H
 
-#include "ITextureFactory.h"
-
 #include <FreeImage.h>
+
+#include "ITextureFactory.h"
+#include "../../Core/Caching/GlobalCache.h"
 
 namespace PreEngine
 {
@@ -11,6 +12,8 @@ namespace PreEngine
 	{
 		namespace Textures
 		{
+			using namespace PreEngine::Core::Caching;
+
 			class TextureFactory : public ITextureFactory
 			{
 			public:
@@ -30,7 +33,7 @@ namespace PreEngine
 			public:
 				ITexture* CreateEmptyTexture(int width, int height, int bpp, GLenum format);
 
-				ITexture* CreateDepthBufferTexture(int width, int height);
+				ITexture* CreateDepthBufferTexture(int width, int height, bool addStencil = false);
 
 				ITexture* CreateTexture(const std::string& filePath, bool generateMipMaps = false);
 

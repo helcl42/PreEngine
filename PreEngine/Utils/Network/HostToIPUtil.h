@@ -28,6 +28,10 @@ namespace PreEngine
 			{
 			public:
 				static addrinfo* GetAddressInfo(const std::string& host);
+			
+				static addrinfo* HostToIPUtil::GetAddressInfo(const std::string& host, const int port);
+
+				static addrinfo* HostToIPUtil::GetAddressInfo(const int port);
 
 				static void PrintAddressInfo(const std::string& host);
 			};

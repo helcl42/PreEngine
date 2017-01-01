@@ -12,7 +12,7 @@ namespace PreEngine
 			class IFrameBufferFactory
 			{
 			public:
-				virtual IFrameBuffer* CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer = false) = 0;
+				virtual IFrameBuffer* CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer = false, bool addStencil = false) = 0;
 
 			public:
 				virtual ~IFrameBufferFactory() {}

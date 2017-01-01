@@ -14,7 +14,7 @@ namespace PreEngine
 			class FPSService
 			{
 			private:
-				const int MAX_SNAPSHOTS_COUNT = 30;
+				const unsigned int MAX_SNAPSHOTS_COUNT = 30;
 
 				float refreshTimeout = 1.0f;
 

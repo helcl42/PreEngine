@@ -9,8 +9,6 @@ namespace PreEngine
 			AbstractEngine::AbstractEngine(EngineConfig* config)
 				: m_config(config)
 			{
-				m_shutDownRquestHandler = new EventHandler<AbstractEngine, OnEngineShutDownRequest>(this);
-
 				m_clock = new Clock<float>();
 				m_input = new Input();
 				m_audioContext = new AudioContext();
@@ -21,7 +19,6 @@ namespace PreEngine
 				SAFE_DELETE(m_audioContext);
 				SAFE_DELETE(m_clock);
 				SAFE_DELETE(m_input);
-				SAFE_DELETE(m_shutDownRquestHandler);
 			}
 
 			Input* AbstractEngine::GetInput() const

@@ -36,7 +36,7 @@ namespace PreEngine
 				virtual ~HeightMapFactory();
 
 			private:
-				FIBITMAP* GetImage(std::string filePath);
+				FIBITMAP* GetImage(const std::string& filePath);
 
 				void ReadImageData(unsigned char* data);
 
@@ -48,7 +48,7 @@ namespace PreEngine
 
 				void BindHeightMapData(HeightMap* heightMap);
 
-				HeightMap* GetHeightMapCommon(const std::string textureFilePath);
+				HeightMap* GetHeightMapCommon(const std::string& textureFilePath);
 
 				void InvalidateState();
 

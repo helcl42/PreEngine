@@ -77,7 +77,7 @@ namespace PreEngine
 				const float ZOOM_SENSITIVITY = -0.2f;
 				float fieldOfView = m_fieldOfView + ZOOM_SENSITIVITY * (float)scroll.diff.y;
 				if (fieldOfView < 5.0f) fieldOfView = 5.0f;
-				if (fieldOfView > 130.0f) fieldOfView = 130.0f;
+				if (fieldOfView > 140.0f) fieldOfView = 140.0f;
 				m_fieldOfView = fieldOfView;
 
 				UpdateMatrices();

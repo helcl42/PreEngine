@@ -44,7 +44,7 @@ namespace PreEngine
 
 				bool m_finishRequested = false;
 
-				EventHandler<AbstractEngine, OnEngineShutDownRequest>* m_shutDownRquestHandler;
+				EventHandler<AbstractEngine, OnEngineShutDownRequest> m_shutDownRquestHandler{ this };
 
 			public:
 				AbstractEngine(EngineConfig* config);
@@ -68,7 +68,7 @@ namespace PreEngine
 
 				AudioContext* GetAudioContext() const;
 
-			public: 
+			public:
 				void operator()(const OnEngineShutDownRequest& shutDownRequest);
 			};
 		}

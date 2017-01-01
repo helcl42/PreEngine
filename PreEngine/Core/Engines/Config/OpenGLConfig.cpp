@@ -24,6 +24,23 @@ namespace PreEngine
 				{
 				}
 
+				OpenGLConfig::OpenGLConfig(const OpenGLConfig& other)
+					: AbstractConfig(other), m_majorVersion(other.m_majorVersion), m_minorVersion(other.m_minorVersion), m_antialiazingLevel(other.m_antialiazingLevel)
+				{
+				}
+
+				OpenGLConfig& OpenGLConfig::operator=(const OpenGLConfig& other)
+				{
+					if (&other != this)
+					{
+						AbstractConfig::operator=(other);
+						m_majorVersion = other.m_majorVersion;
+						m_minorVersion = other.m_minorVersion;
+						m_antialiazingLevel = other.m_antialiazingLevel;
+					}
+					return *this;
+				}
+
 				void OpenGLConfig::Init()
 				{
 					if (m_root.isMember("MajorVersion"))
@@ -40,6 +57,15 @@ namespace PreEngine
 					{
 						m_antialiazingLevel = m_root["AntialiazingLevel"].asUInt();
 					}
+				}
+
+				Json::Value OpenGLConfig::GetValue() const
+				{
+					Json::Value newRoot;
+					newRoot["MajorVersion"] = m_majorVersion;
+					newRoot["MinorVersion"] = m_minorVersion;
+					newRoot["AntialiazingLevel"] = m_antialiazingLevel;
+					return newRoot;
 				}
 
 				unsigned int OpenGLConfig::GetMajorVersion() const

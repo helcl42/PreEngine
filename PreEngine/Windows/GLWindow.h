@@ -197,7 +197,7 @@ namespace PreEngine
 		template <class WindowType>
 		void GLWindow<WindowType>::FocusCallback(GLFWwindow* window, int focused)
 		{
-			GLWindow<WindowType>* myWindow = (GLWindow<WindowType>*)glfwGetWindowUserPointer(window);
+			GLWindow<WindowType>* myWindow = static_cast<GLWindow<WindowType>*>(glfwGetWindowUserPointer(window));
 			if (myWindow == NULL) throw GLWindowException("FocusCallback: Window pointer not set.");
 
 			glfwMakeContextCurrent(window);
@@ -207,7 +207,7 @@ namespace PreEngine
 		template <class WindowType>
 		void GLWindow<WindowType>::ResizeCallback(GLFWwindow* window, int width, int height)
 		{
-			GLWindow<WindowType>* myWindow = (GLWindow<WindowType>*)glfwGetWindowUserPointer(window);
+			GLWindow<WindowType>* myWindow = static_cast<GLWindow<WindowType>*>(glfwGetWindowUserPointer(window));
 			if (myWindow == NULL) throw GLWindowException("ResizeCallback: Window pointer not set.");
 
 			glfwMakeContextCurrent(window);
@@ -523,9 +523,9 @@ namespace PreEngine
 		template <class WindowType>
 		void GLWindow<WindowType>::operator()(const OnKeyRelease& release)
 		{
-			if (release.key == GLFW_KEY_ESCAPE) m_shouldClose = true;
-
 			if (m_masterWindow != this) return;
+
+			if (release.key == GLFW_KEY_ESCAPE) m_shouldClose = true;
 			
 			if (release.key == GLFW_KEY_F) m_channel.Broadcast(PreEngine::Windows::Events::ToggleFullscreen{ m_sceneId, this, !m_isInFullscreen });
 

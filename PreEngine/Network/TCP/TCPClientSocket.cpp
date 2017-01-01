@@ -73,7 +73,7 @@ namespace PreEngine
 			bool TCPClientSocket::IsOpen()
 			{
 				int n = send(m_socket, "\n", 1, 0); // hack
-				if (n < 0)
+				if (n <= 0)
 				{
 					Logger::GetInstance().Error() << "TCP client socket: not opened.";
 					return false;

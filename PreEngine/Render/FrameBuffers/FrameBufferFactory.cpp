@@ -40,12 +40,12 @@ namespace PreEngine
 				}
 			}
 
-			void FrameBufferFactory::AttachDepthTexture(FrameBuffer* frameBuffer, int width, int height)
+			void FrameBufferFactory::AttachDepthTexture(FrameBuffer* frameBuffer, int width, int height, bool addStencil)
 			{
-				ITexture* depthTexture = m_textureFactory->CreateDepthBufferTexture(width, height);
+				ITexture* depthTexture = m_textureFactory->CreateDepthBufferTexture(width, height, addStencil);
 				if (depthTexture != NULL)
 				{
-					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture->GetHandle(), 0);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, addStencil ? GL_DEPTH_STENCIL_ATTACHMENT : GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthTexture->GetHandle(), 0);
 					frameBuffer->m_frameBufferTextures.push_back(depthTexture);
 					frameBuffer->m_hasDepthBufferAttached = true;
 				}
@@ -74,13 +74,13 @@ namespace PreEngine
 				}
 			}
 
-			IFrameBuffer* FrameBufferFactory::CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer)
+			IFrameBuffer* FrameBufferFactory::CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer, bool includeStencil)
 			{
 				FrameBuffer* frameBuffer = CreateFrameBufferBase(sceneId, width, height);
 				
 				if (attachDepthBuffer)
 				{
-					AttachDepthTexture(frameBuffer, width, height);
+					AttachDepthTexture(frameBuffer, width, height, includeStencil);
 				}
 
 				for (size_t i = 0; i < formats.size(); i++)

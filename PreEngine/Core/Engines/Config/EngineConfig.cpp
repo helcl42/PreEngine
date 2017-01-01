@@ -24,6 +24,49 @@ namespace PreEngine
 					SAFE_DELETE(m_glConfig);
 				}
 
+				EngineConfig::EngineConfig(const EngineConfig& other)
+					: AbstractConfig(other), m_windowTitle(other.m_windowTitle), m_vSync(other.m_vSync)
+				{
+					for (auto& item : m_sceneItems)
+					{
+						SAFE_DELETE(item);
+					}
+					m_sceneItems.clear();
+
+					for (const auto& item : other.m_sceneItems)
+					{
+						m_sceneItems.push_back(new SceneItemConfig(*item));
+					}
+
+					SAFE_DELETE(m_glConfig);
+					m_glConfig = other.m_glConfig != NULL ? new OpenGLConfig(*other.m_glConfig) : NULL;
+				}
+
+				EngineConfig& EngineConfig::operator=(const EngineConfig& other)
+				{
+					if (&other != this)
+					{
+						AbstractConfig::operator=(other);
+						m_windowTitle = other.m_windowTitle;
+						m_vSync = other.m_vSync;
+						
+						for (auto& item : m_sceneItems)
+						{
+							SAFE_DELETE(item);
+						}
+						m_sceneItems.clear();
+
+						for (const auto& item : other.m_sceneItems)
+						{
+							m_sceneItems.push_back(new SceneItemConfig(*item));
+						}
+
+						SAFE_DELETE(m_glConfig);
+						m_glConfig = other.m_glConfig != NULL ? new OpenGLConfig(*other.m_glConfig) : NULL;
+					}
+					return *this;
+				}
+
 				void EngineConfig::Init()
 				{
 					m_windowTitle = m_root["WindowTitle"].asString();
@@ -51,6 +94,27 @@ namespace PreEngine
 					{
 						m_glConfig = new OpenGLConfig();
 					}
+				}
+
+				Json::Value EngineConfig::GetValue() const
+				{
+					Json::Value newRoot;
+					newRoot["WindowTitle"] = m_windowTitle;
+					Json::Value scenes(Json::arrayValue);					
+					for (auto scene : m_sceneItems)
+					{
+						scenes.append(scene->GetValue());
+					}
+					newRoot["Scenes"] = scenes;
+					newRoot["VSync"] = m_vSync;
+					newRoot["OpenGL"] = m_glConfig->GetValue();
+					return newRoot;
+				}
+
+				void EngineConfig::Sync() const
+				{
+					Json::Value val = GetValue();
+					WriteJsonContent(m_filePath, val);
 				}
 
 				std::string EngineConfig::GetWindowTitle() const

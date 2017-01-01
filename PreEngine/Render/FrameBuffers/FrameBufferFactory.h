@@ -28,12 +28,12 @@ namespace PreEngine
 
 				void AttachColorTexture(FrameBuffer* frameBuffer, int width, int height, GLenum format, GLenum attachmentIndex);
 
-				void AttachDepthTexture(FrameBuffer* frameBuffer, int width, int height);
+				void AttachDepthTexture(FrameBuffer* frameBuffer, int width, int height, bool addStencil);
 
 				void SetDrawBuffers(int colorAttachmentsCount, bool depthAttachment);
 
 			public:				
-				IFrameBuffer* CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer = false);
+				IFrameBuffer* CreateFrameBuffer(int sceneId, int width, int height, std::vector<GLenum> formats, bool attachDepthBuffer = false, bool addStencil = false);
 			};
 		}
 	}

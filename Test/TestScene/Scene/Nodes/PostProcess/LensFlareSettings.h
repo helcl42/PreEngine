@@ -11,7 +11,7 @@ namespace TestScene
 		{
 			bool isEnabled = true;
 
-			LensFlareMode mode;
+			LensFlareMode mode = LensFlareMode::WITH_HEJL_AND_STARBURST;
 
 			float scale = 0.4f;
 

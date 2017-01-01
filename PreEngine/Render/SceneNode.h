@@ -29,13 +29,19 @@ namespace PreEngine
 		class SceneNode : public Object<ObjectType>, public ISceneNode<RootType>
 		{
 		protected:
-			EventHandler<SceneNode, OnViewFrustumChange>* m_viewFrustumChangeHandler;
+			EventHandler<SceneNode, OnViewFrustumChange> m_viewFrustumChangeHandler{ this };
 
 			unsigned int m_sceneId;
 
 			unsigned int m_width;
 
 			unsigned int m_height;
+
+			float m_fieldOfView;
+
+			float m_nearClippingPlane;
+
+			float m_farClippingPlane;
 
 			glm::mat4 m_perspectiveProjectionMatrix;
 
@@ -126,7 +132,6 @@ namespace PreEngine
 			: m_sceneId(sceneId), m_scenePosition(position), m_root(NULL), m_sceneEye(eye), m_enabled(true)
 		{
 			m_tag = m_name;
-			m_viewFrustumChangeHandler = new EventHandler<SceneNode, OnViewFrustumChange>(this);
 		}
 
 		template <class ObjectType, class RootType>
@@ -139,8 +144,6 @@ namespace PreEngine
 		template <class ObjectType, class RootType>
 		SceneNode<ObjectType, RootType>::~SceneNode()
 		{
-			SAFE_DELETE(m_viewFrustumChangeHandler);
-
 			/*for (std::vector<ISceneNode<RootType>*>::iterator ii = m_children.begin(); ii != m_children.end(); ii++)
 			{
 				SAFE_DELETE(*ii);
@@ -172,6 +175,9 @@ namespace PreEngine
 			{
 				m_width = frustum.width;
 				m_height = frustum.height;
+				m_fieldOfView = frustum.fieldOfView;
+				m_nearClippingPlane = frustum.nearClippingPlane;
+				m_farClippingPlane = frustum.farClippingPlane;
 				m_perspectiveProjectionMatrix = frustum.projectionMatrix;
 				m_orthographicProjectionMatrix = frustum.orthoMatrix;
 			}

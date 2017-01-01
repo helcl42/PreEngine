@@ -30,7 +30,14 @@ namespace PreEngine
 					virtual ~OpenGLConfig();
 
 				public:
+					OpenGLConfig(const OpenGLConfig& other);
+
+					OpenGLConfig& operator=(const OpenGLConfig& other);
+
+				public:
 					void Init();
+
+					Json::Value GetValue() const;
 
 				public:
 					unsigned int GetMajorVersion() const;

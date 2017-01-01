@@ -54,12 +54,12 @@ namespace PreEngine
 				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, maxAnisotropyFilterFactor);
 			}
 
-			int Texture::GetMinificationFilter() const
+			MinificationTextureFilterType Texture::GetMinificationFilter() const
 			{
 				return m_minificationFilter;
 			}
 
-			int Texture::GetMagnificationFilter() const
+			MagnificationTextureFilterType Texture::GetMagnificationFilter() const
 			{
 				return m_magnificationFilter;
 			}
@@ -82,11 +82,11 @@ namespace PreEngine
 				glDeleteTextures(1, &m_handle);
 			}
 
-			void Texture::SetWrap()
+			void Texture::SetWrap(GLint value)
 			{
 				glBindSampler(0, m_sampler);
-				glSamplerParameteri(m_sampler, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-				glSamplerParameteri(m_sampler, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+				glSamplerParameteri(m_sampler, GL_TEXTURE_WRAP_S, value);
+				glSamplerParameteri(m_sampler, GL_TEXTURE_WRAP_T, value);
 			}
 
 			unsigned int Texture::GetWidth() const

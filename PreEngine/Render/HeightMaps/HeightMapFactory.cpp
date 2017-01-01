@@ -17,7 +17,7 @@ namespace PreEngine
 			{
 			}
 
-			FIBITMAP* HeightMapFactory::GetImage(std::string filePath)
+			FIBITMAP* HeightMapFactory::GetImage(const std::string& filePath)
 			{
 				FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
 				FIBITMAP* dib(0);
@@ -174,7 +174,7 @@ namespace PreEngine
 				m_normals.clear();
 			}
 
-			HeightMap* HeightMapFactory::GetHeightMapCommon(const std::string textureFilePath)
+			HeightMap* HeightMapFactory::GetHeightMapCommon(const std::string& textureFilePath)
 			{
 				FIBITMAP* dib = GetImage(textureFilePath);
 

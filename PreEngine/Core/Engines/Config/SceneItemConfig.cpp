@@ -19,9 +19,35 @@ namespace PreEngine
 					SAFE_DELETE(m_viewFrustumConfig);
 				}
 
+				SceneItemConfig::SceneItemConfig(const SceneItemConfig& other)
+					: AbstractConfig(other), m_isInFullScreen(other.m_isInFullScreen), m_isDecorated(other.m_isDecorated), m_width(other.m_width), m_height(other.m_height), m_offsetLeft(other.m_offsetLeft), m_offsetTop(other.m_offsetTop), m_displayIndex(other.m_displayIndex), m_sceneEye(other.m_sceneEye)
+				{
+					SAFE_DELETE(m_viewFrustumConfig);
+					m_viewFrustumConfig = other.m_viewFrustumConfig != NULL ? new ViewFrustumConfig(*other.m_viewFrustumConfig) : NULL;
+				}
+
+				SceneItemConfig& SceneItemConfig::operator=(const SceneItemConfig& other)
+				{
+					if (&other != this)
+					{
+						AbstractConfig::operator=(other);
+						m_isInFullScreen = other.m_isInFullScreen;
+						m_isDecorated = other.m_isDecorated; 
+						m_width = other.m_width; 
+						m_height = other.m_height; 
+						m_offsetLeft = other.m_offsetLeft;
+						m_offsetTop = other.m_offsetTop;
+						m_displayIndex = other.m_displayIndex;
+						m_sceneEye = other.m_sceneEye;
+						SAFE_DELETE(m_viewFrustumConfig);
+						m_viewFrustumConfig = other.m_viewFrustumConfig != NULL ? new ViewFrustumConfig(*other.m_viewFrustumConfig) : NULL;
+					}
+					return *this;
+				}
+
 				void SceneItemConfig::Init()
 				{
-					m_isInFullSceen = m_root.isMember("FullScreen") ? m_root["FullScreen"].asBool() : false;
+					m_isInFullScreen = m_root.isMember("FullScreen") ? m_root["FullScreen"].asBool() : false;
 					m_isDecorated = m_root.isMember("IsDecorated") ? m_root["IsDecorated"].asBool() : true;
 					m_width = m_root["Width"].asUInt();
 					m_height = m_root["Height"].asUInt();
@@ -41,14 +67,47 @@ namespace PreEngine
 					else m_sceneEye = SceneEye::CENTER_EYE;
 				}
 
+				Json::Value SceneItemConfig::GetValue() const
+				{
+					Json::Value newRoot;
+					newRoot["FullScreen"] = m_isInFullScreen;
+					newRoot["IsDecorated"] = m_isDecorated;
+					newRoot["Width"] = m_width;
+					newRoot["Height"] = m_height;
+					newRoot["Top"] = m_offsetTop;
+					newRoot["Left"] = m_offsetLeft;
+					newRoot["DisplayIndex"] = m_displayIndex;
+					if (m_viewFrustumConfig != NULL) newRoot["ViewFrustum"] = m_viewFrustumConfig->GetValue();
+
+					switch (m_sceneEye)
+					{
+					case SceneEye::LEFT_EYE:
+						newRoot["SceneEye"] = "LEFT_EYE";
+						break;
+					case SceneEye::RIGHT_EYE:
+						newRoot["SceneEye"] = "RIGHT_EYE";
+						break;
+					case SceneEye::LEFT_RIGHT_EYE:
+						newRoot["SceneEye"] = "LEFT_RIGHT_EYE";
+						break;
+					case SceneEye::TOP_BOTTOM_EYE:
+						newRoot["SceneEye"] = "TOP_BOTTOM_EYE";
+						break;
+					default:
+						newRoot["SceneEye"] = "CENTER_EYE";
+						break;
+					}
+					return newRoot;
+				}
+
 				bool SceneItemConfig::IsFullScreen() const
 				{
-					return m_isInFullSceen;
+					return m_isInFullScreen;
 				}
 
 				void SceneItemConfig::SetFullScreen(bool isFullScreen)
 				{
-					m_isInFullSceen = isFullScreen;
+					m_isInFullScreen = isFullScreen;
 				}
 
 				bool SceneItemConfig::IsDecorated() const
